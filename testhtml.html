@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Input và span trong phần tử div có độ rộng tối đa</title>
+	<style>
+		.container {
+			max-width: 350px;
+			white-space: nowrap;
+		}
+
+		input {
+			display: inline-block;
+			margin-right: 10px;
+			max-width: max-content;
+			box-sizing: border-box;
+			padding: 5px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+		}
+
+		span {
+			display: inline-block;
+			max-width: max-content;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="container">
+		<input type="text" /><span>Span 1</span>
+		<input type="text" /><span>Span 2</span>
+		<input type="text" /><span>Span 3</span>
+	</div>
+
+</body>
+</html>

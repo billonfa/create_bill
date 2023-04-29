@@ -1,0 +1,586 @@
+.ruler {
+  position: fixed;
+  top: 258px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: black;
+  opacity: 0.5;
+  z-index: 9999;
+  pointer-events: none;
+}
+.ruler_doc {
+  position: fixed;
+  top: 0;
+  left: 372px;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 100%;
+  background-color: black;
+  z-index: 1;
+}
+.ruler_doc2 {
+  position: fixed;
+  top: 0;
+  left: 805px;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 100%;
+  background-color: black;
+  z-index: 1;
+}
+.container_box {
+  display: flex;
+}
+.box {
+  margin: 10px;
+}
+.demo_image-container {
+    position: relative;
+    width: 400px;
+}
+.create-image-container {
+  position: relative;
+  width: 400px;
+}
+.photo_style {
+  width: 100%;
+}
+.image-caption {
+  position: absolute;
+  font-size: 18px;
+  top: 10px;
+  left: 20px;
+  color: #e6eaf2;
+  font-weight: 500;
+  font-family: system-ui;
+}
+
+/* ---------------------------------Css cho Acb------------------------------------ */
+  .time_acb{
+    position: absolute;
+    top: 12px;
+    left: 24px;
+    color: #fffffff5;
+    font-size: 15px;
+    width: 46px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-family: inherit;
+    font-weight: 500;
+  }
+  .total_price_number_acb{
+    position: absolute;
+    top: 181px;
+    left: 59px;
+    color: blue;
+    font-size: 21px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-family: revert;
+    font-weight: 700;
+    text-align: center;
+  }
+  .total_price_text_acb{
+    position: absolute;
+    top: 217px;
+    left: 113px;
+    color: black;
+    font-size: 15px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-family: system-ui;
+    text-align: center;
+    z-index: 10;
+  }
+  .order_time_acb{
+    position: absolute;
+    top: 316px;
+    left: 150px;
+    color: black;
+    font-size: 17px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-family: system-ui;
+    text-align: right;
+    z-index: 10;
+    font-weight: 500;
+    opacity: 0.6;
+  }
+  .order_date_acb{
+    position: absolute;
+    top: 357px;
+    left: 150px;
+    color: black;
+    font-size: 17px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-family: system-ui;
+    text-align: right;
+    z-index: 10;
+    font-weight: 500;
+    opacity: 0.6;
+  }
+  .transferer_name_acb {
+    position: absolute;
+    top: 498px;
+    left: 49px;
+    color: blue;
+    font-size: 17px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-family: system-ui;
+    text-align: left;
+    z-index: 10;
+    font-weight: 500;
+    opacity: 0.6;
+  }
+  .transferer_number_acb {
+    position: absolute;
+    top: 520px;
+    left: 49px;
+    color: blue;
+    font-size: 17px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-family: system-ui;
+    text-align: left;
+    z-index: 10;
+    font-weight: 500;
+    opacity: 0.6;
+  }
+  .recipient_name_acb {
+    position: absolute;
+    top: 626px;
+    left: 171px;
+    color: black;
+    font-size: 16px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-family: system-ui;
+    text-align: right;
+    z-index: 10;
+    font-weight: 500;
+    opacity: 0.6;
+  }
+  .bank_name_acb {
+    position: absolute;
+    top: 667px;;
+    left: 171px;
+    color: black;
+    font-size: 16px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-family: system-ui;
+    text-align: right;
+    z-index: 10;
+    font-weight: 500;
+    opacity: 0.6;
+  }
+  .recipient_number_acb {
+    position: absolute;
+    top: 709px;;
+    left: 171px;
+    color: black;
+    font-size: 16px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-family: system-ui;
+    text-align: right;
+    z-index: 10;
+    font-weight: 500;
+    opacity: 0.6;
+  }
+  .bank_now_acb {
+    position: absolute;
+    top: 821px;
+    left: 275px;
+    color: #000000d9;
+    font-size: 16px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-family: system-ui;
+    text-align: right;
+    z-index: 10;
+    font-weight: 400;
+    width: max-content;
+  }
+
+/*------------------------------------ Css cho Agribank ------------------------------------*/
+.time-agribank{
+  position: absolute;
+  top: 14px;
+  left: 24px;
+  color: #fffffff5;
+  font-size: 15px;
+  width: 46px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-weight: 500;
+}
+.total_price_number-agribank{
+  position: absolute;
+  top: 301px;
+  left: 37px;
+  font-size: 24px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-weight: 500;
+  text-align: left;
+  z-index: 10;
+  color:white;
+}
+.recipient_number-agribank {
+  position: absolute;
+  top: 382px;
+  left: 29px;
+  color: black;
+  font-size: 19px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-family: system-ui;
+  text-align: left;
+  z-index: 10;
+  opacity: 0.7;
+}
+.recipient_name-agribank {
+  position: absolute;
+  top: 458px;
+  left: 29px;
+  color: #cb8300;
+  font-size: 17px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-family: system-ui;
+  text-align: left;
+  z-index: 10;
+}
+.trade_code-agribank {
+  position: absolute;
+  top: 532px;
+  left: 29px;
+  color: BLACK;
+  font-size: 20px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-family: system-ui;
+  text-align: left;
+  z-index: 10;
+  font-weight: 330;
+}
+.recipient_bank-agribank {
+  position: absolute;
+  top: 608px;
+  left: 29px;
+  font-size: 18px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-family: system-ui;
+  text-align: left;
+  z-index: 10;
+  font-weight: 330;
+}
+.trade_time {
+  color: #00000080;
+  position: absolute;
+  top: 756px;
+  left: 29px;
+  font-size: 19px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-family: system-ui;
+  text-align: left;
+  z-index: 10;
+  font-weight: 300;
+}
+
+/*------------------------------------ Css cho BIDV ------------------------------------*/
+.time-bidv {
+  position: absolute;
+  top: 11px;
+  left: 25px;
+  color: black;
+  font-size: 17px;
+  width: 46px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-family: revert;
+  font-weight: 600;
+  z-index: 10;
+  width: max-content;
+}
+.content1 {
+  position: absolute;
+  top: 224px;
+  left: 37px;
+  color: #000000c7;
+  font-size: 16px;
+  width: 46px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-family: revert;
+  font-weight: 400;
+  z-index: 10;
+  width: max-content;
+}
+.total_price-bidv {
+  position: absolute;
+  top: 244px;
+  left: 60px;
+  color: #000000c7;
+  font-size: 17px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-family: revert;
+  font-weight: 400;
+  z-index: 10;
+  width: max-content;
+  text-align: center;
+}
+#output_total_price-bidv {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-family: revert;
+  text-align: right;
+  font-size: 18px;
+  font-weight: bold;
+  color: #0077d5d6;
+}
+.infomation_recipient-bidv {
+  position: absolute;
+  top: 266px;
+  left: 40px;
+  color: #000000c7;
+  font-size: 17px;
+  font-weight: 400;
+  z-index: 10;
+  max-width: 325px;
+  text-align: center;
+  display: block;
+  line-height: 1.1;
+  font-family: system-ui;
+}
+.color_bl {
+  color: #0077d5d6;
+  font-weight: bold;
+}
+.code_number-bidv {
+  position: absolute;
+  top: 368px;
+  left: 228px;
+  color: black;
+  font-size: 19px;
+  font-weight: 400;
+  z-index: 10;
+  max-width: 325px;
+  text-align: center;
+  display: block;
+  line-height: 1.1;
+  font-family: monospace;
+  font-weight: bold;
+}
+
+/*------------------------------------ Css cho Mbbank ------------------------------------*/
+.done_bill {
+  position: absolute;
+  top: 97px;
+  left: 84px;
+  color: #462a20;
+  font-size: 16.4px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-family: system-ui;
+  font-weight: 500;
+  z-index: 10;
+  width: max-content;
+}
+.total_price-mbbank {
+  position: absolute;
+  top: 116px;
+  left: 0px;
+  color: #462a20;
+  font-size: 42px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-family: system-ui;
+  font-weight: 700;
+  z-index: 10;
+  width: 401px;
+  text-align: center;
+}
+.recipient_name-mbbank {
+  position: absolute;
+  top: 289px;
+  left: 74px;
+  color: black;
+  font-size: 18px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-family: system-ui;
+  font-weight: 700;
+  z-index: 10;
+  width: max-content;
+  text-align: left;
+}
+.recipient_number-mbbank {
+  position: absolute;
+  top: 310px;
+  left: 74px;
+  color: #000000;
+  font-size: 16px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-family: system-ui;
+  font-weight: 500;
+  z-index: 10;
+  width: max-content;
+  text-align: left;
+}
+.recipient_bank_text-mbbank {
+  position: absolute;
+  top: 328px;
+  left: 74px;
+  color: #000000;
+  font-size: 16px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-family: system-ui;
+  font-weight: 450;
+  z-index: 10;
+  max-width: 310px;
+  text-align: left;
+}
+.source_account-mbbank {
+  display: block;
+  position: absolute;
+  top: 413px;
+  left: 173px;
+  color: #000000;
+  font-size: 17px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-family: system-ui;
+  font-weight: 450;
+  z-index: 10;
+  width: 187px;
+  text-align: right;
+}
+.source_name-mbbank {
+  position: absolute;
+  top: 431px;
+  left: 60px;
+  color: #000000;
+  font-size: 16px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-family: system-ui;
+  font-weight: 700;
+  z-index: 10;
+  width: 300px;
+  text-align: right;
+}
+.content-mbbank {
+  position: absolute;
+  top: 462px;
+  left: 60px;
+  color: #0e0e0ee0;
+  font-size: 16px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-family: system-ui;
+  font-weight: 500;
+  z-index: 10;
+  width: 300px;
+  text-align: right;
+}
+.time-mbbank {
+  position: absolute;
+  top: 495px;
+  left: 60px;
+  color: #000000e0;
+  font-size: 16px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-family: system-ui;
+  font-weight: 500;
+  z-index: 10;
+  width: 300px;
+  text-align: right;
+}
+.hinh_thuc_chuyen-mbbank {
+  position: absolute;
+  top: 526px;
+  left: 60px;
+  color: #000000e0;
+  font-size: 16.4px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-family: system-ui;
+  font-weight: 500;
+  z-index: 10;
+  width: 300px;
+  text-align: right;
+}
+.text_247-mbbank {
+  position: absolute;
+  top: 544px;
+  left: 60px;
+  color: #000000e0;
+  font-size: 16.4px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-family: system-ui;
+  font-weight: 500;
+  z-index: 10;
+  width: 300px;
+  text-align: right;
+}
+.trade_code-mbbank {
+  position: absolute;
+  top: 574px;
+  left: 60px;
+  color: #000000e0;
+  font-size: 16.4px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-family: system-ui;
+  font-weight: 500;
+  z-index: 10;
+  width: 300px;
+  text-align: right;
+}
