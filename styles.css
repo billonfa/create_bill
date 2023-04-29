@@ -73,7 +73,7 @@
   .total_price_number_acb{
     position: absolute;
     top: 181px;
-    left: 59px;
+    left: 17px;
     color: blue;
     font-size: 21px;
     background-color: transparent;
@@ -82,11 +82,12 @@
     font-family: revert;
     font-weight: 700;
     text-align: center;
+    width: 366px;
   }
   .total_price_text_acb{
     position: absolute;
     top: 217px;
-    left: 113px;
+    left: 17px;
     color: black;
     font-size: 15px;
     background-color: transparent;
@@ -95,6 +96,7 @@
     font-family: system-ui;
     text-align: center;
     z-index: 10;
+    width: 366px;
   }
   .order_time_acb{
     position: absolute;
@@ -106,10 +108,11 @@
     border: none;
     outline: none;
     font-family: system-ui;
-    text-align: right;
+    text-align: left;
     z-index: 10;
     font-weight: 500;
     opacity: 0.6;
+    width: 230px;
   }
   .order_date_acb{
     position: absolute;
@@ -121,10 +124,11 @@
     border: none;
     outline: none;
     font-family: system-ui;
-    text-align: right;
+    text-align: left;
     z-index: 10;
     font-weight: 500;
     opacity: 0.6;
+    width: 230px;
   }
   .transferer_name_acb {
     position: absolute;
@@ -140,6 +144,7 @@
     z-index: 10;
     font-weight: 500;
     opacity: 0.6;
+    width: 320px;
   }
   .transferer_number_acb {
     position: absolute;
@@ -155,6 +160,7 @@
     z-index: 10;
     font-weight: 500;
     opacity: 0.6;
+    width: 320px;
   }
   .recipient_name_acb {
     position: absolute;
@@ -170,6 +176,7 @@
     z-index: 10;
     font-weight: 500;
     opacity: 0.6;
+    width: 190px;
   }
   .bank_name_acb {
     position: absolute;
@@ -185,10 +192,11 @@
     z-index: 10;
     font-weight: 500;
     opacity: 0.6;
+    width: 190px;
   }
   .recipient_number_acb {
     position: absolute;
-    top: 709px;;
+    top: 710px;;
     left: 171px;
     color: black;
     font-size: 16px;
@@ -200,6 +208,7 @@
     z-index: 10;
     font-weight: 500;
     opacity: 0.6;
+    width: 190px;
   }
   .bank_now_acb {
     position: absolute;
@@ -216,7 +225,9 @@
     font-weight: 400;
     width: max-content;
   }
-
+  .button_to_img_acb {
+    margin-top: 15px;
+  }
 /*------------------------------------ Css cho Agribank ------------------------------------*/
 .time-agribank{
   position: absolute;

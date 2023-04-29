@@ -52,22 +52,22 @@
 <span class="ruler_doc"></span>
 <span class="ruler_doc2"></span>
 <div class="container_box" bis_skin_checked="1">
-    <div class="box" id="new_bill">
-        <div class="create-image-container" bis_skin_checked="1">
+    <div class="box">
+        <div class="create-image-container" id="new_bill<?php echo $id ?>">
             <img class="photo_style" src="photo/<?php echo $value['photo'] ?>" alt="Demo bill" />
             <?php 
             switch($id) {
                 case 1: { ?>
-                    <input type="text" class="time_acb" placeholder="20:40"/>
-                    <input type="text" class="total_price_number_acb" placeholder="1.000.000.000 VND"/>
-                    <input type="text" class="total_price_text_acb" placeholder="Một tỷ đồng"/>
-                    <input type="text" class="order_time_acb" placeholder="11/10/2022 - 20:40:00"/>
-                    <input type="text" class="order_date_acb" placeholder="11/10/2022"/>
-                    <input type="text" class="transferer_name_acb" placeholder="NGUYEN HO TUAN TINH"/>
-                    <input type="text" class="transferer_number_acb" placeholder="99999"/>
-                    <input type="text" class="recipient_name_acb" placeholder="NGUYEN HO TUAN TINH"/>
-                    <input type="text" class="bank_name_acb" placeholder="ACB - NH TMCP A CHAU"/>
-                    <input type="text" class="recipient_number_acb" placeholder="8888888"/>
+                    <div id="output_clock-acb" class="time_acb">20:40</div>
+                    <div id="output_total_number-acb" class="total_price_number_acb">1.000.000.000 VND</div>
+                    <div id="output_total_text-acb" class="total_price_text_acb">Một tỷ đồng</div>
+                    <div id="output_time-acb" class="order_time_acb">11/10/2022 - 20:40:00</div>
+                    <div id="output_day-acb" class="order_date_acb">11/10/2022</div>
+                    <div id="output_transferer_name-acb" class="transferer_name_acb">NGUYEN HO TUAN TINH</div>
+                    <div id="output_transferer_number-acb" class="transferer_number_acb">99999</div>
+                    <div id="output_recipient_name-acb" class="recipient_name_acb">NGUYEN HO TUAN TINH</div>
+                    <div id="output_recipient_bank-acb" class="bank_name_acb">ACB - NH TMCP A CHAU</div>
+                    <div id="output_recipient_number-acb" class="recipient_number_acb">8888888</div>
                     <span class="bank_now_acb">Chuyển ngay</span>
                     <?php
                     break; 
@@ -141,8 +141,65 @@
 
                 default: die();} ?>
         </div>
+        <button class="button_to_img_acb btn btn-warning w-100" id="create_to_img-<?php echo $id ?>">Xuất ảnh hóa đơn</button>
     </div>
-
+    <?php if($id == 1) { ?>
+    <div class="col-md-6 col-lg-6 col-xl-3">
+        <div class="card" style="margin-top:10px">
+            <div class="card-body p-4" style="margin:0; padding:0 !important">
+                <div class="text-center mt-2">
+                    <h5 class="text-primary">Tạo hóa đơn mới</h5>
+                </div>
+                <div class="p-2 mt-4">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Thời gian</label>
+                        <input type="text" class="form-control" id="input_clock-acb" placeholder="20:40">
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Số tiền chuyển (số)</label>
+                        <input type="" class="form-control" id="input_total_number-acb" placeholder="1.000.000.000 VND">
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Số tiền chuyển (chữ)</label>
+                        <input type="text" class="form-control" id="input_total_text-acb" placeholder="Một tỷ đồng">
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Ngày lập lệnh</label>
+                        <input type="text" class="form-control" id="input_time-acb" placeholder="11/10/2022 - 20:40:00">
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Ngày hiệu lực</label>
+                        <input type="text" class="form-control" id="input_day-acb" placeholder="11/10/2022">
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Bên chuyển (tên)</label>
+                        <input type="text" class="form-control" id="input_transferer_name-acb" placeholder="NGUYEN HO TUAN TINH">
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Bên chuyển (số)</label>
+                        <input type="number" class="form-control" id="input_transferer_number-acb" placeholder="999999">
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Tên người nhận</label>
+                        <input type="text" class="form-control" id="input_recipient_name-acb" placeholder="NGUYEN HO TUAN TINH">
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Ngân hàng nhận</label>
+                        <input type="text" class="form-control" id="input_recipient_bank-acb" placeholder="ACB - NH TMCP A CHAU">
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Tài khoản nhận</label>
+                        <input type="number" class="form-control" id="input_recipient_number-acb" placeholder="8888888888">
+                    </div>
+                    <div class="mt-4">
+                        <button class="btn btn-success w-100" id="create_bill-acb">Tạo hóa đơn mới</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+     
+    </div>
+    <?php } ?>
 
     <?php if($id == 3) { ?>
     <div class="col-md-6 col-lg-6 col-xl-3">
