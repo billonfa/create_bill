@@ -45,7 +45,7 @@
     <!-- custom Css-->
     <link href="assets/css/custom.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="styles.css">
-    <title>Document</title>
+    <title><?php echo $value['name'] ?></title>
 </head>
 <body>
 <span class="ruler"></span>
@@ -57,6 +57,7 @@
             <img class="photo_style" src="photo/<?php echo $value['photo'] ?>" alt="Demo bill" />
             <?php 
             switch($id) {
+                //------------------------- Dữ liệu của ACB -------------------------
                 case 1: { ?>
                     <div id="output_clock-acb" class="time_acb">20:40</div>
                     <div id="output_total_number-acb" class="total_price_number_acb">1.000.000.000 VND</div>
@@ -69,18 +70,19 @@
                     <div id="output_recipient_bank-acb" class="bank_name_acb">ACB - NH TMCP A CHAU</div>
                     <div id="output_recipient_number-acb" class="recipient_number_acb">8888888</div>
                     <span class="bank_now_acb">Chuyển ngay</span>
-                    <?php
-                    break; 
+                <?php break; 
                 }
+                //------------------------- Dữ liệu của Agribank -------------------------
                 case 2: { ?>
-                    <input type="text" class="time-agribank" placeholder="20:40"/>
-                    <input type="text" class="total_price_number-agribank" placeholder="1.000.000.000 VND"/>
-                    <input type="text" class="recipient_number-agribank" placeholder="123456789"/>
-                    <input type="text" class="recipient_name-agribank" placeholder="NGUYEN TINH"/>
-                    <input type="text" class="trade_code-agribank" placeholder="106706"/>
-                    <input type="text" class="recipient_bank-agribank" placeholder="Vietcombank"/>
-                    <input type="text" class="trade_time" placeholder="12:29 08/12/2023"/>
+                    <div id="output_clock-agribank" class="time-agribank">20:40</div>
+                    <div class="total_price_number-agribank"><span id="output_total_price-agribank">1.000.000.000</span> VND</div>
+                    <div id="output_recipient_number-agribank" class="recipient_number-agribank">123456789</div>
+                    <div id="output_recipient_name-agribank" class="recipient_name-agribank">NGUYEN TINH</div>
+                    <div id="output_trade_code-agribank" class="trade_code-agribank">106706</div>
+                    <div id="output_recipient_bank-agribank" class="recipient_bank-agribank">Vietcombank</div>
+                    <div id="output_trade_time-agribank" class="trade_time">12:29 08/12/2023</div>
                 <?php break;}
+                //------------------------- Dữ liệu của BIDV -------------------------
                 case 3: { ?>
                     <span id="output_clock-bidv" class="time-bidv">20:40</span>
                     <div class="content1">Quý khách đã chuyển thành công số tiền</div>
@@ -97,6 +99,7 @@
                     </div>
                     <div id="output_code_number-bidv" class="code_number-bidv">143369</div>
                 <?php break;}
+                //------------------------- Dữ liệu của MB Bank -------------------------
                 case 4: { ?>
                     <span id="output_clock-mbbank" class="time-bidv">20:40</span>
                     <div class="done_bill">Bạn đã chuyển tiền thành công</div>
@@ -114,28 +117,92 @@
                     <div class="trade_code-mbbank" id="output_trade_code-mbbank">FT22358547622890</div>
                 <?php break;
                 }
-                case 5: {
-                    break;
+                //------------------------- Dữ liệu của Momo -------------------------
+                case 5: { ?>
+                    <span id="output_clock-momo" class="clock-momo">20:40</span>
+                    <div class="recipient_name-momo">
+                        CHUYỂN TIỀN ĐẾN 
+                        <span id="output_recipient_name-momo">NGUYEN TINH TINH</span>
+                        <span>(<span id="output_recipient_bank-momo">ACB</span>)</span>
+                    </div>
+                    <div class="total_price-momo"><span class="subtraction">-<span id="output_total_price-momo">50.000.000</span><span>đ</span></div>
+                    <div id="output_time-momo" class="time-momo">21:29 - 19/02/2023</div>
+                    <div id="output_trade_code-momo" class="trade_code-momo">35637957291</div>
+                    <div id="output_transfer_bank-momo" class="transfer_bank-momo">Ví MoMo</div>
+                    <div class="overheads-momo"><span id="output_overheads-momo">328.300</span>đ</div>
+                    <div id="output_recipient_number-momo" class="recipient_number-momo">99999999999</div>
+                    <div id="output_banking_name-momo" class="banking_name-momo">NGUYEN TINH</div>
+                    <div id="output_banking_bank-momo" class="banking_bank-momo"> NH TMCP A Chau (ACB)</div>
+                    <div class="total_price2-momo"><span id="output_total_price2-momo">50.000.000</span><span>VND</span></div>
+                    <div id="output_message-momo" class="message-momo">3424</div>
+                <?php break;
                 }
-                case 6: {
-                    break;
+                //------------------------- Dữ liệu của MSB -------------------------
+                case 6: { ?>
+                    <span id="output_clock-msb" class="clock-msb">20:40</span>
+                    <div id="output_holder_name-msb" class="holder_name-msb">Nguyen Tinh</div>
+                    <div class="total_price-msb"><span id="output_total_price-msb">1,000,000,000</span> VND</div>
+                    <div id="output_recipient_number-msb" class="recipient_number-msb">9999999999</div>
+                    <div id="output_recipient_name-msb" class="recipient_name-msb">NGUYEN HO TUAN TINH</div>
+                    <div id="output_message-msb" class="message-msb">Demo Bill MSB</div>
+                <?php break;
                 }
+                //------------------------- Dữ liệu của Sacombank -------------------------
                 case 7: {
                     break;
                 }
-                case 8: {
-                    break;
+                //------------------------- Dữ liệu của Techcombank -------------------------
+                case 8: { ?>
+                    <span id="output_clock-techcombank" class="clock-techcombank">20:40</span>
+                    <div class="block_recipient_name-techcombank">
+                        <div>Chuyển thành công</div>
+                        <div style="width:369px">tới <span id="output_recipient_name-techcombank" class="recipient_name-techcombank">NGUYEN TINH</span></div>
+                        <div>VND</div>
+                        <div id="output_total_price-techcombank" class="total_price-techcombank">99,999,999,999</div>
+                    </div>
+                    <div id="output_recipient_bank-techcombank" class="recipient_bank-techcombank">Ngân hàng TMCP Ngoại thương Việt Nam</div>
+                    <div id="output_recipient_number-techcombank" class="recipient_number-techcombank">8989 8989 898</div>
+                    <div id="output_message-techcombank" class="message-techcombank">Demo bill Techcombank</div>
+                    <div id="output_time-techcombank" class="time-techcombank">18 tháng 3, 2023</div>
+                    <div class="trade_code-techcombank">FT<span id="output_trade_code-techcombank">22288197735763</span></div>
+                <?php break;
                 }
+                //------------------------- Dữ liệu của TpBank -------------------------
                 case 9: {
                     break;
                 }
-                case 10: {
-                    break;
+                //------------------------- Dữ liệu của Vietcombank -------------------------
+                case 10: { ?>
+                    <span id="output_clock-vietcombank" class="clock-vietcombank">20:40</span>
+                    <div class="total_price-vietcombank"><span id="output_total_price-vietcombank">999,999,999</span> VND</div>
+                    <div id="output_time-vietcombank" class="time-vietcombank">15:00 Thứ Ba 25/10/2022</div>
+                    <div id="output_recipient_name-vietcombank" class="recipient_name-vietcombank">NGUYEN HO TUAN TINH</div>
+                    <div id="output_recipient_number-vietcombank" class="recipient_number-vietcombank">9999999999999</div>
+                    <div id="output_recipient_bank_name-vietcombank" class="recipient_bank_name-vietcombank">Ngân hàng Quân Đội</div>
+                    <div class="recipient_bank_code-vietcombank">(<span id="output_recipient_bank_code-vietcombank">MB</span>)</div>
+                    <div id="output_trade_code-vietcombank" class="trade_code-vietcombank">2616042867</div>
+                    <div id="output_message-vietcombank" class="message-vietcombank">demo bill</div>
+                <?php break;
                 }
-                case 11: {
-                    break;
+                //------------------------- Dữ liệu của Vietinbank -------------------------
+                case 11: { ?>
+                    <span id="output_clock-vietinbank" class="clock-vietcombank">17:20</span>
+                    <div id="output_time-vietinbank" class="time-vietinbank">27/01/2023 17:20</div>
+                    <div id="output_trade_code-vietinbank" class="trade_code-vietinbank">932S22A1KEPNM5K7</div>
+                    <div id="output_from_number-vietinbank" class="from_number-vietinbank">9999</div>
+                    <div id="output_from_name-vietinbank" class="from_name-vietinbank">NGUYEN TINH</div>
+                    <div id="output_recipient_number-vietinbank" class="recipient_number-vietinbank">999999999</div>
+                    <div id="output_recipient_name-vietinbank" class="recipient_name-vietinbank">NGUYEN TINH</div>
+                    <div id="output_recipient_bank-vietinbank" class="recipient_bank-vietinbank">Ngân hàng Ngoại thương Việt Nam (VCB)</div>
+                    <div class="recipient_total_number-vietinbank"><span id="output_total_number-vietinbank">1,000,000,000</span> VND</div>
+                    <div id="output_total_text-vietinbank" class="recipient_total_text-vietinbank">Một Tỷ Đồng</div>
+                    <div class="text_free-vietinbank">Miễn phí</div>
+                    <div id="output_message-vietinbank" class="message-vietinbank">demo bill vietinbank</div>
+                    
+                <?php break;
                 }
-                case 12: {
+                //------------------------- Dữ liệu của VpBank -------------------------
+                case 12: { 
                     break;
                 }
 
@@ -152,43 +219,43 @@
                 </div>
                 <div class="p-2 mt-4">
                     <div class="mb-3">
-                        <label for="username" class="form-label">Thời gian</label>
+                        <label class="form-label">Thời gian</label>
                         <input type="text" class="form-control" id="input_clock-acb" placeholder="20:40">
                     </div>
                     <div class="mb-3">
-                        <label for="username" class="form-label">Số tiền chuyển (số)</label>
+                        <label class="form-label">Số tiền chuyển (số)</label>
                         <input type="" class="form-control" id="input_total_number-acb" placeholder="1.000.000.000 VND">
                     </div>
                     <div class="mb-3">
-                        <label for="username" class="form-label">Số tiền chuyển (chữ)</label>
+                        <label class="form-label">Số tiền chuyển (chữ)</label>
                         <input type="text" class="form-control" id="input_total_text-acb" placeholder="Một tỷ đồng">
                     </div>
                     <div class="mb-3">
-                        <label for="username" class="form-label">Ngày lập lệnh</label>
+                        <label class="form-label">Ngày lập lệnh</label>
                         <input type="text" class="form-control" id="input_time-acb" placeholder="11/10/2022 - 20:40:00">
                     </div>
                     <div class="mb-3">
-                        <label for="username" class="form-label">Ngày hiệu lực</label>
+                        <label class="form-label">Ngày hiệu lực</label>
                         <input type="text" class="form-control" id="input_day-acb" placeholder="11/10/2022">
                     </div>
                     <div class="mb-3">
-                        <label for="username" class="form-label">Bên chuyển (tên)</label>
+                        <label class="form-label">Bên chuyển (tên)</label>
                         <input type="text" class="form-control" id="input_transferer_name-acb" placeholder="NGUYEN HO TUAN TINH">
                     </div>
                     <div class="mb-3">
-                        <label for="username" class="form-label">Bên chuyển (số)</label>
+                        <label class="form-label">Bên chuyển (số)</label>
                         <input type="number" class="form-control" id="input_transferer_number-acb" placeholder="999999">
                     </div>
                     <div class="mb-3">
-                        <label for="username" class="form-label">Tên người nhận</label>
+                        <label class="form-label">Tên người nhận</label>
                         <input type="text" class="form-control" id="input_recipient_name-acb" placeholder="NGUYEN HO TUAN TINH">
                     </div>
                     <div class="mb-3">
-                        <label for="username" class="form-label">Ngân hàng nhận</label>
+                        <label class="form-label">Ngân hàng nhận</label>
                         <input type="text" class="form-control" id="input_recipient_bank-acb" placeholder="ACB - NH TMCP A CHAU">
                     </div>
                     <div class="mb-3">
-                        <label for="username" class="form-label">Tài khoản nhận</label>
+                        <label class="form-label">Tài khoản nhận</label>
                         <input type="number" class="form-control" id="input_recipient_number-acb" placeholder="8888888888">
                     </div>
                     <div class="mt-4">
@@ -197,7 +264,51 @@
                 </div>
             </div>
         </div>
-     
+    </div>
+    <?php } ?>
+
+    <?php if($id == 2) { ?>
+    <div class="col-md-6 col-lg-6 col-xl-3">
+        <div class="card" style="margin-top:10px">
+            <div class="card-body p-4" style="margin:0; padding:0 !important">
+                <div class="text-center mt-2">
+                    <h5 class="text-primary">Tạo hóa đơn mới</h5>
+                </div>
+                <div class="p-2 mt-4">
+                    <div class="mb-3">
+                        <label class="form-label">Thời gian</label>
+                        <input type="text" class="form-control" id="input_clock-agribank" placeholder="20:40">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Số tiền chuyển</label>
+                        <input type="" class="form-control" id="input_total_price-agribank" placeholder="1.000.000.000 VND">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Số thẻ/ Số TK thụ hưởng</label>
+                        <input type="number" class="form-control" id="input_recipient_number-agribank" placeholder="1234456789">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Tên người thụ hưởng</label>
+                        <input type="text" class="form-control" id="input_recipient_name-agribank" placeholder="NGUYEN TINH">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Mã giao dịch (6 số)</label>
+                        <input type="number" class="form-control" id="input_trade_code-agribank" placeholder="106706">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Ngân hàng thụ hưởng</label>
+                        <input type="text" class="form-control" id="input_recipient_bank-agribank" placeholder="Vietcombank">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Thời gian giao dịch</label>
+                        <input type="text" class="form-control" id="input_trade_time-agribank" placeholder="12:29 08/12/2023">
+                    </div>
+                    <div class="mt-4">
+                        <button class="btn btn-success w-100" id="create_bill-<?php echo $id ?>">Tạo hóa đơn mới</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <?php } ?>
 
@@ -210,35 +321,35 @@
                 </div>
                 <div class="p-2 mt-4">
                     <div class="mb-3">
-                        <label for="username" class="form-label">Thời gian</label>
+                        <label class="form-label">Thời gian</label>
                         <input type="text" class="form-control" id="input_clock-bidv" placeholder="20:40">
                     </div>
                     <div class="mb-3">
-                        <label for="username" class="form-label">Số tiền chuyển</label>
+                        <label class="form-label">Số tiền chuyển</label>
                         <input type="text" class="form-control" id="input_total_price-bidv" placeholder="999,999,999 VND">
                     </div>
                     <div class="mb-3">
-                        <label for="username" class="form-label">Số tài khoản người nhận</label>
+                        <label class="form-label">Số tài khoản người nhận</label>
                         <input type="text" class="form-control" id="input_recipient_number-bidv" placeholder="688686868686868">
                     </div>
                     <div class="mb-3">
-                        <label for="username" class="form-label">Tên người nhận</label>
+                        <label class="form-label">Tên người nhận</label>
                         <input type="text" class="form-control" id="input_recipient_name-bidv" placeholder="NGUYEN TRAN VAN TIN">
                     </div>
                     <div class="mb-3">
-                        <label for="username" class="form-label">Ngân hàng nhận</label>
+                        <label class="form-label">Ngân hàng nhận</label>
                         <input type="text" class="form-control" id="input_recipient_bank-bidv" placeholder="NHTMCP Ngoại thương">
                     </div>
                     <div class="mb-3">
-                        <label for="username" class="form-label">Thời gian chuyển khoản</label>
+                        <label class="form-label">Thời gian chuyển khoản</label>
                         <input type="text" class="form-control" id="input_time-bidv" placeholder="13/03/2023 13:32:32">
                     </div>
                     <div class="mb-3">
-                        <label for="username" class="form-label">Nội dung chuyển khoản</label>
+                        <label class="form-label">Nội dung chuyển khoản</label>
                         <input type="text" class="form-control" id="input_content-bidv" placeholder="3424">
                     </div>
                     <div class="mb-3">
-                        <label for="username" class="form-label">Số tham chiếu</label>
+                        <label class="form-label">Số tham chiếu</label>
                         <input type="text" class="form-control" id="input_code_number-bidv" placeholder="143369">
                     </div>
                     <div class="mt-4">
@@ -256,43 +367,43 @@
             <div class="card-body p-4">
                 <div class="p-2 mt-4">
                     <div class="mb-3">
-                        <label for="username" class="form-label">Thời gian</label>
+                        <label class="form-label">Thời gian</label>
                         <input type="text" class="form-control" id="input_clock-mbbank" placeholder="20:40">
                     </div>
                     <div class="mb-3">
-                        <label for="username" class="form-label">Số tiền chuyển</label>
+                        <label class="form-label">Số tiền chuyển</label>
                         <input type="text" class="form-control" id="input_total_price-mbbank" placeholder="999,999,999 VND">
                     </div>
                     <div class="mb-3">
-                        <label for="username" class="form-label">Tên người nhận</label>
+                        <label class="form-label">Tên người nhận</label>
                         <input type="text" class="form-control" id="input_recipient_name-mbbank" placeholder="NGUYEN TINH">
                     </div>
                     <div class="mb-3">
-                        <label for="username" class="form-label">Số tài khoản người nhận</label>
+                        <label class="form-label">Số tài khoản người nhận</label>
                         <input type="number" class="form-control" id="input_recipient_number-mbbank" placeholder="999999999999999">
                     </div>
                     <div class="mb-3">
-                        <label for="username" class="form-label">Ngân hàng nhận</label>
+                        <label class="form-label">Ngân hàng nhận</label>
                         <input type="text" class="form-control" id="input_recipient_bank-mbbank" placeholder="Ngoại thương Việt Nam (Vietcombank, VCB)">
                     </div>
                     <div class="mb-3">
-                        <label for="username" class="form-label">Tài khoản nguồn</label>
+                        <label class="form-label">Tài khoản nguồn</label>
                         <input type="number" class="form-control" id="input_source_account-mbbank" placeholder="8888888888888">
                     </div>
                     <div class="mb-3">
-                        <label for="username" class="form-label">Tên tài khoản nguồn</label>
+                        <label class="form-label">Tên tài khoản nguồn</label>
                         <input type="text" class="form-control" id="input_source_name-mbbank" placeholder="NGUYEN TINH NGUYEN">
                     </div>
                     <div class="mb-3">
-                        <label for="username" class="form-label">Nội dung chuyển khoản</label>
+                        <label class="form-label">Nội dung chuyển khoản</label>
                         <input type="text" class="form-control" id="input_content-mbbank" placeholder="3424">
                     </div>
                     <div class="mb-3">
-                        <label for="username" class="form-label">Thời gian</label>
+                        <label class="form-label">Thời gian</label>
                         <input type="text" class="form-control" id="input_time-mbbank" placeholder="18:29:16, 07/01/2023">
                     </div>
                     <div class="mb-3">
-                        <label for="username" class="form-label">Mã giao dịch (FT và 14 số)</label>
+                        <label class="form-label">Mã giao dịch (FT và 14 số)</label>
                         <input type="text" class="form-control" id="input_code_number-mbbank" placeholder="FT22358547622890">
                     </div>
                     <div class="mt-4">
@@ -302,6 +413,252 @@
             </div>
         </div>
     </div>
+    <?php } ?>
+
+    <?php if($id == 5) { ?>
+    <div class="col-md-6 col-lg-6 col-xl-3">
+        <div class="card mt-4">
+            <div class="card-body p-4">
+                <div class="p-2 mt-4">
+                    <div>
+                        <label class="form-label">Thời gian</label>
+                        <input type="text" class="form-control" id="input_clock-momo" placeholder="20:40">
+                    </div>
+                    <div>
+                        <label class="form-label">Tên người nhận</label>
+                        <input type="text" class="form-control" id="input_recipient_name-momo" placeholder="NGUYEN TINH TINH">
+                    </div>
+                    <div>
+                        <label class="form-label">Tên viết tắt ngân hàng nhận</label>
+                        <input type="text" class="form-control" id="input_recipient_bank-momo" placeholder="ACB">
+                    </div>
+                    <div>
+                        <label class="form-label">Số tiền chuyển</label>
+                        <input type="number" class="form-control" id="input_total_price-momo" placeholder="50.000.000">
+                    </div>
+                    <div>
+                        <label class="form-label">Thời gian</label>
+                        <input type="text" class="form-control" id="input_time-momo" placeholder="21:29 - 19/02/2023">
+                    </div>
+                    <div>
+                        <label class="form-label">Mã giao dịch (11 số)</label>
+                        <input type="number" class="form-control" id="input_trade_code-momo" placeholder="35637957291">
+                    </div>
+                    <div>
+                        <label class="form-label">Tổng phí</label>
+                        <input type="number" class="form-control" id="input_overheads-momo" placeholder="328.300">
+                    </div>
+                    <div>
+                        <label class="form-label">Số tài khoản nhận</label>
+                        <input type="text" class="form-control" id="input_recipient_number-momo" placeholder="9999999999999">
+                    </div>
+                    <div>
+                        <label class="form-label">Tên chủ thẻ/ người nhận</label>
+                        <input type="text" class="form-control" id="input_banking_name-momo" placeholder="NGUYEN TINH">
+                    </div>
+                    <div>
+                        <label class="form-label">Ngân hàng nhận</label>
+                        <input type="text" class="form-control" id="input_banking_bank-momo" placeholder="NH TMCP A Chau (ACB)">
+                    </div>
+                    <div>
+                        <label class="form-label">Lời nhắn</label>
+                        <input type="text" class="form-control" id="input_message-momo" placeholder="3424">
+                    </div>
+                    <div class="mt-4">
+                        <button class="btn btn-success w-100" id="create_bill-momo">Tạo hóa đơn mới</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php } ?>
+
+    <?php if($id == 6) { ?>
+
+    <div class="col-md-6 col-lg-6 col-xl-3">
+        <div class="card mt-4">
+            <div class="card-body p-4">
+                <div class="p-2 mt-4">
+                    <div>
+                        <label class="form-label">Thời gian</label>
+                        <input type="text" class="form-control" id="input_clock-msb" placeholder="20:40">
+                    </div>
+                    <div>
+                        <label class="form-label">Tên người chuyển</label>
+                        <input type="text" class="form-control" id="input_holder_name-msb" placeholder="Nguyen Tinh">
+                    </div>
+                    <div>
+                        <label class="form-label">Số tiền</label>
+                        <input type="number" class="form-control" id="input_total_price-msb" placeholder="1,000,000,000">
+                    </div>
+                    <div>
+                        <label class="form-label">Số tài khoản thụ hưởng</label>
+                        <input type="number" class="form-control" id="input_recipient_number-msb" placeholder="999999999">
+                    </div>
+                    <div>
+                        <label class="form-label">Tên người thụ hưởng</label>
+                        <input type="text" class="form-control" id="input_recipient_name-msb" placeholder="NGUYEN HO TUAN TINH">
+                    </div>
+                     <div>
+                        <label class="form-label">Nội dung chuyển khoản</label>
+                        <input type="text" class="form-control" id="input_message-msb" placeholder="Demo Bill MSB">
+                    </div>
+                    <div class="mt-4">
+                        <button class="btn btn-success w-100" id="create_bill-msb">Tạo hóa đơn mới</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <?php } ?>
+    <?php if($id == 8) { ?>
+    <div class="col-md-6 col-lg-6 col-xl-3">
+        <div class="card mt-4">
+            <div class="card-body p-4">
+                <div class="p-2 mt-4">
+                    <div>
+                        <label class="form-label">Thời gian</label>
+                        <input type="text" class="form-control" id="input_clock-techcombank" placeholder="20:40">
+                    </div>
+                    <div>
+                        <label class="form-label">Tên người nhận</label>
+                        <input type="text" class="form-control" id="input_recipient_name-techcombank" placeholder="Nguyen Tinh">
+                    </div>
+                    <div>
+                        <label class="form-label">Số tiền</label>
+                        <input type="text" class="form-control" id="input_total_price-techcombank" placeholder="99,999,999,999">
+                    </div>
+                    <div>
+                        <label class="form-label">Tên ngân hàng thụ hưởng</label>
+                        <input type="text" class="form-control" id="input_recipient_bank-techcombank" placeholder="Ngân hàng TMCP Ngoại thương Việt Nam">
+                    </div>
+                    <div>
+                        <label class="form-label">Số tài khoản ngân hàng thụ hưởng</label>
+                        <input type="number" class="form-control" id="input_recipient_number-techcombank" placeholder="8989 8989 898">
+                    </div>
+                    <div>
+                        <label class="form-label">Lời nhắn</label>
+                        <input type="text" class="form-control" id="input_message-techcombank" placeholder="Demo bill Techcombank">
+                    </div>
+                    <div>
+                        <label class="form-label">Thời gian</label>
+                        <input type="text" class="form-control" id="input_time-techcombank" placeholder="18 tháng 3, 2023">
+                    </div>
+                    <div>
+                        <label class="form-label">Mã giao dịch (14 số)</label>
+                        <input type="number" class="form-control" id="input_trade_code-techcombank" placeholder="22288197735763" maxlength="14">
+                    </div>
+                    <div class="mt-4">
+                        <button class="btn btn-success w-100" id="create_bill-techcombank">Tạo hóa đơn mới</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <?php } ?>
+
+    <?php if($id == 10) { ?>
+    <div class="col-md-6 col-lg-6 col-xl-3">
+        <div class="card mt-4">
+            <div class="card-body p-4">
+                <div class="p-2 mt-4">
+                    <div>
+                        <label class="form-label">Thời gian</label>
+                        <input type="text" class="form-control" id="input_clock-vietcombank" placeholder="20:40">
+                    </div>
+                    <div>
+                        <label class="form-label">Số tiền </label>
+                        <input type="text" class="form-control" id="input_total_price-vietcombank" placeholder="999,999,999">
+                    </div>
+                    <div>
+                        <label class="form-label">Tên người thụ hưởng</label>
+                        <input type="text" class="form-control" id="input_recipient_name-vietcombank" placeholder="NGUYEN HO TUAN TINH">
+                    </div>
+                    <div>
+                        <label class="form-label">Số tài khoản ngân hàng thụ hưởng</label>
+                        <input type="number" class="form-control" id="input_recipient_number-vietcombank" placeholder="9999999999999">
+                    </div>
+                    <div>
+                        <label class="form-label">Tên ngân hàng thụ hưởng</label>
+                        <input type="text" class="form-control" id="input_recipient_bank_name-vietcombank" placeholder="Ngân hàng Quân Đội">
+                    </div>
+                    <div>
+                        <label class="form-label">Mã ngân hàng thụ hưởng</label>
+                        <input type="text" class="form-control" id="input_recipient_bank_code-vietcombank" placeholder="MB">
+                    </div>
+                    <div>
+                        <label class="form-label">Mã giao dịch (10 số)</label>
+                        <input type="number" class="form-control" id="input_trade_code-vietcombank" placeholder="2616042867">
+                    </div>
+                    <div>
+                        <label class="form-label">Nội dung</label>
+                        <input type="text" class="form-control" id="input_message-vietcombank" placeholder="demo bill">
+                    </div>
+                    <div class="mt-4">
+                        <button class="btn btn-success w-100" id="create_bill-vietcombank">Tạo hóa đơn mới</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <?php } ?>
+
+    <?php if($id == 11) { ?>
+    <div class="col-md-6 col-lg-6 col-xl-3" style="width:30%">
+        <div class="card mt-4">
+            <div class="card-body p-4">
+                <div class="p-2 mt-4">
+                    <div>
+                        <label class="form-label">Giờ hiển thị (20:40)</label>
+                        <input type="text" class="form-control" id="input_clock-vietinbank" placeholder="20:40">
+                    </div>
+                    <div>
+                        <label class="form-label">Thời gian chuyển tiền (27/01/2023 17:20)</label>
+                        <input type="text" class="form-control" id="input_time-vietinbank" placeholder="27/01/2023 17:20">
+                    </div>
+                    <div>
+                        <label class="form-label">Mã giao dịch (932S22A1KEPNM5K7)</label>
+                        <input type="text" class="form-control" id="input_trade_code-vietinbank" placeholder="932S22A1KEPNM5K7">
+                    </div>
+                    <div>
+                        <label class="form-label">Số tài khoản người chuyển (4 số)</label>
+                        <input type="number" class="form-control" id="input_from_number-vietinbank" placeholder="9999">
+                    </div>
+                    <div>
+                        <label class="form-label">Tên người chuyển</label>
+                        <input type="text" class="form-control" id="input_from_name-vietinbank" placeholder="NGUYEN TINH">
+                    </div>
+                    <div>
+                        <label class="form-label">Số tài khoản người nhận</label>
+                        <input type="number" class="form-control" id="input_recipient_number-vietinbank" placeholder="999999999">
+                    </div>
+                    <div>
+                        <label class="form-label">Tên tài khoản người nhận</label>
+                        <input type="text" class="form-control" id="input_recipient_name-vietinbank" placeholder="NGUYEN TINH">
+                    </div>
+                    <div>
+                        <label class="form-label">Ngân hàng nhận</label>
+                        <input type="text" class="form-control" id="input_recipient_bank-vietinbank" placeholder="Ngân hàng Ngoại thương Việt Nam (VCB)">
+                    </div>
+                    <div>
+                        <label class="form-label">Số tiền (số)</label>
+                        <input type="text" class="form-control" id="input_total_number-vietinbank" placeholder="1,000,000,000">
+                    </div>
+                    <div>
+                        <label class="form-label">Số tiền (chữ)</label>
+                        <input type="text" class="form-control" id="input_total_text-vietinbank" placeholder="1,000,000,000">
+                    </div>
+                    <div>
+                        <label class="form-label">Nội dung</label>
+                        <input type="text" class="form-control" id="input_message-vietinbank" placeholder="demo bill vietinbank">
+                    </div>
+                    <div class="mt-4">
+                        <button class="btn btn-success w-100" id="create_bill-vietinbank">Tạo hóa đơn mới</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
     <?php } ?>
     <div class="box" >
         <div id="convert_photo" class="demo_image-container" bis_skin_checked="1">

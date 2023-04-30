@@ -22,8 +22,6 @@
 <!doctype html>
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
 
-
-<!-- Mirrored from themesbrand.com/velzon/html/default/pages-gallery.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 Apr 2023 08:10:58 GMT -->
 <head>
 
     <meta charset="utf-8" />
@@ -856,7 +854,7 @@
                     <!-- end page title -->
 
                     <div class="row">
-                        <?php foreach($data as $key_data => $value) { ?>
+                        <?php foreach($data as $key_data => $value) { if($value['id'] == 4 || $value['id'] == 9 || $value['id'] == 12) continue; ?>
                         <div class="col-md-3 col-sm-6" bis_skin_checked="1">
                             <a href="create-bill.php?id=<?php echo $value['id'] ?>" target="_blank">
                                 <div class="card text-center" bis_skin_checked="1">

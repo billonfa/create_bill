@@ -1,4 +1,4 @@
-//Đưa dữ liệu ACB
+//--------------------------------------- Đưa dữ liệu ACB ---------------------------------------
 var screenshotButton_acb = document.getElementById("create_bill-acb");
 var create_bill_acb = document.querySelector('#create_to_img-1')
 if(create_bill_acb) {
@@ -48,8 +48,54 @@ if(screenshotButton_acb) {
         output_recipient_number_acb.innerHTML = value_recipient_number_acb
     })
 }
-//Đưa dữ liệu BIDV
+
+//--------------------------------------- Đưa dữ liệu Agribank ---------------------------------------
+var screenshotButton_agribank = document.getElementById("create_bill-2");
+var create_bill_agribank = document.querySelector('#create_to_img-2')
+if(create_bill_agribank) {
+    create_bill_agribank.addEventListener("click", function() {
+        window.scrollTo(0,0);
+        html2canvas(document.querySelector("#new_bill2")).then(canvas => {
+            // console.log(canvas.toDataURL("image/jpeg", 0.9));
+            let a = document.createElement('a');
+            a.href = canvas.toDataURL('image/jpeg', 0.9);
+            a.download = 'new_bill_agribank.jpg';
+            a.click();
+        });
+    })
+}
+if(screenshotButton_agribank) {
+    screenshotButton_agribank.addEventListener("click", function() {
+        const value_clock_agribank = document.querySelector('#input_clock-agribank').value
+        const value_total_price_agribank = document.querySelector('#input_total_price-agribank').value
+        const value_recipient_number_agribank = document.querySelector('#input_recipient_number-agribank').value
+        const value_recipient_name_agribank = document.querySelector('#input_recipient_name-agribank').value
+        const value_trade_code_agribank = document.querySelector('#input_trade_code-agribank').value
+        const value_recipient_bank_agribank = document.querySelector('#input_recipient_bank-agribank').value
+        console.log(value_recipient_bank_agribank)
+
+        const value_trade_time_agribank = document.querySelector('#input_trade_time-agribank').value
+        console.log(value_trade_time_agribank)
+        const output_clock_agribank = document.querySelector('#output_clock-agribank')
+        output_clock_agribank.innerHTML = value_clock_agribank
+        const output_total_price_agribank = document.querySelector('#output_total_price-agribank')
+        output_total_price_agribank.innerHTML = value_total_price_agribank
+        const output_recipient_number_agribank = document.querySelector('#output_recipient_number-agribank')
+        output_recipient_number_agribank.innerHTML = value_recipient_number_agribank
+        const output_recipient_name_agribank = document.querySelector('#output_recipient_name-agribank')
+        output_recipient_name_agribank.innerHTML = value_recipient_name_agribank
+        const output_trade_code_agribank = document.querySelector('#output_trade_code-agribank')
+        output_trade_code_agribank.innerHTML = value_trade_code_agribank
+        const output_recipient_bank_agribank = document.querySelector('#output_recipient_bank-agribank')
+        output_recipient_bank_agribank.innerHTML = value_recipient_bank_agribank
+        const output_trade_time_agribank = document.querySelector('#output_trade_time-agribank')
+        output_trade_time_agribank.innerHTML = value_trade_time_agribank
+    })
+}
+
+//--------------------------------------- Đưa dữ liệu BIDV ---------------------------------------
 var screenshotButton_bidv = document.getElementById("create_bill-bidv");
+var create_bill_bidv = document.querySelector('#create_to_img-3')
 if (screenshotButton_bidv) {
     screenshotButton_bidv.addEventListener("click", function() {
         const value_clock_bidv = document.querySelector('#input_clock-bidv').value
@@ -79,8 +125,20 @@ if (screenshotButton_bidv) {
         output_code_number.innerHTML = value_code_number
     });
 }
+if (create_bill_bidv) {
+    create_bill_bidv.addEventListener("click", function() {
+        window.scrollTo(0,0);
+        html2canvas(document.querySelector("#new_bill3")).then(canvas => {
+            // console.log(canvas.toDataURL("image/jpeg", 0.9));
+            let a = document.createElement('a');
+            a.href = canvas.toDataURL('image/jpeg', 0.9);
+            a.download = 'new_bill_bidv.jpg';
+            a.click();
+        });
+    })
+}
 
-//Đưa dữ liệu MB bank
+//--------------------------------------- Đưa dữ liệu MB bank ---------------------------------------
 var screenshotButton_mbbank = document.getElementById("create_bill-mbbank");
 if(screenshotButton_mbbank) {
     screenshotButton_mbbank.addEventListener("click", function() {
@@ -115,5 +173,244 @@ if(screenshotButton_mbbank) {
         output_time_mbbank.innerHTML = value_time_mbbank
         const output_code_number = document.querySelector('#output_trade_code-mbbank')
         output_code_number.innerHTML = value_code_number
+    })
+}
+
+//--------------------------------------- Đưa dữ liệu Momo ---------------------------------------
+var screenshotButton_momo = document.getElementById('create_bill-momo')
+var create_bill_momo = document.querySelector('#create_to_img-5')
+if(screenshotButton_momo) {
+    screenshotButton_momo.addEventListener("click", function() {
+        const value_clock_momo = document.querySelector('#input_clock-momo').value
+        const value_recipient_name_momo = document.querySelector('#input_recipient_name-momo').value
+        const value_recipient_bank_momo = document.querySelector('#input_recipient_bank-momo').value
+        const value_total_price_momo = document.querySelector('#input_total_price-momo').value
+        const value_time_momo = document.querySelector('#input_time-momo').value
+        const value_trade_code_momo = document.querySelector('#input_trade_code-momo').value
+        const value_overheads_momo = document.querySelector('#input_overheads-momo').value
+        const value_recipient_number_momo = document.querySelector('#input_recipient_number-momo').value
+        const value_banking_name_momo = document.querySelector('#input_banking_name-momo').value
+        const value_message_momo = document.querySelector('#input_message-momo').value
+        const value_banking_banking_momo = document.querySelector('#input_banking_bank-momo').value
+
+        const output_clock_momo = document.querySelector('#output_clock-momo')
+        output_clock_momo.innerHTML = value_clock_momo
+        const output_recipient_name_momo = document.querySelector('#output_recipient_name-momo')
+        output_recipient_name_momo.innerHTML = value_recipient_name_momo
+        const output_recipient_bank_momo = document.querySelector('#output_recipient_bank-momo')
+        output_recipient_bank_momo.innerHTML = value_recipient_bank_momo
+        const output_total_price_momo = document.querySelector('#output_total_price-momo')
+        output_total_price_momo.innerHTML = value_total_price_momo
+        const ouput_total_price2_momo = document.querySelector('#output_total_price2-momo')
+        ouput_total_price2_momo.innerHTML = value_total_price_momo
+        const output_time_momo = document.querySelector('#output_time-momo')
+        output_time_momo.innerHTML = value_time_momo
+        const output_trade_code_momo = document.querySelector('#output_trade_code-momo')
+        output_trade_code_momo.innerHTML = value_trade_code_momo
+        const output_overheads_momo = document.querySelector('#output_overheads-momo')
+        output_overheads_momo.innerHTML = value_overheads_momo
+        const output_recipient_number_momo = document.querySelector('#output_recipient_number-momo')
+        output_recipient_number_momo.innerHTML = value_recipient_number_momo
+        const output_banking_name_momo = document.querySelector('#output_banking_name-momo')
+        output_banking_name_momo.innerHTML = value_banking_name_momo
+        const output_message_momo = document.querySelector('#output_message-momo')
+        output_message_momo.innerHTML = value_message_momo
+        const output_banking_banking_momo = document.querySelector('#output_banking_bank-momo')
+        output_banking_banking_momo.innerHTML = value_banking_banking_momo
+    })
+}   
+if(create_bill_momo) {
+    create_bill_momo.addEventListener("click", function() {
+        window.scrollTo(0,0);
+        html2canvas(document.querySelector("#new_bill5")).then(canvas => {
+            // console.log(canvas.toDataURL("image/jpeg", 0.9));
+            let a = document.createElement('a');
+            a.href = canvas.toDataURL('image/jpeg', 0.9);
+            a.download = 'new_bill_momo.jpg';
+            a.click();
+        });
+    })
+}
+
+// --------------------------------------- Đưa dữ liệu MSB ---------------------------------------
+var screenshotButton_msb = document.querySelector('#create_bill-msb')
+var create_bill_msb = document.querySelector('#create_to_img-6')
+if(screenshotButton_msb) {
+    screenshotButton_msb.addEventListener("click", function() {
+        const value_clock_msb = document.querySelector('#input_clock-msb').value
+        const value_holder_name_msb = document.querySelector('#input_holder_name-msb').value
+        const value_total_price_msb = document.querySelector('#input_total_price-msb').value
+        const value_recipient_number_msb = document.querySelector('#input_recipient_number-msb').value
+        const value_recipient_name_msb = document.querySelector('#input_recipient_name-msb').value
+        const value_message_msb = document.querySelector('#input_message-msb').value
+
+        const output_clock_msb = document.querySelector('#output_clock-msb')
+        output_clock_msb.innerHTML = value_clock_msb
+        const output_holder_name_msb = document.querySelector('#output_holder_name-msb')
+        output_holder_name_msb.innerHTML = value_holder_name_msb
+        const output_total_price_msb = document.querySelector('#output_total_price-msb')
+        output_total_price_msb.innerHTML = value_total_price_msb
+        const output_recipient_number_msb = document.querySelector('#output_recipient_number-msb')
+        output_recipient_number_msb.innerHTML = value_recipient_number_msb
+        const output_recipient_name_msb = document.querySelector('#output_recipient_name-msb')
+        output_recipient_name_msb.innerHTML = value_recipient_name_msb
+        const output_message_msb = document.querySelector('#output_message-msb')
+        output_message_msb.innerHTML = value_message_msb
+    })
+}
+if(create_bill_msb) {
+    create_bill_msb.addEventListener("click", function() {
+        window.scrollTo(0,0);
+        html2canvas(document.querySelector("#new_bill6")).then(canvas => {
+            // console.log(canvas.toDataURL("image/jpeg", 0.9));
+            let a = document.createElement('a');
+            a.href = canvas.toDataURL('image/jpeg', 0.9);
+            a.download = 'new_bill_msb.jpg';
+            a.click();
+        });
+    })
+}
+
+// --------------------------------------- Đưa dữ liệu Techcombank --------------------------------------- 
+var screenshotButton_techcombank = document.querySelector('#create_bill-techcombank')
+var create_bill_techcombank = document.querySelector('#create_to_img-8')
+if(screenshotButton_techcombank) {
+    screenshotButton_techcombank.addEventListener("click", function() {
+        const value_clock_techcombank = document.querySelector('#input_clock-techcombank').value
+        const value_recipient_name_techcombank = document.querySelector('#input_recipient_name-techcombank').value
+        const value_total_price_techcombank = document.querySelector('#input_total_price-techcombank').value
+        const value_recipient_bank_techcombank = document.querySelector('#input_recipient_bank-techcombank').value
+        const value_recipient_number_techcombank = document.querySelector('#input_recipient_number-techcombank').value
+        const value_message_techcombank = document.querySelector('#input_message-techcombank').value
+        const value_time_techcombank = document.querySelector('#input_time-techcombank').value
+        const value_trade_code_techcombank = document.querySelector('#input_trade_code-techcombank').value
+
+        const output_clock_techcombank = document.querySelector('#output_clock-techcombank')
+        output_clock_techcombank.innerHTML = value_clock_techcombank
+        const output_recipient_name_techcombank = document.querySelector('#output_recipient_name-techcombank')
+        output_recipient_name_techcombank.innerHTML = value_recipient_name_techcombank
+        const output_total_price_techcombank = document.querySelector('#output_total_price-techcombank')
+        output_total_price_techcombank.innerHTML = value_total_price_techcombank
+        const output_recipient_bank_techcombank = document.querySelector('#output_recipient_bank-techcombank')
+        output_recipient_bank_techcombank.innerHTML = value_recipient_bank_techcombank
+        const output_recipient_number_techcombank = document.querySelector('#output_recipient_number-techcombank')
+        output_recipient_number_techcombank.innerHTML = value_recipient_number_techcombank
+        const output_message_techcombank = document.querySelector('#output_message-techcombank')
+        output_message_techcombank.innerHTML = value_message_techcombank
+        const output_time_techcombank = document.querySelector('#output_time-techcombank')
+        output_time_techcombank.innerHTML = value_time_techcombank
+        const output_trade_code_techcombank = document.querySelector('#output_trade_code-techcombank')
+        output_trade_code_techcombank.innerHTML = value_trade_code_techcombank
+
+    })
+}
+if(create_bill_techcombank) {
+    create_bill_techcombank.addEventListener("click", function() {
+        window.scrollTo(0,0);
+        html2canvas(document.querySelector("#new_bill8")).then(canvas => {
+            // console.log(canvas.toDataURL("image/jpeg", 0.9));
+            let a = document.createElement('a');
+            a.href = canvas.toDataURL('image/jpeg', 0.9);
+            a.download = 'new_bill_techcombank.jpg';
+            a.click();
+        });
+    })
+}
+
+// --------------------------------------- Đưa dữ liệu Vietcombank --------------------------------------- 
+var screenshotButton_vietcombank = document.querySelector('#create_bill-vietcombank')
+var create_bill_vietcombank = document.querySelector('#create_to_img-10')
+if(screenshotButton_vietcombank) {
+    screenshotButton_vietcombank.addEventListener("click", function() {
+        const value_clock_vietcombank = document.querySelector('#input_clock-vietcombank').value
+        const value_total_price_vietcombank = document.querySelector('#input_total_price-vietcombank').value
+        const value_recipient_name_vietcombank = document.querySelector('#input_recipient_name-vietcombank').value
+        const value_recipient_number_vietcombank = document.querySelector('#input_recipient_number-vietcombank').value
+        const value_recipient_bank_name_vietcombank = document.querySelector('#input_recipient_bank_name-vietcombank').value
+        const value_recipient_bank_code_vietcombank = document.querySelector('#input_recipient_bank_code-vietcombank').value
+        const value_trade_code_vietcombank = document.querySelector('#input_trade_code-vietcombank').value
+        const value_message_vietcombank = document.querySelector('#input_message-vietcombank').value
+
+        const output_clock_vietcombank = document.querySelector('#output_clock-vietcombank')
+        output_clock_vietcombank.innerHTML = value_clock_vietcombank
+        const output_total_price_vietcombank = document.querySelector('#output_total_price-vietcombank')
+        output_total_price_vietcombank.innerHTML = value_total_price_vietcombank
+        const output_recipient_name_vietcombank = document.querySelector('#output_recipient_name-vietcombank')
+        output_recipient_name_vietcombank.innerHTML = value_recipient_name_vietcombank
+        const output_recipient_number_vietcombank = document.querySelector('#output_recipient_number-vietcombank')
+        output_recipient_number_vietcombank.innerHTML = value_recipient_number_vietcombank
+        const output_recipient_bank_name_vietcombank = document.querySelector('#output_recipient_bank_name-vietcombank')
+        output_recipient_bank_name_vietcombank.innerHTML = value_recipient_bank_name_vietcombank
+        const output_recipient_bank_code_vietcombank = document.querySelector('#output_recipient_bank_code-vietcombank')
+        output_recipient_bank_code_vietcombank.innerHTML = value_recipient_bank_code_vietcombank
+        const output_trade_code_vietcombank = document.querySelector('#output_trade_code-vietcombank')
+        output_trade_code_vietcombank.innerHTML = value_trade_code_vietcombank
+        const output_message_vietcombank = document.querySelector('#output_message-vietcombank')
+        output_message_vietcombank.innerHTML = value_message_vietcombank
+    })
+}
+if(create_bill_vietcombank) {
+    create_bill_vietcombank.addEventListener("click", function() {
+        window.scrollTo(0,0);
+        html2canvas(document.querySelector("#new_bill10")).then(canvas => {
+            // console.log(canvas.toDataURL("image/jpeg", 0.9));
+            let a = document.createElement('a');
+            a.href = canvas.toDataURL('image/jpeg', 0.9);
+            a.download = 'new_bill_vietcombank.jpg';
+            a.click();
+        });
+    })
+}
+// --------------------------------------- Đưa dữ liệu Vietinbank --------------------------------------- 
+var screenshotButton_vietinbank = document.querySelector('#create_bill-vietinbank')
+var create_bill_vietinbank = document.querySelector('#create_to_img-11')
+if(screenshotButton_vietinbank) {
+    screenshotButton_vietinbank.addEventListener("click", function() {
+        const value_clock_vietinbank = document.querySelector('#input_clock-vietinbank').value
+        const value_time_vietinbank = document.querySelector('#input_time-vietinbank').value
+        const value_trade_code_vietinbank = document.querySelector('#input_trade_code-vietinbank').value
+        const value_from_number_vietinbank = document.querySelector('#input_from_number-vietinbank').value
+        const value_from_name_vietinbank = document.querySelector('#input_from_name-vietinbank').value
+        const value_recipient_number_vietinbank = document.querySelector('#input_recipient_number-vietinbank').value
+        const value_recipient_name_vietinbank = document.querySelector('#input_recipient_name-vietinbank').value
+        const value_recipient_bank_vietinbank = document.querySelector('#input_recipient_bank-vietinbank').value
+        const value_total_number_vietinbank = document.querySelector('#input_total_number-vietinbank').value
+        const value_total_text_vietinbank = document.querySelector('#input_total_text-vietinbank').value
+        const value_message_vietinbank = document.querySelector('#input_message-vietinbank').value
+
+        const output_clock_vietinbank = document.querySelector('#output_clock-vietinbank')
+        output_clock_vietinbank.innerHTML = value_clock_vietinbank
+        const output_time_vietinbank = document.querySelector('#output_time-vietinbank')
+        output_time_vietinbank.innerHTML = value_time_vietinbank
+        const output_trade_code_vietinbank = document.querySelector('#output_trade_code-vietinbank')
+        output_trade_code_vietinbank.innerHTML = value_trade_code_vietinbank
+        const output_from_number_vietinbank = document.querySelector('#output_from_number-vietinbank')
+        output_from_number_vietinbank.innerHTML = value_from_number_vietinbank
+        const output_from_name_vietinbank = document.querySelector('#output_from_name-vietinbank')
+        output_from_name_vietinbank.innerHTML = value_from_name_vietinbank
+        const output_recipient_number_vietinbank = document.querySelector('#output_recipient_number-vietinbank')
+        output_recipient_number_vietinbank.innerHTML = value_recipient_number_vietinbank
+        const output_recipient_name_vietinbank = document.querySelector('#output_recipient_name-vietinbank')
+        output_recipient_name_vietinbank.innerHTML = value_recipient_name_vietinbank
+        const output_recipient_bank_vietinbank = document.querySelector('#output_recipient_bank-vietinbank')
+        output_recipient_bank_vietinbank.innerHTML = value_recipient_bank_vietinbank
+        const output_total_number_vietinbank = document.querySelector('#output_total_number-vietinbank')
+        output_total_number_vietinbank.innerHTML = value_total_number_vietinbank
+        const output_total_text_vietinbank = document.querySelector('#output_total_text-vietinbank')
+        output_total_text_vietinbank.innerHTML = value_total_text_vietinbank
+        const output_message_vietinbank = document.querySelector('#output_message-vietinbank')
+        output_message_vietinbank.innerHTML = value_message_vietinbank
+    })
+}
+if(create_bill_vietinbank) {
+    create_bill_vietinbank.addEventListener("click", function() {
+        window.scrollTo(0,0);
+        html2canvas(document.querySelector("#new_bill11")).then(canvas => {
+            // console.log(canvas.toDataURL("image/jpeg", 0.9));
+            let a = document.createElement('a');
+            a.href = canvas.toDataURL('image/jpeg', 0.9);
+            a.download = 'new_bill_vietinbank.jpg';
+            a.click();
+        });
     })
 }
