@@ -271,6 +271,60 @@ if(create_bill_msb) {
     })
 }
 
+// --------------------------------------- Đưa dữ liệu Sacombank --------------------------------------- 
+var screenshotButton_sacombank = document.querySelector('#create_bill-sacombank')
+var create_bill_sacombank = document.querySelector('#create_to_img-7')
+if(screenshotButton_sacombank) {
+    screenshotButton_sacombank.addEventListener("click", function() {
+        const value_clock_sacombank = document.querySelector('#input_clock-sacombank').value
+        const value_recipient_number_sacombank = document.querySelector('#input_recipient_number-sacombank').value
+        const value_recipient_name_sacombank = document.querySelector('#input_recipient_name-sacombank').value
+        const value_total_price_sacombank = document.querySelector('#input_total_price-sacombank').value
+        const value_time_sacombank = document.querySelector('#input_time-sacombank').value
+        const value_trade_code_sacombank = document.querySelector('#input_trade_code-sacombank').value
+        const value_from_number = document.querySelector('#input_from_number-sacombank').value
+        const value_recipient_bank_sacombank = document.querySelector('#input_recipient_bank-sacombank').value
+        const value_message_sacombank = document.querySelector('#input_message-sacombank').value
+
+        const output_clock_sacombank = document.querySelector('#output_clock-sacombank')
+        output_clock_sacombank.innerHTML = value_clock_sacombank
+        const output_recipient_number_sacombank = document.querySelector('#output_recipient_number-sacombank')
+        output_recipient_number_sacombank.innerHTML = value_recipient_number_sacombank
+        const output_recipient_number2_sacombank = document.querySelector('#output_recipient_number2-sacombank')
+        output_recipient_number2_sacombank.innerHTML = value_recipient_number_sacombank
+        const output_recipient_name_sacombank = document.querySelector('#output_recipient_name-sacombank')
+        output_recipient_name_sacombank.innerHTML = value_recipient_name_sacombank
+        const output_total_price_sacombank = document.querySelector('#output_total_price-sacombank')
+        output_total_price_sacombank.innerHTML = value_total_price_sacombank
+        const output_total_price2_sacombank = document.querySelector('#output_total_price2-sacombank')
+        output_total_price2_sacombank.innerHTML = value_total_price_sacombank
+        const output_total_price3_sacombank = document.querySelector('#output_total_price3-sacombank')
+        output_total_price3_sacombank.innerHTML = value_total_price_sacombank
+        const output_time_sacombank = document.querySelector('#output_time-sacombank')
+        output_time_sacombank.innerHTML = value_time_sacombank
+        const output_trade_code_sacombank = document.querySelector('#output_trade_code-sacombank')
+        output_trade_code_sacombank.innerHTML = value_trade_code_sacombank
+        const output_from_number = document.querySelector('#output_from_number-sacombank')
+        output_from_number.innerHTML = value_from_number
+        const output_recipient_bank_sacombank = document.querySelector('#output_recipient_bank-sacombank')
+        output_recipient_bank_sacombank.innerHTML = value_recipient_bank_sacombank
+        const output_message_sacombank = document.querySelector('#output_message-sacombank')
+        output_message_sacombank.innerHTML = value_message_sacombank
+    })
+}
+if(create_bill_sacombank) {
+    create_bill_sacombank.addEventListener("click", function() {
+        window.scrollTo(0,0);
+        html2canvas(document.querySelector("#new_bill7")).then(canvas => {
+            // console.log(canvas.toDataURL("image/jpeg", 0.9));
+            let a = document.createElement('a');
+            a.href = canvas.toDataURL('image/jpeg', 0.9);
+            a.download = 'new_bill_sacombank.jpg';
+            a.click();
+        });
+    })
+}
+
 // --------------------------------------- Đưa dữ liệu Techcombank --------------------------------------- 
 var screenshotButton_techcombank = document.querySelector('#create_bill-techcombank')
 var create_bill_techcombank = document.querySelector('#create_to_img-8')

@@ -69,7 +69,7 @@
   position: absolute;
   top: 181px;
   left: 17px;
-  color: blue;
+  color: #0c6cc2;
   font-size: 21px;
   font-family: sans-serif;
   font-weight: 700;
@@ -117,33 +117,31 @@
   position: absolute;
   top: 498px;
   left: 49px;
-  color: blue;
+  color: rgb(43 54 150);
   font-size: 17px;
   font-family: system-ui;
   text-align: left;
   z-index: 10;
   font-weight: 500;
-  opacity: 0.6;
   width: 320px;
 }
 .transferer_number_acb {
   position: absolute;
   top: 520px;
   left: 49px;
-  color: blue;
+  color: rgb(43 54 150);
   font-size: 17px;
   font-family: system-ui;
   text-align: left;
   z-index: 10;
   font-weight: 500;
-  opacity: 0.6;
   width: 320px;
 }
 .recipient_name_acb {
   position: absolute;
   top: 626px;
   left: 171px;
-  color: black;
+  color: #444966;
   font-size: 16px;
   font-family: system-ui;
   text-align: right;
@@ -156,7 +154,7 @@
   position: absolute;
   top: 667px;
   left: 171px;
-  color: black;
+  color: #444966;
   font-size: 16px;
   font-family: system-ui;
   text-align: right;
@@ -169,7 +167,7 @@
   position: absolute;
   top: 710px;
   left: 171px;
-  color: black;
+  color: #444966;
   font-size: 16px;
   font-family: system-ui;
   text-align: right;
@@ -182,7 +180,7 @@
   position: absolute;
   top: 821px;
   left: 275px;
-  color: #000000d9;
+  color: #444966;
   font-size: 16px;
   font-family: system-ui;
   text-align: right;
@@ -213,6 +211,7 @@
   text-align: left;
   z-index: 10;
   color:white;
+  width: 320px;
 }
 .recipient_number-agribank {
   position: absolute;
@@ -227,13 +226,14 @@
 }
 .recipient_name-agribank {
   position: absolute;
-  top: 458px;
+  top: 459px;
   left: 29px;
-  color: #cb8300;
-  font-size: 17px;
+  color: #cd8500;
+  font-size: 18px;
   font-family: system-ui;
   text-align: left;
   z-index: 10;
+  width: 339px;
 }
 .trade_code-agribank {
   position: absolute;
@@ -305,11 +305,11 @@
   text-align: center;
 }
 #output_total_price-bidv {
-  font-family: revert;
+  font-family: sans-serif;
   text-align: right;
   font-size: 18px;
-  font-weight: bold;
-  color: #0077d5d6;
+  font-weight: 600;
+  color: #0068bb;
 }
 .infomation_recipient-bidv {
   position: absolute;
@@ -326,7 +326,7 @@
   font-family: system-ui;
 }
 .color_bl {
-  color: #0077d5d6;
+  color: #0068bb;
   font-weight: bold;
 }
 .code_number-bidv {
@@ -527,14 +527,14 @@
 }
 .time-momo{
   position: absolute;
-  top: 240px;
+  top: 239px;
   left: 99px;
-  font-size: 15px;
-  font-family: revert;
+  font-size: 16px;
+  font-family: sans-serif;
   font-weight: 600;
   width: 270px;
   z-index: 10;
-  color: black;
+  color: #000000d9;
   text-align: right;
 }
 .trade_code-momo {
@@ -703,6 +703,142 @@
   font-family: system-ui;
   font-weight: bold;
 }
+/* ------------------------------------- Css cho Sacombank -----------------------------------*/
+.clock-sacombank {
+  position: absolute;
+  top: 13px;
+  left: 29px;
+  color: white;
+  font-size: 16px;
+  width: 46px;
+  font-family: sans-serif;
+  font-weight: 500;
+  z-index: 1;
+}
+.recipient_number-sacombank {
+  position: absolute;
+  top: 282px;
+  left: 5px;
+  font-size: 17.5px;
+  font-family: sans-serif;
+  font-weight: 500;
+  z-index: 1;
+  width: 390px;
+  text-align: center;
+}
+.total_price-sacombank {
+  position: absolute;
+  top: 308px;
+  left: 5px;
+  font-size: 18.3px;
+  font-family: sans-serif;
+  font-weight: 700;
+  z-index: 1;
+  width: 390px;
+  text-align: center;
+  color: #24397c;
+}
+.time-sacombank {
+  position: absolute;
+  top: 333px;
+  left: 5px;
+  font-size: 18px;
+  font-family: sans-serif;
+  font-weight: 500;
+  z-index: 1;
+  width: 390px;
+  text-align: center;
+  color: #7b7f8b;
+}
+.trade_code-sacombank {
+  position: absolute;
+  top: 389px;
+  left: 188px;
+  font-size: 18px;
+  font-family: sans-serif;
+  font-weight: 500;
+  z-index: 1;
+  width: 195px;
+  text-align: right;
+}
+.cate_trade-sacombank {
+  position: absolute;
+  top: 431px;
+  left: 130px;
+  font-size: 17.4px;
+  font-family: sans-serif;
+  font-weight: 500;
+  z-index: 1;
+  width: 253px;
+  text-align: right;
+  line-height: 1.2;
+}
+.from_number-sacombank {
+  position: absolute;
+  top: 488px;
+  left: 188px;
+  font-size: 18px;
+  font-family: sans-serif;
+  font-weight: 500;
+  z-index: 1;
+  width: 195px;
+  text-align: right;
+}
+.recipient_number2-sacombank {
+  position: absolute;
+  top: 527px;
+  left: 188px;
+  font-size: 18px;
+  font-family: sans-serif;
+  font-weight: 500;
+  z-index: 1;
+  width: 195px;
+  text-align: right;
+}
+.recipient_bank-sacombank {
+  position: absolute;
+  top: 566px;
+  left: 188px;
+  font-size: 18px;
+  font-family: sans-serif;
+  font-weight: 500;
+  z-index: 1;
+  width: 195px;
+  text-align: right;
+}
+.message-sacombank {
+  position: absolute;
+  top: 604px;
+  left: 188px;
+  font-size: 18px;
+  font-family: sans-serif;
+  font-weight: 500;
+  z-index: 1;
+  width: 195px;
+  text-align: right;
+}
+.total_price2-sacombank {
+  position: absolute;
+  top: 643px;
+  left: 188px;
+  font-size: 18px;
+  font-family: sans-serif;
+  font-weight: 500;
+  z-index: 1;
+  width: 195px;
+  text-align: right;
+}
+.total_price3-sacombank {
+  position: absolute;
+  top: 720px;
+  left: 188px;
+  font-size: 18px;
+  font-family: sans-serif;
+  font-weight: 700;
+  z-index: 1;
+  width: 195px;
+  text-align: right;
+}
 /* ------------------------------------- Css cho Techcombank -----------------------------------*/
 .clock-techcombank {
   position: absolute;
@@ -801,7 +937,7 @@
   position: absolute;
   top: 269px;
   left: 0px;
-  color: #06c306;
+  color: #6bbd00;
   font-size: 26px;
   width: 400px;
   font-family: inherit;
@@ -921,7 +1057,7 @@
   position: absolute;
   top: 283px;
   left: 197px;
-  color: #081666;
+  color: #14294a;
   font-size: 14px;
   width: 178px;
   font-weight: 700;
@@ -933,7 +1069,7 @@
   position: absolute;
   top: 303px;
   left: 148px;
-  color: #081666;
+  color: #14294a;
   font-size: 14.1px;
   width: 227px;
   font-weight: 600;
@@ -945,10 +1081,10 @@
   position: absolute;
   top: 337px;
   left: 148px;
-  color: #081666;
+  color: #14294a;
   font-size: 14px;
   width: 227px;
-  font-weight: 600;
+  font-weight: 700;
   z-index: 1;
   text-align: right;
   font-family: cursive;
@@ -957,10 +1093,10 @@
   position: absolute;
   top: 357px;
   left: 148px;
-  color: #081666;
+  color: #14294a;
   font-size: 14.6px;
   width: 227px;
-  font-weight: 600;
+  font-weight: 700;
   z-index: 1;
   text-align: right;
   font-family: inherit;
@@ -969,7 +1105,7 @@
   position: absolute;
   top: 391px;
   left: 148px;
-  color: #081666;
+  color: #14294a;
   font-size: 13.7px;
   width: 227px;
   font-weight: 600;
@@ -981,7 +1117,7 @@
   position: absolute;
   top: 443px;
   left: 148px;
-  color: #081666;
+  color: #2d5d8d;
   font-size: 15.3px;
   width: 227px;
   font-weight: bold;
@@ -993,7 +1129,7 @@
   position: absolute;
   top: 463px;
   left: 148px;
-  color: #081666;
+  color: #2d5d8d;
   font-size: 14.1px;
   width: 227px;
   font-weight: bold;
@@ -1005,7 +1141,7 @@
   position: absolute;
   top: 498px;
   left: 148px;
-  color: #081666;
+  color: #14294a;
   font-size: 14px;
   width: 227px;
   font-weight: 600;
@@ -1017,7 +1153,7 @@
   position: absolute;
   top: 535px;
   left: 148px;
-  color: #081666;
+  color: #14294a;
   font-size: 14.8px;
   width: 227px;
   font-weight: 600;

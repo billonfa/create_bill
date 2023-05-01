@@ -148,8 +148,23 @@
                 <?php break;
                 }
                 //------------------------- Dữ liệu của Sacombank -------------------------
-                case 7: {
-                    break;
+                case 7: { ?>
+                    <div id="output_clock-sacombank" class="clock-sacombank">20:40</div>
+                    <div class="recipient_number-sacombank">
+                        <span id="output_recipient_number-sacombank">0041000348615</span>
+                        (<span id="output_recipient_name-sacombank">NGUYEN HO TUAN TINH</span>)
+                    </div>
+                    <div class="total_price-sacombank">-<span id="output_total_price-sacombank">1,000,000,000</span>đ</div>
+                    <div id="output_time-sacombank" class="time-sacombank">14:09:47 08/02/2023</div>
+                    <div id="output_trade_code-sacombank" class="trade_code-sacombank">3872493694</div>
+                    <div class="cate_trade-sacombank">Chuyển tiền từ TK Sacombank đến TK NH nội địa</div>
+                    <div id="output_from_number-sacombank" class="from_number-sacombank">9999999</div>
+                    <div id="output_recipient_number2-sacombank" class="recipient_number2-sacombank">0041000348615</div>
+                    <div id="output_recipient_bank-sacombank" class="recipient_bank-sacombank">Vietcombank</div>
+                    <div id="output_message-sacombank" class="message-sacombank">demo bill Sacombank</div>
+                    <div id="output_total_price2-sacombank" class="total_price2-sacombank">1,000,000,000</div>
+                    <div id="output_total_price3-sacombank" class="total_price3-sacombank">1,000,000,000</div>
+                <?php break;
                 }
                 //------------------------- Dữ liệu của Techcombank -------------------------
                 case 8: { ?>
@@ -198,7 +213,6 @@
                     <div id="output_total_text-vietinbank" class="recipient_total_text-vietinbank">Một Tỷ Đồng</div>
                     <div class="text_free-vietinbank">Miễn phí</div>
                     <div id="output_message-vietinbank" class="message-vietinbank">demo bill vietinbank</div>
-                    
                 <?php break;
                 }
                 //------------------------- Dữ liệu của VpBank -------------------------
@@ -474,7 +488,6 @@
     <?php } ?>
 
     <?php if($id == 6) { ?>
-
     <div class="col-md-6 col-lg-6 col-xl-3">
         <div class="card mt-4">
             <div class="card-body p-4">
@@ -511,6 +524,57 @@
         </div>
     </div> 
     <?php } ?>
+
+    <?php if($id == 7) { ?>
+    <div class="col-md-6 col-lg-6 col-xl-3">
+        <div class="card mt-4">
+            <div class="card-body p-4">
+                <div class="p-2 mt-4">
+                    <div>
+                        <label class="form-label">Đồng hồ</label>
+                        <input type="text" class="form-control" id="input_clock-sacombank" placeholder="20:40">
+                    </div>
+                    <div>
+                        <label class="form-label">Số tài khoản người nhận</label>
+                        <input type="number" class="form-control" id="input_recipient_number-sacombank" placeholder="400041000348615">
+                    </div>
+                    <div>
+                        <label class="form-label">Tên người nhận</label>
+                        <input type="text" class="form-control" id="input_recipient_name-sacombank" placeholder="NGUYEN HO TUAN TINH">
+                    </div>
+                    <div>
+                        <label class="form-label">Số tiền chuyển</label>
+                        <input type="text" class="form-control" id="input_total_price-sacombank" placeholder="1,000,000,000">
+                    </div>
+                    <div>
+                        <label class="form-label">Thời gian chuyển tiền</label>
+                        <input type="text" class="form-control" id="input_time-sacombank" placeholder="14:09:47 08/02/2023">
+                    </div>
+                    <div>
+                        <label class="form-label">Mã giao dịch (10 số)</label>
+                        <input type="number" class="form-control" id="input_trade_code-sacombank" placeholder="3872493694">
+                    </div>
+                    <div>
+                        <label class="form-label">Số tài khoản người chuyển (12 số)</label>
+                        <input type="number" class="form-control" id="input_from_number-sacombank" placeholder="400041000348">
+                    </div>
+                    <div>
+                        <label class="form-label">Ngân hàng nhận</label>
+                        <input type="text" class="form-control" id="input_recipient_bank-sacombank" placeholder="Vietcombank">
+                    </div>
+                    <div>
+                        <label class="form-label">Diễn giải</label>
+                        <input type="text" class="form-control" id="input_message-sacombank" placeholder="demo bill Sacombank">
+                    </div>
+                    <div class="mt-4">
+                        <button class="btn btn-success w-100" id="create_bill-sacombank">Tạo hóa đơn mới</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <?php } ?>
+
     <?php if($id == 8) { ?>
     <div class="col-md-6 col-lg-6 col-xl-3">
         <div class="card mt-4">
