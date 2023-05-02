@@ -1,3 +1,65 @@
+/* Sóng điện thoại */
+.background_white  {
+  background: white;
+}
+.background_black {
+  background: black;
+}
+.signal {
+  height: 20px;
+  width: 40px;
+  position: absolute;
+  top: 10px;
+  left: 309px;
+  z-index: 1;
+}
+.bar {
+  width: 3.5px;
+  border-radius: 1.5px;
+  position: absolute;
+  bottom: 0;
+}
+.bar:nth-child(1) {
+  height: 4.8px;
+  left: 4px;
+}
+.bar:nth-child(2) {
+  height: 7px;
+  left: 9px;
+}
+.bar:nth-child(3) {
+  height: 9.7px;
+  left: 14px;
+}
+.bar:nth-child(4) {
+  height: 11.9px;
+  left: 19px;
+}
+
+/* Wifi */
+.wifi {
+  width: 18px;
+  position: absolute;
+  top: 15px;
+  left: 336px;
+  z-index: 1;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+}
+.img_wifi {
+  width: 100%;
+}
+/* ------------------- Pin ------------------ */
+.battery-level {
+  position: absolute;
+  border-radius: 2px;
+  height: 8.4px;
+  width: 19.7px;
+  top: 20.45px;
+  left: 360.6px;
+}
+
 .ruler {
   position: fixed;
   top: 181px;
