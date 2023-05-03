@@ -4,7 +4,7 @@
     $username = "root";
     $password = "";
     $dbname = "create_bill";
-
+    date_default_timezone_set('Asia/Ho_Chi_Minh');
     // Tạo kết nối tới cơ sở dữ liệu
     $conn = new mysqli($servername, $username, $password, $dbname);
 
