@@ -1,23 +1,46 @@
 <?php
-    include_once 'connect.php';
-    // Câu truy vấn SQL để lấy dữ liệu
-    $sql = "SELECT * FROM bank";
+    session_start();
+    if ($_SESSION['email']) {
+        $email = $_SESSION['email'];
+        include_once 'connect.php';
+        // Truy vấn để lấy thông tin tài khoản
+        $sql = "SELECT * FROM users WHERE email = '$email'";
 
-    // Thực hiện câu truy vấn và lấy kết quả
-    $result = $conn->query($sql);
-
-    // Kiểm tra kết quả trả về
-    if ($result->num_rows > 0) {
-        $data = [];
-        // Duyệt qua từng bản ghi và lấy dữ liệu
-        while($row = $result->fetch_assoc()) {
-            $data[] = $row;
+        $result = $conn->query($sql);
+        $data = array();
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                array_push($data, $row);
+            }
+            $data = $data[0];
         }
-    } else {
-        echo "Không có bản ghi nào trong cơ sở dữ liệu";
+        if ($data['token'] == $_SESSION['token']) {
+            include_once 'connect.php';
+            $sql = "SELECT * FROM bank";
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0) {
+                $data = [];
+                while($row = $result->fetch_assoc()) {
+                    $data[] = $row;
+                }
+            } else {
+                echo "Không có bản ghi nào trong cơ sở dữ liệu";
+            }
+            $conn->close();
+        } 
+        else {
+            session_unset();
+            session_destroy();
+            header("Location: login.php");
+            exit;
+        }
     }
-    // Đóng kết nối tới cơ sở dữ liệu
-    $conn->close();
+    else {
+        session_unset();
+        session_destroy();
+        header("Location: login.php");
+        exit;
+    }
 ?>
 <!doctype html>
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
@@ -28,7 +51,6 @@
     <title>Tạo bill chuyển khoản</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-    <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
 
@@ -62,6 +84,24 @@
                         <i class='bx bx-moon fs-22'></i>
                     </button>
                 </div>
+                <div class="dropdown ms-sm-3 header-item topbar-user">
+                    <button type="button" class="btn" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="d-flex align-items-center">
+                            <img class="rounded-circle header-profile-user" src="assets/images/avatar_default.png" alt="Header Avatar" />
+                            <span class="text-start ms-xl-2">
+                                <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text"><?php echo $email ?></span>
+                                <span class="d-none d-xl-block ms-1 fs-12 text-muted user-name-sub-text">Customer</span>
+                            </span>
+                        </span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <!-- item-->
+                        <h6 class="dropdown-header">Welcome <?php echo $email ?></h6>
+                        <a class="dropdown-item" href="reset_password.php"><i class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Đổi mật khẩu</span></a>
+                        <a class="dropdown-item" href="logout.php"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Đăng xuất</span></a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -98,19 +138,19 @@
                 <!-- Dark Logo-->
                 <a href="index.html" class="logo logo-dark">
                     <span class="logo-sm">
-                        <img src="assets/images/logo-sm.png" alt="" height="22">
+                        <img src="assets/images/logo_mg188.png" alt="" height="22">
                     </span>
                     <span class="logo-lg">
-                        <img src="assets/images/logo-dark.png" alt="" height="17">
+                        <img src="assets/images/logo_mg188.png" alt="" height="17">
                     </span>
                 </a>
                 <!-- Light Logo-->
                 <a href="index.html" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="assets/images/logo-sm.png" alt="" height="22">
+                        <img src="assets/images/logo_mg188.png" alt="" height="22">
                     </span>
                     <span class="logo-lg">
-                        <img src="assets/images/logo-light.png" alt="" height="17">
+                        <img src="assets/images/logo_mg188.png" alt="" height="17">
                     </span>
                 </a>
                 <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">
@@ -130,7 +170,7 @@
                                 <i class="ri-honour-line"></i> <span data-key="t-widgets">Bill chuyển khoản</span>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link menu-link" href="widgets.html">
                                 <i class="ri-honour-line"></i> <span data-key="t-widgets">Bill biến động</span>
                             </a>
@@ -139,7 +179,7 @@
                             <a class="nav-link menu-link" href="widgets.html">
                                 <i class="ri-honour-line"></i> <span data-key="t-widgets">Bill số dư</span>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </div>
@@ -174,43 +214,28 @@
                             </a>
                         </div>
                         <?php } ?>
-                        <!-- end col -->
                     </div>
-
                 </div>
-                <!-- container-fluid -->
             </div>
-            <!-- End Page-content -->
-
             <footer class="footer">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-6">
-                            <script>document.write(new Date().getFullYear())</script> © Velzon.
+                            <script>document.write(new Date().getFullYear())</script> © Mg188.zone
                         </div>
                         <div class="col-sm-6">
                             <div class="text-sm-end d-none d-sm-block">
-                                Design & Develop by Themesbrand
+                                Design & Develop by Bill
                             </div>
                         </div>
                     </div>
                 </div>
             </footer>
         </div>
-        <!-- end main content-->
-
     </div>
-    <!-- END layout-wrapper -->
-
-
-
-    <!--start back-to-top-->
     <button onclick="topFunction()" class="btn btn-danger btn-icon" id="back-to-top">
         <i class="ri-arrow-up-line"></i>
     </button>
-    <!--end back-to-top-->
-
-    <!--preloader-->
     <div id="preloader">
         <div id="status">
             <div class="spinner-border text-primary avatar-sm" role="status">
@@ -224,8 +249,6 @@
             <i class='mdi mdi-spin mdi-cog-outline fs-22'></i>
         </div>
     </div>
-
-    <!-- Theme Settings -->
     <div class="offcanvas offcanvas-end border-0" tabindex="-1" id="theme-settings-offcanvas">
         <div class="d-flex align-items-center bg-primary bg-gradient p-3 offcanvas-header">
             <h5 class="m-0 me-2 text-white">Theme Customizer</h5>
@@ -950,16 +973,6 @@
             </div>
 
         </div>
-        <div class="offcanvas-footer border-top p-3 text-center">
-            <div class="row">
-                <div class="col-6">
-                    <button type="button" class="btn btn-light w-100" id="reset-layout">Reset</button>
-                </div>
-                <div class="col-6">
-                    <a href="https://1.envato.market/velzon-admin" target="_blank" class="btn btn-primary w-100">Buy Now</a>
-                </div>
-            </div>
-        </div>
     </div>
 
     <!-- JAVASCRIPT -->
@@ -969,19 +982,11 @@
     <script src="assets/libs/feather-icons/feather.min.js"></script>
     <script src="assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
     <script src="assets/js/plugins.js"></script>
-
-    <!-- glightbox js -->
     <script src="assets/libs/glightbox/js/glightbox.min.js"></script>
-
-    <!-- isotope-layout -->
     <script src="assets/libs/isotope-layout/isotope.pkgd.min.js"></script>
-
     <script src="assets/js/pages/gallery.init.js"></script>
-
-    <!-- App js -->
     <script src="assets/js/app.js"></script>
+
 </body>
 
-
-<!-- Mirrored from themesbrand.com/velzon/html/default/pages-gallery.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 Apr 2023 08:10:58 GMT -->
 </html>

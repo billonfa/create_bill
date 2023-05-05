@@ -1,27 +1,55 @@
 <?php
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    include_once 'connect.php';
-    // Câu truy vấn SQL để lấy dữ liệu
-    $sql = "SELECT * FROM bank WHERE id = '$id'";
+    session_start();
+    if ($_SESSION['email']) {
+        $email = $_SESSION['email'];
+        include_once 'connect.php';
+        // Truy vấn để lấy thông tin tài khoản
+        $sql = "SELECT * FROM users WHERE email = '$email'";
 
-    // Thực hiện câu truy vấn và lấy kết quả
-    $result = $conn->query($sql);
-
-    // Kiểm tra kết quả trả về
-    if ($result->num_rows > 0) {
-        $data = [];
-        // Duyệt qua từng bản ghi và lấy dữ liệu
-        while ($row = $result->fetch_assoc()) {
-            $data[] = $row;
+        $result = $conn->query($sql);
+        $data = array();
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                array_push($data, $row);
+            }
+            $data = $data[0];
         }
-    } else {
-        echo "Không có bản ghi nào trong cơ sở dữ liệu";
+        if ($data['token'] == $_SESSION['token']) {
+            if (isset($_GET['id'])) {
+                $id = $_GET['id'];
+                include_once 'connect.php';
+                // Câu truy vấn SQL để lấy dữ liệu
+                $sql2 = "SELECT * FROM bank WHERE id = '$id'";
+                // Thực hiện câu truy vấn và lấy kết quả
+                $result = $conn->query($sql2);
+                // Kiểm tra kết quả trả về
+                if ($result->num_rows > 0) {
+                    $data2 = [];
+                    // Duyệt qua từng bản ghi và lấy dữ liệu
+                    while ($row = $result->fetch_assoc()) {
+                        $data2[] = $row;
+                    }
+                } else {
+                    echo "Không có bản ghi nào trong cơ sở dữ liệu";
+                }
+                // Đóng kết nối tới cơ sở dữ liệu
+                $conn->close();
+                $value = $data2[0];
+            }
+        } 
+        else {
+            session_unset();
+            session_destroy();
+            header("Location: login.php");
+            exit;
+        }
     }
-    // Đóng kết nối tới cơ sở dữ liệu
-    $conn->close();
-    $value = $data[0];
-}
+    else {
+        session_unset();
+        session_destroy();
+        header("Location: login.php");
+        exit;
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,7 +75,7 @@ if (isset($_GET['id'])) {
 </head>
 
 <body>
-    <!-- <span class="ruler"></span>
+<!-- <span class="ruler"></span>
 <span class="ruler_doc"></span>
 <span class="ruler_doc2"></span> -->
     <div class="container_box" bis_skin_checked="1">
@@ -284,10 +312,7 @@ if (isset($_GET['id'])) {
                 <div id="output_time-vietcombank" class="time-vietcombank">15:00 Thứ Ba 25/10/2022</div>
                 <div id="output_recipient_name-vietcombank" class="recipient_name-vietcombank">NGUYEN HO TUAN TINH</div>
                 <div id="output_recipient_number-vietcombank" class="recipient_number-vietcombank">9999999999999</div>
-                <div id="output_recipient_bank_name-vietcombank" class="recipient_bank_name-vietcombank">Ngân hàng Quân
-                    Đội</div>
-                <div class="recipient_bank_code-vietcombank">(<span
-                        id="output_recipient_bank_code-vietcombank">MB</span>)</div>
+                <div id="output_recipient_bank_name-vietcombank" class="recipient_bank_name-vietcombank">Ngân hàng Quân Đội</div>
                 <div id="output_trade_code-vietcombank" class="trade_code-vietcombank">2616042867</div>
                 <div id="output_message-vietcombank" class="message-vietcombank">demo bill</div>
                 <?php break;
@@ -338,7 +363,7 @@ if (isset($_GET['id'])) {
                     <div class="p-2 mt-4">
                         <div>
                             <label class="form-label">Đồng hồ</label>
-                            <input type="text" class="form-control" id="input_clock" placeholder="20:40">
+                            <input type="text" class="form-control" id="input_clock" placeholder="20:40" style="width: 30%; display: inline-block">
                         </div>
                         <div>
                             <label class="form-label">Số vạch sóng điện thoại</label>
@@ -360,7 +385,7 @@ if (isset($_GET['id'])) {
                             <input type="number" class="form-control" id="input_battery_level" placeholder="60">
                         </div>
                         <!-- ---------------------------------------------------- ACB ------------------------------------------------------>
-                        <?php if ($id == 1) { ?>
+                    <?php if ($id == 1) { ?>
                         <div>
                             <label class="form-label">Số tiền chuyển (số)</label>
                             <input type="" class="form-control" id="input_total_number"
@@ -395,8 +420,38 @@ if (isset($_GET['id'])) {
                         </div>
                         <div>
                             <label class="form-label">Ngân hàng nhận</label>
-                            <input type="text" class="form-control" id="input_recipient_bank-acb"
-                                placeholder="ACB - NH TMCP A CHAU">
+                            <select type="text" class="select" id="input_recipient_bank-acb"placeholder="ACB - NH TMCP A CHAU">
+                                <option value="BIDV - NH TMCP DAU TU & PHAT TRIEN">Bidv</option>
+                                <option value="CTG - NH TMCP CONG THUONG VIET NAM">Vietinbank</option>
+                                <option value="AGRIBANK - NHTM NN & PT NONG THON">Agribank</option>
+                                <option value="MB - NH TMCP QUAN DOI">MB Bank</option>
+                                <option value="TECHOMBANK - NH TMCP KY THUONG">Techcombank</option>
+                                <option value="SBC - NH TMCP SAI GON THUONG TIN">Sacombank</option>
+                                <option value="VP - NH TMCP VIET NAM THINH VUONG">Vp Bank</option>
+                                <option value="ACB - NH TMCP A CHAU">Acb</option>
+                                <option value="OCB - NH TMCP PHUONG DONG">Ocb</option>
+                                <option value="TPBANK - NH TMCP TIEN PHONG">Tp Bank</option>
+                                <option value="VIB - NH TMCP QUOC TE">Vib</option>
+                                <option value="HD - NH TMCP PHAT TRIEN TPHCM">HD Bank</option>
+                                <option value="SHBVN - NH TMCP SHINHAN VIET NAM">Shinhan Bank</option>
+                                <option value="DONG A BANK - NH TMCP DONG A">Dong A Bank</option>
+                                <option value="BAOVIET BANK - NH TMCP BAO VIET">Bao Viet Bank</option>
+                                <option value="SHB - NH TMCP SAI GON - HA NOI">SHB</option>
+                                <option value="MSB - NH TNCP HANG HAI">MSB</option>
+                                <option value="VIET CAPITAL BANK - NH TMCP BAN VIET">Viet Capital Bank</option>
+                                <option value="SEABANK - NH TMCP DONG NAM A">SeaBank</option>
+                                <option value="LPD - NH TMCP LIEN VIET">Lien Viet Post Bank</option>
+                                <option value="ABBANK - NH TMCP AN BINH">AB Bank</option>
+                                <option value="EXIMBANK - NH TMCP XUAT NHAP KHAU">Eximbank</option>
+                                <option value="SCB - NH TMCP SAI GON">(SCB) Sai Gon</option>
+                                <option value="NCB - NH TMCP QUOC DAN">(NCB) Quoc Dan</option>
+                                <option value="NAM A BANK - NH TMCP NAM A">Nam A Bank</option>
+                                <option value="KLB - NH TMCP KIEN LONG">Kien Long Bank</option>
+                                <option value="PVCOMBANK - NH TMCP DAI CHUNG">PVCOMBANK</option>
+                                <option value="BAC A BANK - NH TMCP BAC A">Bac A Bank</option>
+                                <option value="VIET A BANK - NH TMCP VIET A">Viet A Bank</option>
+                                <option value="SGB - NH TMCP SAI GON CONG THUONG">SAIGON Bank</option>
+                            </select>
                         </div>
                         <div>
                             <label class="form-label">Tài khoản nhận</label>
@@ -406,7 +461,7 @@ if (isset($_GET['id'])) {
                         <div class="mt-4">
                             <button class="btn btn-success w-100" id="create_bill-acb">Tạo hóa đơn mới</button>
                         </div>
-                        <?php } ?>
+                    <?php } ?>
                         <!-- ---------------------------------------------------- Agribank ----------------------------------------------------  -->
                     <?php if ($id == 2) { ?>
                         <div>
@@ -429,9 +484,39 @@ if (isset($_GET['id'])) {
                             <input type="number" class="form-control" id="input_trade_code-agribank" placeholder="106706" value='<?php echo mt_rand(100000, 999999) ?>'>
                         </div>
                         <div>
-                            <label class="form-label">Ngân hàng thụ hưởng</label>
-                            <input type="text" class="form-control" id="input_recipient_bank-agribank"
-                                placeholder="Vietcombank">
+                            <label class="form-label">Ngân hàng nhận</label>
+                            <select type="text" class="select" id="input_recipient_bank-agribank">
+                                <option value="Bidv">Bidv</option>
+                                <option value="Vietinbank">Vietinbank</option>
+                                <option value="Agribank">Agribank</option>
+                                <option value="MB Bank">MB Bank</option>
+                                <option value="Techcombank">Techcombank</option>
+                                <option value="Sacombank">Sacombank</option>
+                                <option value="VP Bank">Vp Bank</option>
+                                <option value="Acb">Acb</option>
+                                <option value="Ocb">Ocb</option>
+                                <option value="Tpbank">Tp Bank</option>
+                                <option value="VIB">Vib</option>
+                                <option value="HDbank">HD Bank</option>
+                                <option value="SHBVN">Shinhan Bank</option>
+                                <option value="DongA Bank">Dong A Bank</option>
+                                <option value="BaoViet Bank">Bao Viet Bank</option>
+                                <option value="Shb">SHB</option>
+                                <option value="Msb">MSB</option>
+                                <option value="Viet Capital Bank">Viet Capital Bank</option>
+                                <option value="SeABank">SeaBank</option>
+                                <option value="LienVietPostBank">Lien Viet Post Bank</option>
+                                <option value="ABBANK">AB Bank</option>
+                                <option value="Eximbank">Eximbank</option>
+                                <option value="Scb">(SCB) Sai Gon</option>
+                                <option value="Ncb">(NCB) Quoc Dan</option>
+                                <option value="Nam A Bank">Nam A Bank</option>
+                                <option value="Kienlongbank">Kien Long Bank</option>
+                                <option value="PVcomBank">PVCOMBANK</option>
+                                <option value="Bac A Bank">Bac A Bank</option>
+                                <option value="Viet A Bank">Viet A Bank</option>
+                                <option value="Saigonbank">SAIGON Bank</option>
+                            </select>
                         </div>
                         <div>
                             <label class="form-label">Thời gian giao dịch</label>
@@ -462,8 +547,38 @@ if (isset($_GET['id'])) {
                         </div>
                         <div>
                             <label class="form-label">Ngân hàng nhận</label>
-                            <input type="text" class="form-control" id="input_recipient_bank-bidv"
-                                placeholder="NHTMCP Ngoại thương">
+                            <select type="text" class="select" id="input_recipient_bank-bidv">
+                                <option value="NHTMCP Đầu Tư & Phát Triển">Bidv</option>
+                                <option value="NHTMCP Công Thương">Vietinbank</option>
+                                <option value="NHTM NN&PT Nông Thôn">Agribank</option>
+                                <option value="MB Bank">MB Bank</option>
+                                <option value="NHTMCP Quân Đội">Techcombank</option>
+                                <option value="NHTMCP Thương Tín">Sacombank</option>
+                                <option value="NHTMCP VN Thịnh Vượng">Vp Bank</option>
+                                <option value="NHTMCP Á Châu">Acb</option>
+                                <option value="NHTMCP Phương Đông">Ocb</option>
+                                <option value="NHTMCP Tiên Phong">Tp Bank</option>
+                                <option value="NHTMCP Quốc Tế">Vib</option>
+                                <option value="NHTMCP PT Nhà TPHCM">HD Bank</option>
+                                <option value="TNHH MTV Shinhan ">Shinhan Bank</option>
+                                <option value="NHTMCP Đông Á">Dong A Bank</option>
+                                <option value="NHTMCP  Bảo Việt">Bao Viet Bank</option>
+                                <option value="NHTMCP Sài Gòn - Hà Nội">SHB</option>
+                                <option value="NHTMCP Hàng Hải">MSB</option>
+                                <option value="NHTM Dầu Khí">Viet Capital Bank</option>
+                                <option value="NHTMCP Đông Nam Á">SeaBank</option>
+                                <option value="NHTMCP Liên Việt">Lien Viet Post Bank</option>
+                                <option value="NHTMCP An Bình">AB Bank</option>
+                                <option value="NHTMCP Xuất Nhập Khẩu">Eximbank</option>
+                                <option value="NHTMCP Sài Gòn">(SCB) Sai Gon</option>
+                                <option value="NHTMCP Quốc Dân">(NCB) Quoc Dan</option>
+                                <option value="NHTMCP Nam Á">Nam A Bank</option>
+                                <option value="NHTMCP Kiên Long">Kien Long Bank</option>
+                                <option value="NHTMCP Đại Chúng">PVCOMBANK</option>
+                                <option value="NHTMCP Bắc Á">Bac A Bank</option>
+                                <option value="NHTMCP Việt Á">Viet A Bank</option>
+                                <option value="NHTMCP Sài Gòn Công Thương">SAIGON Bank</option>
+                            </select>
                         </div>
                         <div>
                             <label class="form-label">Thời gian chuyển khoản</label>
@@ -500,8 +615,38 @@ if (isset($_GET['id'])) {
                         </div>
                         <div>
                             <label class="form-label">Ngân hàng nhận</label>
-                            <input type="text" class="form-control" id="input_recipient_bank-mbbank"
-                                placeholder="Ngoại thương Việt Nam (Vietcombank, VCB)">
+                            <select type="text" class="select" id="input_recipient_bank-mbbank">
+                                <option value="NHTMCP Đầu Tư & Phát Triển">Bidv</option>
+                                <option value="NHTMCP Công Thương">Vietinbank</option>
+                                <option value="NHTM NN&PT Nông Thôn">Agribank</option>
+                                <option value="MB Bank">MB Bank</option>
+                                <option value="NHTMCP Quân Đội">Techcombank</option>
+                                <option value="NHTMCP Thương Tín">Sacombank</option>
+                                <option value="NHTMCP VN Thịnh Vượng">Vp Bank</option>
+                                <option value="NHTMCP Á Châu">Acb</option>
+                                <option value="NHTMCP Phương Đông">Ocb</option>
+                                <option value="NHTMCP Tiên Phong">Tp Bank</option>
+                                <option value="NHTMCP Quốc Tế">Vib</option>
+                                <option value="NHTMCP PT Nhà TPHCM">HD Bank</option>
+                                <option value="TNHH MTV Shinhan ">Shinhan Bank</option>
+                                <option value="NHTMCP Đông Á">Dong A Bank</option>
+                                <option value="NHTMCP  Bảo Việt">Bao Viet Bank</option>
+                                <option value="NHTMCP Sài Gòn - Hà Nội">SHB</option>
+                                <option value="NHTMCP Hàng Hải">MSB</option>
+                                <option value="NHTM Dầu Khí">Viet Capital Bank</option>
+                                <option value="NHTMCP Đông Nam Á">SeaBank</option>
+                                <option value="NHTMCP Liên Việt">Lien Viet Post Bank</option>
+                                <option value="NHTMCP An Bình">AB Bank</option>
+                                <option value="NHTMCP Xuất Nhập Khẩu">Eximbank</option>
+                                <option value="NHTMCP Sài Gòn">(SCB) Sai Gon</option>
+                                <option value="NHTMCP Quốc Dân">(NCB) Quoc Dan</option>
+                                <option value="NHTMCP Nam Á">Nam A Bank</option>
+                                <option value="NHTMCP Kiên Long">Kien Long Bank</option>
+                                <option value="NHTMCP Đại Chúng">PVCOMBANK</option>
+                                <option value="NHTMCP Bắc Á">Bac A Bank</option>
+                                <option value="NHTMCP Việt Á">Viet A Bank</option>
+                                <option value="NHTMCP Sài Gòn Công Thương">SAIGON Bank</option>
+                            </select>
                         </div>
                         <div>
                             <label class="form-label">Tài khoản nguồn</label>
@@ -540,7 +685,38 @@ if (isset($_GET['id'])) {
                         </div>
                         <div>
                             <label class="form-label">Tên viết tắt ngân hàng nhận</label>
-                            <input type="text" class="form-control" id="input_recipient_bank-momo" placeholder="ACB">
+                            <select class="select" id="input_recipient_bank-momo">
+                                <option value="BIDV">Bidv</option>
+                                <option value="VIETINBANK">Vietinbank</option>
+                                <option value="AGRIBANK">Agribank</option>
+                                <option value="MB BANK">MB Bank</option>
+                                <option value="TECHCOMBANK">Techcombank</option>
+                                <option value="SACOMBANK">Sacombank</option>
+                                <option value="VP BANK">Vp Bank</option>
+                                <option value="ACB">Acb</option>
+                                <option value="OCB">Ocb</option>
+                                <option value="TP BANK">Tp Bank</option>
+                                <option value="VIB">Vib</option>
+                                <option value="HD BANK">HD Bank</option>
+                                <option value="SHINHAN BANK">Shinhan Bank</option>
+                                <option value="DONG A BANK">Dong A Bank</option>
+                                <option value="BAO VIET BANK">Bao Viet Bank</option>
+                                <option value="SHB">SHB</option>
+                                <option value="MSB">MSB</option>
+                                <option value="VIET CAPITAL BANK">Viet Capital Bank</option>
+                                <option value="SEABANK">SeaBank</option>
+                                <option value="LIEN VIET POST BANK">Lien Viet Post Bank</option>
+                                <option value="AB BANK">AB Bank</option>
+                                <option value="EXIMBANK">Eximbank</option>
+                                <option value="SCB">(SCB) Sai Gon</option>
+                                <option value="NCB">(NCB) Quoc Dan</option>
+                                <option value="NAM A BANK">Nam A Bank</option>
+                                <option value="KIEN LONG BANK">Kien Long Bank</option>
+                                <option value="PVCOMBANK">PVCOMBANK</option>
+                                <option value="BAC A BANK">Bac A Bank</option>
+                                <option value="VIET A BANK">Viet A Bank</option>
+                                <option value="SAI GON BANK">SAIGON Bank</option>
+                            </select>
                         </div>
                         <div>
                             <label class="form-label">Số tiền chuyển</label>
@@ -567,8 +743,38 @@ if (isset($_GET['id'])) {
                         </div>
                         <div>
                             <label class="form-label">Ngân hàng nhận</label>
-                            <input type="text" class="form-control" id="input_banking_bank-momo"
-                                placeholder="NH TMCP A Chau (ACB)">
+                            <select type="text" class="select" id="input_banking_bank-momo">
+                                <option value="NH TMCP Dau Tu & Phat Trien (BIDV)">Bidv</option>
+                                <option value="NH TMCP Cong Thuong (CTG)">Vietinbank</option>
+                                <option value="NH TMDT & PT Nong Thon (AGRIBANK)">Agribank</option>
+                                <option value="NH TMCP Quan Doi (MB)">MB Bank</option>
+                                <option value="NH TMCP Ky Thuong (TECHCOMBANK)">Techcombank</option>
+                                <option value="NH TMCP Thương Tín(SACOMBANK)">Sacombank</option>
+                                <option value="NH TMCP VN Thịnh Vượng (VPB)">Vp Bank</option>
+                                <option value="NH TMCP Á Châu (ACB)">Acb</option>
+                                <option value="NH TMCP Phương Đông (OCB)">Ocb</option>
+                                <option value="NH TMCP Tiên Phong (TPB)">Tp Bank</option>
+                                <option value="NH TMCP Quốc Tế (VIB)">Vib</option>
+                                <option value="NH TMCP PT Nhà TPHCM (HDB)">HD Bank</option>
+                                <option value="NH TNHH MTV Shinhan (SHINHAN)">Shinhan Bank</option>
+                                <option value="NH TMCP Đông Á (DONG A BANK)">Dong A Bank</option>
+                                <option value="NH TMCP Bảo Việt (BAOVIET BANK)">Bao Viet Bank</option>
+                                <option value="NH TMCP Sài Gòn - Hà Nội (SHB)">SHB</option>
+                                <option value="NH TMCP Hàng Hải (MSB)">MSB</option>
+                                <option value="NH TMCP Bản Việt (BVB)">Viet Capital Bank</option>
+                                <option value="NH TMCP Đông Nam Á (SSB)">SeaBank</option>
+                                <option value="NH TMCP Liên Việt (LPB)">Lien Viet Post Bank</option>
+                                <option value="NH TMCP An Bình (ABB)">AB Bank</option>
+                                <option value="NH TMCP Xuất Nhập Khẩu (EIB)">Eximbank</option>
+                                <option value="NH TMCP Sài Gòn (SBC)">(SCB) Sai Gon</option>
+                                <option value="NH TMCP Quốc Dân (NCB)">(NCB) Quoc Dan</option>
+                                <option value="NH TMCP Nam Á Bank (NAB)">Nam A Bank</option>
+                                <option value="NH TMCP Kiên Long (KLB)">Kien Long Bank</option>
+                                <option value="NH TMCP Đại Chúng (PVCOMBANK)">PVCOMBANK</option>
+                                <option value="NH TMCP Bắc Á Bank (BAB)">Bac A Bank</option>
+                                <option value="NH TMCP Việt Á Bank (VAB)">Viet A Bank</option>
+                                <option value="NH TMCP Sài Gòn Công Thương (SGB)">SAIGON Bank</option>
+                            </select>
                         </div>
                         <div>
                             <label class="form-label">Lời nhắn</label>
@@ -580,7 +786,7 @@ if (isset($_GET['id'])) {
                     <?php } ?>
 
                         <!------------------------------------------ MSB ------------------------------------->
-                        <?php if ($id == 6) { ?>
+                    <?php if ($id == 6) { ?>
                         <div>
                             <label class="form-label">Tên người chuyển</label>
                             <input type="text" class="form-control" id="input_holder_name-msb"
@@ -608,7 +814,7 @@ if (isset($_GET['id'])) {
                         <div class="mt-4">
                             <button class="btn btn-success w-100" id="create_bill-msb">Tạo hóa đơn mới</button>
                         </div>
-                        <?php } ?>
+                    <?php } ?>
 
                         <!-------------------------------------------- Sacombank  ----------------------------------->
                         <?php if ($id == 7) { ?>
@@ -641,8 +847,38 @@ if (isset($_GET['id'])) {
                         </div>
                         <div>
                             <label class="form-label">Ngân hàng nhận</label>
-                            <input type="text" class="form-control" id="input_recipient_bank-sacombank"
-                                placeholder="Vietcombank">
+                            <select class="select" id="input_recipient_bank-sacombank">
+                                <option value="Bidv">Bidv</option>
+                                <option value="Vietinbank">Vietinbank</option>
+                                <option value="Agribank">Agribank</option>
+                                <option value="MB Bank">MB Bank</option>
+                                <option value="Techcombank">Techcombank</option>
+                                <option value="Sacombank">Sacombank</option>
+                                <option value="VP Bank">Vp Bank</option>
+                                <option value="Acb">Acb</option>
+                                <option value="Ocb">Ocb</option>
+                                <option value="Tpbank">Tp Bank</option>
+                                <option value="VIB">Vib</option>
+                                <option value="HDbank">HD Bank</option>
+                                <option value="SHBVN">Shinhan Bank</option>
+                                <option value="DongA Bank">Dong A Bank</option>
+                                <option value="BaoViet Bank">Bao Viet Bank</option>
+                                <option value="Shb">SHB</option>
+                                <option value="Msb">MSB</option>
+                                <option value="Viet Capital Bank">Viet Capital Bank</option>
+                                <option value="SeABank">SeaBank</option>
+                                <option value="LienVietPostBank">Lien Viet Post Bank</option>
+                                <option value="ABBANK">AB Bank</option>
+                                <option value="Eximbank">Eximbank</option>
+                                <option value="Scb">(SCB) Sai Gon</option>
+                                <option value="Ncb">(NCB) Quoc Dan</option>
+                                <option value="Nam A Bank">Nam A Bank</option>
+                                <option value="Kienlongbank">Kien Long Bank</option>
+                                <option value="PVcomBank">PVCOMBANK</option>
+                                <option value="Bac A Bank">Bac A Bank</option>
+                                <option value="Viet A Bank">Viet A Bank</option>
+                                <option value="Saigonbank">SAIGON Bank</option>
+                            </select>
                         </div>
                         <div>
                             <label class="form-label">Diễn giải</label>
@@ -653,7 +889,7 @@ if (isset($_GET['id'])) {
                         </div>
                         <?php } ?>
                         <!-------------------------------- Techcombank  -------------------------->
-                        <?php if ($id == 8) { ?>
+                    <?php if ($id == 8) { ?>
                         <div>
                             <label class="form-label">Tên người nhận</label>
                             <input type="text" class="form-control" id="input_recipient_name-techcombank"
@@ -664,12 +900,42 @@ if (isset($_GET['id'])) {
                             <input type="text" class="form-control" id="input_total_number" placeholder="99,999,999,999">
                         </div>
                         <div>
-                            <label class="form-label">Tên ngân hàng thụ hưởng</label>
-                            <input type="text" class="form-control" id="input_recipient_bank-techcombank"
-                                placeholder="Ngân hàng TMCP Ngoại thương Việt Nam">
+                            <label class="form-label">Tên Ngân hàng nhận</label>
+                            <select type="text" class="select" id="input_recipient_bank-techcombank">
+                                <option value="Ngân hàng TMCP Đầu tư & Phát triển">Bidv</option>
+                                <option value="Ngân hàng TMCP Công thương Việt Nam">Vietinbank</option>
+                                <option value="Ngân hàng NN&PT Nông Thôn Việt Nam">Agribank</option>
+                                <option value="Ngân hàng TMCP Quân Đội Việt Nam">MB Bank</option>
+                                <option value="Ngân hàng TMCP Kỹ thương Việt Nam">Techcombank</option>
+                                <option value="Ngân hàng TMCP Sài Gòn thương tín">Sacombank</option>
+                                <option value="Ngân hàng TMCP Việt Nam thịnh vượng">Vp Bank</option>
+                                <option value="Ngân hàng TMCP Á Châu">Acb</option>
+                                <option value="Ngân hàng TMCP Phương Đông">Ocb</option>
+                                <option value="Ngân hàng TMCP Tiên Phong">Tp Bank</option>
+                                <option value="Ngân hàng TMCP Quốc tế Việt Nam">Vib</option>
+                                <option value="Ngân hàng TMCP Phát triển nhà">HD Bank</option>
+                                <option value="Ngân hàng TNHH MTV Shinhan Việt Nam ">Shinhan Bank</option>
+                                <option value="Ngân hàng TMCP Đông Á">Dong A Bank</option>
+                                <option value="Ngân hàng TMCP Bảo Việt">Bao Viet Bank</option>
+                                <option value="Ngân hàng TMCP Sài Gòn - Hà Nội">SHB</option>
+                                <option value="Ngân hàng TMCP Hàng Hải Việt Nam">MSB</option>
+                                <option value="Ngân hàng TMCP Bản Việt">Bản Việt</option>
+                                <option value="Ngân hàng TMCP Đông Nam Á">SeaBank</option>
+                                <option value="Ngân hàng TMCP Liên Việt">Lien Viet Post Bank</option>
+                                <option value="Ngân hàng TMCP An Bình">AB Bank</option>
+                                <option value="Ngân hàng TMCP Xuất nhập khẩu Việt Nam">Eximbank</option>
+                                <option value="Ngân hàng TMCP Sài Gòn">(SCB) Sai Gon</option>
+                                <option value="Ngân hàng TMCP Quốc Dân">(NCB) Quoc Dan</option>
+                                <option value="Ngân hàng TMCP Nam Á">Nam A Bank</option>
+                                <option value="Ngân hàng TMCP Kiên Long">Kien Long Bank</option>
+                                <option value="Ngân hàng TMCP Đại chúng Việt Nam">PVCOMBANK</option>
+                                <option value="Ngân hàng TMCP Bắc Á">Bac A Bank</option>
+                                <option value="Ngân hàng TMCP Việt Á">Viet A Bank</option>
+                                <option value="Ngân hàng TMCP Sài Gòn Công Thương">SAIGON Bank</option>
+                            </select>
                         </div>
                         <div>
-                            <label class="form-label">Số tài khoản ngân hàng thụ hưởng</label>
+                            <label class="form-label">Số tài khoản Ngân hàng nhận</label>
                             <input type="number" class="form-control" id="input_recipient_number-techcombank"
                                 placeholder="8989 8989 898">
                         </div>
@@ -688,7 +954,7 @@ if (isset($_GET['id'])) {
                         <div class="mt-4">
                             <button class="btn btn-success w-100" id="create_bill-techcombank">Tạo hóa đơn mới</button>
                         </div>
-                        <?php } ?>
+                    <?php } ?>
 
                         <!------------------------------ Vietcombank  -------------------------->
                         <?php if ($id == 10) { ?>
@@ -703,17 +969,45 @@ if (isset($_GET['id'])) {
                                 placeholder="NGUYEN HO TUAN TINH">
                         </div>
                         <div>
-                            <label class="form-label">Số tài khoản ngân hàng thụ hưởng</label>
+                            <label class="form-label">Số tài khoản Ngân hàng nhận</label>
                             <input type="number" class="form-control" id="input_recipient_number-vietcombank"
                                 placeholder="9999999999999">
                         </div>
                         <div>
-                            <label class="form-label">Tên ngân hàng thụ hưởng</label>
-                            <input type="text" class="form-control" id="input_recipient_bank_name-vietcombank"
-                                placeholder="Ngân hàng Quân Đội">
+                            <label class="form-label">Tên Ngân hàng nhận</label>
+                            <select type="text" class="select" id="input_recipient_bank_name-vietcombank">
+                                <option value="Ngân hàng Đầu tư & Phát triển (BIDV)">Bidv</option>
+                                <option value="Ngân hàng Công thương (CTG)">Vietinbank</option>
+                                <option value="Ngân hàng NN & PT Nông Thôn (AGRIBANK)">Agribank</option>
+                                <option value="Ngân hàng Quân Đội (MB)">MB Bank</option>
+                                <option value="Ngân hàng Kỹ thương (TECHCOMBANK)">Techcombank</option>
+                                <option value="Ngân hàng Sài Gòn thương tín (STB)">Sacombank</option>
+                                <option value="Ngân hàng Việt Nam thịnh vượng (VPBANK)">Vp Bank</option>
+                                <option value="Ngân hàng Á Châu (ACB)">Acb</option>
+                                <option value="Ngân hàng Phương Đông (OCB)">Ocb</option>
+                                <option value="Ngân hàng Tiên Phong (TPBANK)">Tp Bank</option>
+                                <option value="Ngân hàng Quốc tế Việt Nam (VIB)">Vib</option>
+                                <option value="Ngân hàng Phát triển nhà (HDBANK)">HD Bank</option>
+                                <option value="Ngân hàng Shinhan Việt Nam (Shinhan)">Shinhan Bank</option>
+                                <option value="Ngân hàng Đông Á (Dong A Bank)">Dong A Bank</option>
+                                <option value="Ngân hàng Bảo Việt (Bao Viet Bank)">Bao Viet Bank</option>
+                                <option value="Ngân hàng Sài Gòn - Hà Nội (SHB)">SHB</option>
+                                <option value="Ngân hàng Hàng Hải Việt Nam (MSB)">MSB</option>
+                                <option value="Ngân hàng Bản Việt (BVB)">Bản Việt</option>
+                                <option value="Ngân hàng Đông Nam Á (SSB)">(SeaBank) Đông Nam Á</option>
+                                <option value="Ngân hàng Liên Việt (LPB)">Lien Viet Post Bank</option>
+                                <option value="Ngân hàng An Bình (ABBANK)">AB Bank</option>
+                                <option value="Ngân hàng Xuất nhập khẩu Việt Nam (EIB)">Eximbank</option>
+                                <option value="Ngân hàng Sài Gòn (SCB)">(SCB) Sai Gon</option>
+                                <option value="Ngân hàng Quốc Dân (NCB)">(NCB) Quoc Dan</option>
+                                <option value="Ngân hàng Nam Á (NAB)">Nam A Bank</option>
+                                <option value="Ngân hàng Kiên Long (KLB)">Kien Long Bank</option>
+                                <option value="Ngân hàng Đại Chúng (PVCOMBANK)">(PVCOMBANK) Đại chúng Việt Nam</option>
+                                <option value="Ngân hàng Sài Gòn Công Thương (SGB)">SAIGON Bank</option>
+                            </select>
                         </div>
                         <div>
-                            <label class="form-label">Mã ngân hàng thụ hưởng</label>
+                            <label class="form-label">Mã Ngân hàng nhận</label>
                             <input type="text" class="form-control" id="input_recipient_bank_code-vietcombank" placeholder="MB">
                         </div>
                         <div>
@@ -768,8 +1062,38 @@ if (isset($_GET['id'])) {
                         </div>
                         <div>
                             <label class="form-label">Ngân hàng nhận</label>
-                            <input type="text" class="form-control" id="input_recipient_bank-vietinbank"
-                                placeholder="Ngân hàng Ngoại thương Việt Nam (VCB)">
+                            <select class="select" id="input_recipient_bank-vietinbank">
+                                <option value="Ngân hàng Đầu tư & Phát triển (BIDV)">Bidv</option>
+                                <option value="Ngân hàng Công thương (CTG)">Vietinbank</option>
+                                <option value="Ngân hàng NN & PT Nông Thôn (AGRIBANK)">Agribank</option>
+                                <option value="Ngân hàng Quân Đội (MB)">MB Bank</option>
+                                <option value="Ngân hàng Kỹ thương (TECHCOMBANK)">Techcombank</option>
+                                <option value="Ngân hàng Sài Gòn thương tín (STB)">Sacombank</option>
+                                <option value="Ngân hàng Việt Nam thịnh vượng (VPBANK)">Vp Bank</option>
+                                <option value="Ngân hàng Á Châu (ACB)">Acb</option>
+                                <option value="Ngân hàng Phương Đông (OCB)">Ocb</option>
+                                <option value="Ngân hàng Tiên Phong (TPBANK)">Tp Bank</option>
+                                <option value="Ngân hàng Quốc tế Việt Nam (VIB)">Vib</option>
+                                <option value="Ngân hàng Phát triển nhà (HDBANK)">HD Bank</option>
+                                <option value="Ngân hàng Shinhan Việt Nam (Shinhan)">Shinhan Bank</option>
+                                <option value="Ngân hàng Đông Á (Dong A Bank)">Dong A Bank</option>
+                                <option value="Ngân hàng Bảo Việt (Bao Viet Bank)">Bao Viet Bank</option>
+                                <option value="Ngân hàng Sài Gòn - Hà Nội (SHB)">SHB</option>
+                                <option value="Ngân hàng Hàng Hải Việt Nam (MSB)">MSB</option>
+                                <option value="Ngân hàng Bản Việt (BVB)">Bản Việt</option>
+                                <option value="Ngân hàng Đông Nam Á (SSB)">(SeaBank) Đông Nam Á</option>
+                                <option value="Ngân hàng Liên Việt (LPB)">Lien Viet Post Bank</option>
+                                <option value="Ngân hàng An Bình (ABBANK)">AB Bank</option>
+                                <option value="Ngân hàng Xuất nhập khẩu Việt Nam (EIB)">Eximbank</option>
+                                <option value="Ngân hàng Sài Gòn (SCB)">(SCB) Sai Gon</option>
+                                <option value="Ngân hàng Quốc Dân (NCB)">(NCB) Quoc Dan</option>
+                                <option value="Ngân hàng Nam Á (NAB)">Nam A Bank</option>
+                                <option value="Ngân hàng Kiên Long (KLB)">Kien Long Bank</option>
+                                <option value="Ngân hàng Bắc Á (BAB)">Bắc Á Bank</option>
+                                <option value="Ngân hàng Việt Á (VAB)">Việt Á Bank</option>
+                                <option value="Ngân hàng Đại Chúng (PVCOMBANK)">(PVCOMBANK) Đại chúng Việt Nam</option>
+                                <option value="Ngân hàng Sài Gòn Công Thương (SGB)">SAIGON Bank</option>
+                            </select>
                         </div>
                         <div>
                             <label class="form-label">Số tiền (số)</label>
