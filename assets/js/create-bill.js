@@ -38,7 +38,7 @@ window.addEventListener('load', function () {
 
     inputElements.forEach(inputElement => { // Lặp qua từng thẻ input
     if (inputElement.value !== '') { // Kiểm tra giá trị của từng ô input, nếu nó khác rỗng thì đổi màu nền thành màu xanh
-        inputElement.style.backgroundColor = 'green';
+        inputElement.style.backgroundColor = '#c4cdd1';
     }
     });
 });
@@ -633,7 +633,6 @@ if(screenshotButton_sacombank) {
         var output_battery = document.querySelector('#output_battery_level')
         output_battery.style.background = 'white'
         if(value_battery <= 20) {
-          
             output_battery.style.background = '#fd465e'
         }
 	    output_battery.style.width = 19.7*value_battery/100 +'px'

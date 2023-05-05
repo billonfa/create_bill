@@ -35,7 +35,9 @@
   height: 11.9px;
   left: 19px;
 }
-
+.data_auto {
+  color: red;
+}
 /* Wifi */
 .wifi {
   width: 18px;
