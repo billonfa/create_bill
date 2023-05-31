@@ -3,7 +3,7 @@
     $servername = "localhost";
     $dbusername = "root";
     $dbpassword = "";
-    $dbname = "create_bill";
+    $dbname = "helonfaasia";
     date_default_timezone_set('Asia/Ho_Chi_Minh');
     // Tạo kết nối tới cơ sở dữ liệu
     $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);

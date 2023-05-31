@@ -5,7 +5,7 @@
     include('token.php');
     $token=new Token();
     $arr_token=$token->getToken('login');
-    if (isset($_SESSION['email']) && $_SESSION['email'] === true) {
+    if (($_SESSION['email'])) {
         header("Location: index.php");
         exit;
     }
@@ -26,6 +26,7 @@
             $data = $data[0];
             if($password == $data['password']) {
                 $_SESSION['email'] = $email;
+                $_SESSION['refresh'] = true;
                 $new_token = mt_rand(10000,99999);
                 $_SESSION['token'] = $new_token;
                 $sql2 = "UPDATE users SET token='$new_token' WHERE email = '$email'";
@@ -71,7 +72,7 @@
 <body>
 
     <div class="auth-page-wrapper pt-5">
-        <div class="auth-one-bg-position auth-one-bg" id="auth-particles">
+        <div class="auth-one-bg-position auth-one-bg" id="auth-particles" style="background: #000033">
             <div class="bg-overlay"></div>
 
             <div class="shape">

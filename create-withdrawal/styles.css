@@ -1,0 +1,968 @@
+/* --------------------------------- Refresh ------------------------------------ */
+.modal {
+display: flex;
+align-items: center;
+justify-content: center;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.4);
+z-index: 9999;
+opacity: 1;
+transition: opacity 0.3s ease-in-out;
+}
+.modal-content {
+    width: 80%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+margin: 20% auto;
+}
+/* Loading */
+.overlay {
+display:flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading {
+    width: 200px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-bar {
+    width: 8px;
+    height: 40px;
+    margin: 0 4px;
+    background-color: #fff;
+    transform-origin: bottom;
+    animation: loading 1s ease-in-out infinite;
+}
+
+.loading-bar:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.loading-bar:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.loading-bar:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.loading-bar:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+.loading-bar:nth-child(5) {
+    animation-delay: 0.4s;
+}
+
+@keyframes loading {
+    0% {
+    transform: scaleY(0.1);
+    }
+    50% {
+    transform: scaleY(1);
+    }
+    100% {
+    transform: scaleY(0.1);
+    }
+}
+
+/* ------------------ Form Label ----------------- */
+.form-label-2 {
+    margin: 0.8rem 0;
+}
+.form-control-2 {
+    float: right;
+    text-align: center;
+    display: inline-block;
+    width: 55%;
+    padding: .5rem .9rem;
+    font-size: .8125rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--vz-body-color);
+    background-color: var(--vz-input-bg);
+    background-clip: padding-box;
+    border: 1px solid var(--vz-input-border);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: .25rem;
+    -webkit-transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+}
+.select-2 {
+    width: 55%;
+    padding: 8px;
+    margin: 0;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+    font-size: 16px;
+    color: #555;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, #555 50%), linear-gradient(135deg, #555 50%, transparent 50%), linear-gradient(to right, #ccc, #ccc);
+    background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), 100% 0;
+    background-size: 5px 5px, 5px 5px, 2.5em 2.5em;
+    background-repeat: no-repeat;
+    float: right;
+    text-align: center;
+}
+/* Sóng điện thoại sim 1 */
+.background_white  {
+    background: white;
+}
+.background_black {
+    background: black;
+}
+.background_invi {
+    background: #cdcdcd;
+}
+.signal {
+    height: 20px;
+    width: 40px;
+    position: absolute;
+    top: 7.5px;
+    left: 300px;
+    z-index: 1;
+}
+.bar {
+    width: 3.5px;
+    border-radius: 1.5px;
+    position: absolute;
+    bottom: 0;
+}
+.bar:nth-child(1) {
+    height: 4.8px;
+    left: 4px;
+}
+.bar:nth-child(2) {
+    height: 7px;
+    left: 9px;
+}
+.bar:nth-child(3) {
+    height: 9.7px;
+    left: 14px;
+}
+.bar:nth-child(4) {
+    height: 11.9px;
+    left: 19px;
+}
+
+.signal_invi {
+    height: 20px;
+    width: 40px;
+    position: absolute;
+    top: 7.5px;
+    left: 300px;
+    z-index: 1;
+}
+/*----------------------------------------------------- Sóng điện thoại sim 2 ----------------------------------------------------- */
+.signal-1 {
+    height: 20px;
+    width: 40px;
+    position: absolute;
+    top: 3px;
+    left: 300px;
+    z-index: 1;
+}
+.bar-1 {
+    width: 3px;
+    border-radius: 1.2px;
+    position: absolute;
+    bottom: 0;
+}
+.bar-1:nth-child(1) {
+    height: 4px;
+    left: 4px;
+}
+.bar-1:nth-child(2) {
+    height: 5px;
+    left: 8.6px;
+}
+.bar-1:nth-child(3) {
+    height: 6.3px;
+    left: 13.2px;
+}
+.bar-1:nth-child(4) {
+    height: 7.8px;
+    left: 17.8px;
+}
+.signal2 {
+    height: 20px;
+    width: 40px;
+    position: absolute;
+    top: 8px;
+    left: 300px;
+    z-index: 1;
+}
+.bar2 {
+    width: 3px;
+    height: 3.7px;
+    border-radius: 1.2px;
+    position: absolute;
+    bottom: 0;
+}
+.bar2:nth-child(1) {
+    left: 4px;
+}
+.bar2:nth-child(2) {
+    left: 8.6px;
+}
+.bar2:nth-child(3) {
+    left: 13.2px;
+}
+.bar2:nth-child(4) {
+    left: 17.8px;
+}
+.data_auto {
+    color: red;
+}
+/* Wifi */
+.wifi {
+    width: 18px;
+    position: absolute;
+    top: 11px;
+    left: 329px;
+    z-index: 1;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+}
+.img_wifi {
+    width: 100%;
+}
+/* ------------------- Pin ------------------ */
+.battery-level {
+    position: absolute;
+    border-radius: 2px;
+    height: 9.4px;
+    width: 20.7px;
+    top: 16.9px;
+    left: 354px;
+}
+.ruler {
+    position: fixed;
+    top: 181px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: black;
+    z-index: 9999;
+    pointer-events: none;
+}
+.ruler_doc {
+    position: fixed;
+    top: 0;
+    left: 380px;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 100%;
+    background-color: black;
+    z-index: 1;
+}
+.ruler_doc2 {
+    position: fixed;
+    top: 0;
+    left: 800px;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 100%;
+    background-color: black;
+    z-index: 1;
+}
+.container_box {
+    display: flex;
+}
+.box {
+    margin: 10px;
+}
+.demo_image-container {
+    position: relative;
+    width: 400px;
+}
+.create-image-container {
+    position: relative;
+    width: 400px;
+}
+.photo_style {
+    width: 100%;
+}
+.image-caption {
+    position: absolute;
+    font-size: 18px;
+    top: 10px;
+    left: 20px;
+    color: #e6eaf2;
+    font-weight: 500;
+    font-family: system-ui;
+}
+.custom-icon {
+    position: absolute;
+    top: 11px;
+    left: 67px;
+    width: 10px;
+}
+.custom-icon2 {
+    position: absolute;
+    top: 13px;
+    left: 67px;
+    width: 10px;
+}
+.select {
+    width: 100%;
+    padding: 8px;
+    margin: 0;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+    font-size: 16px;
+    color: #555;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, #555 50%), linear-gradient(135deg, #555 50%, transparent 50%), linear-gradient(to right, #ccc, #ccc);
+    background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), 100% 0;
+    background-size: 5px 5px, 5px 5px, 2.5em 2.5em;
+    background-repeat: no-repeat;
+}
+
+/* ----------------------------------------------- Css cho bill rút tiền Bongvip -----------------------------------------------*/
+.time-bet1 {
+    position: absolute;
+    top: 10px;
+    left: 24px;
+    color: black;
+    font-size: 15px;
+    width: 46px;
+    font-family: system-ui;
+    font-weight: 700;
+    z-index: 1;
+}
+.date-b1 {
+    position: absolute;
+    top: 211.5px;
+    left: 48px;
+    z-index: 1;
+    font-family: arial;
+    width: max-content;
+    font-size: 12px;
+    font-weight: 500;
+    color: #4493cb;
+}
+.bank_name-b1 {
+    position: absolute;
+    top: 269px;
+    left: 39px;
+    z-index: 1;
+    font-family: arial;
+    width: 175px;
+    font-size: 17px;
+    font-weight: 600;
+}
+.total_date-b1 {
+    position: absolute;
+    top: 270px;
+    left: 154px;
+    z-index: 1;
+    font-family: arial;
+    width: 200px;
+    font-size: 14.5px;
+    text-align: right;
+    font-weight: 500;
+}
+.total_price-b1 {
+    position: absolute;
+    top: 346.5px;
+    left: 5px;
+    z-index: 1;
+    font-family: arial;
+    width: 150px;
+    font-size: 17.5px;
+    font-weight: 600;
+    color: red;
+    text-align: center;
+}
+.trade_code-b1 {
+    position: absolute;
+    top: 346.5px;
+    left: 133px;
+    z-index: 1;
+    font-family: arial;
+    width: 150px;
+    font-size: 17.5px;
+    font-weight: 600;
+    color: #1fd8a9;
+    text-align: center;
+}
+.trade_status-b1 {
+    position: absolute;
+    top: 347px;
+    left: 285px;
+    z-index: 1;
+    font-family: arial;
+    width: 91px;
+    font-size: 16px;
+    text-align: center;
+    font-weight: 500;
+    line-height: 1.6;
+}
+.total_price2 {
+    position: absolute;
+    top: 746.6px;
+    z-index: 1;
+    left: 202px;
+    font-family: arial;
+    font-size: 17px;
+    font-weight: 500;
+    width: 120px;
+    text-align: right;
+}
+.page_number-b1 {
+    position: absolute;
+    bottom: 45.6px;
+    left: 365.5px;
+    text-align: center;
+    font-size: 11px;
+    z-index: 1;
+    color: #5d5d5f;
+    font-family: arial;
+    width: 15px;
+    font-weight: 600;
+}
+
+/* ----------------------------------------------- Css cho bet 3 -----------------------------------------------*/
+.br_game {
+        height: 3px;
+    background-color: black;
+    width: 90%;
+    margin: 10px auto;
+}
+.battery-level-3 {
+    position: absolute;
+    border-radius: 2px;
+    height: 9.5px;
+    width: 20.7px;
+    top: 17px;
+    left: 355.4px;
+}
+.date-b3 {
+    position: absolute;
+    top: 160px;
+    left: 37px;
+    z-index: 1;
+    width: 90px;
+    font-size: 12px;
+    color: #4493cb;
+    text-align: center;
+    font-family: system-ui;
+    font-weight: 500;
+}
+.sanh-b3 {
+    position: absolute;
+    top: 161px;
+    left: 133px;
+    z-index: 1;
+    font-family: arial;
+    width: max-content;
+    font-size: 12px;
+    color: #4493cb;
+    text-align: center;
+    font-weight: 700;
+    width: 53px;
+}
+
+/*---------------- G1 /*---------------- */
+.name_g1-b3 {
+    position: absolute;
+    top: 210.5px;
+    left: 54px;
+    z-index: 1;
+    font-family: arial;
+    font-size: 13.5px;
+    text-align: left;
+    width: 159px;
+    font-weight: 700;
+}
+.time_g1-b3 {
+    position: absolute;
+    top: 210.5px;
+    left: 241px;
+    z-index: 1;
+    font-size: 13.5px;
+    text-align: left;
+    width: 159px;
+    font-family: system-ui;
+    font-weight: 500;
+}
+#trade_code_g1-b3 {
+    position: absolute;
+    top: 261.3px;
+    left: 92px;
+    z-index: 1;
+    font-family: system-ui;
+    font-size: 13.5px;
+    text-align: left;
+    width: 159px;
+    font-weight: 500;
+}
+.stdc {
+    position: absolute;
+    top: 288px;
+    left: 142px;
+    z-index: 1;
+    font-family: system-ui;
+    font-size: 13.5px;
+    text-align: left;
+    width: 159px;
+    font-weight: 500;
+}
+.dchl {
+    position: absolute;
+    top: 288px;
+    left: 327px;
+    z-index: 1;
+    font-family: system-ui;
+    font-size: 13.5px;
+    text-align: left;
+    width: 159px;
+    font-weight: 500;
+}
+.price_g1-b3 {
+    position: absolute;
+    top: 336px;
+    left: 33px;
+    z-index: 1;
+    font-family: arial;
+    font-size: 17px;
+    text-align: left;
+    font-weight: bold;
+    width: 159px;
+    color: #2fe120;
+}
+.total_price_g1-b3 {
+    position: absolute;
+    top: 336px;
+    left: 293px;
+    z-index: 1;
+    font-family: arial;
+    font-size: 17px;
+    text-align: left;
+    font-weight: bold;
+    width: 159px;
+    color: #2fe120;
+}
+/*---------------- G2 /*---------------- */
+.name_g2-b3 {
+    position: absolute;
+    top: 408.5px;
+    left: 54px;
+    z-index: 1;
+    font-family: arial;
+    font-size: 13.5px;
+    text-align: left;
+    width: 159px;
+    font-weight: 700;
+}
+.time_g2-b3 {
+    position: absolute;
+    top: 408.5px;
+    left: 241px;
+    z-index: 1;
+    font-size: 13.5px;
+    text-align: left;
+    width: 159px;
+    font-family: system-ui;
+    font-weight: 500;
+}
+#trade_code_g2-b3 {
+    position: absolute;
+    top: 459.8px;
+    left: 92px;
+    z-index: 1;
+    font-family: system-ui;
+    font-size: 13.5px;
+    text-align: left;
+    width: 159px;
+    font-weight: 500;
+}
+.stdc-2 {
+    position: absolute;
+    top: 485.5px;
+    left: 142px;
+    z-index: 1;
+    font-family: system-ui;
+    font-size: 13.5px;
+    text-align: left;
+    width: 159px;
+    font-weight: 500;
+}
+.dchl-2 {
+    position: absolute;
+    top: 485.5px;
+    left: 327px;
+    z-index: 1;
+    font-family: system-ui;
+    font-size: 13.5px;
+    text-align: left;
+    width: 159px;
+    font-weight: 500;
+}
+.price_g2-b3 {
+    position: absolute;
+    top: 534px;
+    left: 33px;
+    z-index: 1;
+    font-family: arial;
+    font-size: 17px;
+    text-align: left;
+    font-weight: bold;
+    width: 159px;
+    color: #2fe120;
+}
+.total_price_g2-b3 {
+    position: absolute;
+    top: 534px;
+    left: 293px;
+    z-index: 1;
+    font-family: arial;
+    font-size: 17px;
+    text-align: left;
+    font-weight: bold;
+    width: 159px;
+    color: #2fe120;
+}
+
+/*---------------- G3 /*---------------- */
+.name_g3-b3 {
+    position: absolute;
+    top: 607px;
+    left: 54px;
+    z-index: 1;
+    font-family: arial;
+    font-size: 13.5px;
+    text-align: left;
+    width: 159px;
+    font-weight: 700;
+}
+.time_g3-b3 {
+    position: absolute;
+    top: 607px;
+    left: 241px;
+    z-index: 1;
+    font-size: 13.5px;
+    text-align: left;
+    width: 159px;
+    font-family: system-ui;
+    font-weight: 500;
+}
+#trade_code_g3-b3 {
+    position: absolute;
+    top: 657.5px;
+    left: 92px;
+    z-index: 1;
+    font-family: system-ui;
+    font-size: 13.5px;
+    text-align: left;
+    width: 159px;
+    font-weight: 500;
+}
+.stdc-3 {
+    position: absolute;
+    top: 684px;
+    left: 142px;
+    z-index: 1;
+    font-family: system-ui;
+    font-size: 13.5px;
+    text-align: left;
+    width: 159px;
+    font-weight: 500;
+}
+.dchl-3 {
+    position: absolute;
+    top: 684px;
+    left: 327px;
+    z-index: 1;
+    font-family: system-ui;
+    font-size: 13.5px;
+    text-align: left;
+    width: 159px;
+    font-weight: 500;
+}
+.price_g3-b3 {
+    position: absolute;
+    top: 733px;
+    left: 33px;
+    z-index: 1;
+    font-family: arial;
+    font-size: 17px;
+    text-align: left;
+    font-weight: bold;
+    width: 159px;
+    color: #2fe120;
+}
+.total_price_g3-b3 {
+    position: absolute;
+    top: 733px;
+    left: 293px;
+    z-index: 1;
+    font-family: arial;
+    font-size: 17px;
+    text-align: left;
+    font-weight: bold;
+    width: 159px;
+    color: #2fe120;
+}
+
+/* ----------------------------------------------- Css cho Bill rút tiền MG -----------------------------------------------*/
+.battery-level-mg {
+    position: absolute;
+    border-radius: 4px 0 0 4px;
+    border-right: none;
+    height: 13.4px;
+    width: 25.7px;
+    top: 12.9px;
+    left: 338px;
+}
+.wifi-mg {
+    position: absolute;
+    border-radius: 4px;
+    height: 13.4px;
+    width: 16.7px;
+    top: 8.9px;
+    left: 312px;
+    font-size: 13.5px;
+}
+.pin_number {
+    position: absolute;
+    height: 18.4px;
+    width: 26px;
+    top: 10.5px;
+    left: 337.7px;
+    font-size: 12px;
+    font-family: sans-serif;
+    font-weight: 600;
+    color: white;
+    text-align: center;
+}
+.signal-mg {
+    position: absolute;
+    border-radius: 4px;
+    height: 13.4px;
+    width: 16.7px;
+    top: 12px;
+    left: 284px;
+}
+.time-bet1-mg {
+    position: absolute;
+    top: 7px;
+    left: 24px;
+    color: black;
+    font-size: 15px;
+    width: 46px;
+    font-family: system-ui;
+    font-weight: 500;
+    z-index: 1;
+}
+.custom-icon2-mg {
+    position: absolute;
+    top: 10px;
+    left: 64px;
+    width: 10px;
+}
+/* ------------------ Bill 1 ------------------ */
+#trade_code1-mg {
+    position: absolute;
+    top: 178px;
+    left: 119px;
+    font-family: sans-serif;
+    font-size: 14.25px;
+    width: 250px;
+    font-weight: 400;
+    color: #9cabcc;
+    z-index: 1;
+    text-align: right;
+}
+#time_mg1-mg {
+    position: absolute;
+    top: 200px;
+    left: 119px;
+    font-family: sans-serif;
+    font-size: 13.7px;;
+    font-weight: 400;
+    color: #9cabcc;
+    z-index: 1;
+    text-align: right;
+    width: 250px;
+}
+.price_mg1-mg {
+    position: absolute;
+    top: 263.5px;
+    left: 119px;
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #9cabcc;
+    z-index: 1;
+    text-align: right;
+    width: 250px;
+}
+#status_mg1_1-mg {
+    position: absolute;
+    top: 341px;
+    left: 119px;
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #9cabcc;
+    z-index: 1;
+    text-align: right;
+    width: 250px;
+}
+#status_mg2_1-mg {
+    position: absolute;
+    top: 362px;
+    left: 119px;
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #9cabcc;
+    z-index: 1;
+    text-align: right;
+    width: 250px;
+}
+/* ------------------ Bill 2 ------------------ */
+#trade_code2-mg {
+    position: absolute;
+    top: 410px;
+    left: 119px;
+    font-family: sans-serif;
+    font-size: 14.25px;
+    width: 250px;
+    font-weight: 400;
+    color: #9cabcc;
+    z-index: 1;
+    text-align: right;
+}
+#time_mg2-mg {
+    position: absolute;
+    top: 432px;
+    left: 119px;
+    font-family: sans-serif;
+    font-size: 13.7px;;
+    font-weight: 400;
+    color: #9cabcc;
+    z-index: 1;
+    text-align: right;
+    width: 250px;
+}
+.price_mg2-mg {
+    position: absolute;
+    top: 495.5px;
+    left: 119px;
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #9cabcc;
+    z-index: 1;
+    text-align: right;
+    width: 250px;
+}
+#status_mg1_2-mg {
+    position: absolute;
+    top: 573px;
+    left: 119px;
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #9cabcc;
+    z-index: 1;
+    text-align: right;
+    width: 250px;
+}
+#status_mg2_2-mg {
+    position: absolute;
+    top: 594px;
+    left: 119px;
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #9cabcc;
+    z-index: 1;
+    text-align: right;
+    width: 250px;
+}
+/* ------------------ Bill 3 ------------------ */
+#trade_code3-mg {
+    position: absolute;
+    top: 642px;
+    left: 119px;
+    font-family: sans-serif;
+    font-size: 14.25px;
+    width: 250px;
+    font-weight: 400;
+    color: #9cabcc;
+    z-index: 1;
+    text-align: right;
+}
+#time_mg3-mg {
+    position: absolute;
+    top: 664px;
+    left: 119px;
+    font-family: sans-serif;
+    font-size: 13.7px;;
+    font-weight: 400;
+    color: #9cabcc;
+    z-index: 1;
+    text-align: right;
+    width: 250px;
+}
+.price_mg3-mg {
+    position: absolute;
+    top: 727.5px;
+    left: 119px;
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #9cabcc;
+    z-index: 1;
+    text-align: right;
+    width: 250px;
+}
+
+.number_page {
+    position: absolute;
+    top: 804px;
+    left: 275.5px;
+    font-family: sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #7b7f82;
+    z-index: 1;
+    text-align: center;
+    width: 22px;
+}

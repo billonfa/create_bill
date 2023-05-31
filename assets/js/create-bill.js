@@ -1,7 +1,9 @@
 window.addEventListener('load', function () {
     document.querySelector('#input_battery_level').value = Math.floor(Math.random() * 100)
-    document.querySelector('#input_clock').value = (new Date().getHours() < 10 ? ("0") : ("")) + new Date().getHours() + ":" + (new Date().getMinutes() < 10 ? ("0") : ("")) + new Date().getMinutes()
-    
+    document.querySelector('#loading').style.display = 'flex'
+    setTimeout(function() {
+        document.querySelector('#loading').style.display = 'none'
+    }, 1000);
     var numberInput = document.getElementById("input_total_number");
     if(numberInput) {
         numberInput.addEventListener("input", function() {
@@ -21,8 +23,8 @@ window.addEventListener('load', function () {
     var numberInput2 = document.getElementById("input_total_price");
     if(numberInput2) {
         numberInput2.addEventListener("input", function() {
-            var userInput = numberInput2.value;
-            var formatted = userInput.replace(/,/g, ''); // xóa tất cả dấu phẩy có sẵn
+            var userInput2 = numberInput2.value;
+            var formatted = userInput2.replace(/,/g, ''); // xóa tất cả dấu phẩy có sẵn
             formatted = formatted.replace(/\D/g, ""); // xóa tất cả ký tự không phải số
             formatted = parseFloat(formatted);
             if (!isNaN(formatted)) { // kiểm tra nếu giá trị là một số hợp lệ
@@ -41,6 +43,31 @@ window.addEventListener('load', function () {
         inputElement.style.backgroundColor = '#c4cdd1';
     }
     });
+
+    const buttons = document.querySelectorAll('button');
+
+    for (let i = 0; i < buttons.length; i++) {
+        if(buttons[i].id === 'page-header-user-dropdown' || buttons[i].id === 'back-to-top') {
+            continue
+        }
+        buttons[i].addEventListener('click', function(event) {
+            document.querySelector('#loading').style.display = 'flex'
+            setTimeout(function() {
+                document.querySelector('#loading').style.display = 'none'
+            }, 500);
+        });
+    }
+
+    const links = document.querySelectorAll('a');
+
+    for (let i = 0; i < links.length; i++) {
+        links[i].addEventListener('click', function(event) {
+            document.querySelector('#loading').style.display = 'flex'
+            setTimeout(function() {
+                document.querySelector('#loading').style.display = 'none'
+            }, 500);
+        });
+    }
 });
 
 //--------------------------------------- Đưa dữ liệu ACB ---------------------------------------
@@ -49,14 +76,99 @@ var create_bill_acb = document.querySelector('#create_to_img-1')
 if(create_bill_acb) {
     create_bill_acb.addEventListener("click", function() {
         window.scrollTo(0,0);
-        var out_wifi = document.querySelector('#output_wifi')
-        out_wifi.style.top = '13px'
+        var new_bill1 = document.querySelector("#new_bill1")
+        new_bill1.style.width = "1000px"
+        var clock = document.querySelector("#output_clock-acb")
+        clock.classList.remove('time_acb')
+        clock.classList.add('img-time_acb')
+
+        var custom_icon = document.querySelector('#custom-icon')
+        custom_icon.classList.remove('custom-icon')
+        custom_icon.classList.add('img-custom-icon')
+
+        var battery = document.querySelector("#output_battery_level")
+        var value_battery = document.querySelector('#input_battery_level').value
+        battery.classList.remove('battery-level')
+        battery.classList.add('img-battery')
+        battery.style.width = 50*value_battery/100 + 'px'
+
+        var wifi = document.querySelector('#output_wifi')
+        wifi.classList.remove('wifi')
+        wifi.classList.add('img-wifi')
+
+        var signal = document.querySelector("#output_signal")
+        signal.classList.remove('signal')
+        signal.classList.add('img-signal')
+        var bar = document.querySelectorAll('.bar')
+        bar.forEach(function (item) {
+            item.classList.remove('bar')
+            item.classList.add('img-bar')
+        })
+
+        var signal__1 = document.querySelector('#output_signal-1')
+        signal__1.classList.remove('signal-1')
+        signal__1.classList.add('img-signal-1')
+        var bar__1 = document.querySelectorAll(".bar-1")
+        bar__1.forEach(function (item) {
+            item.classList.remove('bar-1')
+            item.classList.add('img-bar-1')
+        })
+
+        var signal2 = document.querySelector('#output_signal2')
+        signal2.classList.remove('signal2')
+        signal2.classList.add('img-signal2')
+        var bar2 = document.querySelectorAll(".bar2")
+        bar2.forEach(function (item) {
+            item.classList.remove('bar2')
+            item.classList.add('img-bar2')
+        })
+
+        var total_price_number = document.querySelector('.total_price_number_acb')
+        total_price_number.classList.remove('total_price_number_acb')
+        total_price_number.classList.add('img-total_price_number_acb')
+
+        var total_price_text = document.querySelector('#output_total_text-acb')
+        total_price_text.classList.remove('total_price_text_acb')
+        total_price_text.classList.add('img-total_price_text_acb')
+
+        var order_time_acb = document.querySelector('#output_time-acb')
+        order_time_acb.classList.remove('order_time_acb')
+        order_time_acb.classList.add('img-order_time_acb')
+
+        var order_date_acb = document.querySelector('#output_day-acb')
+        order_date_acb.classList.remove('order_date_acb')
+        order_date_acb.classList.add('img-order_date_acb')
+
+        var transferer_name_acb = document.querySelector('#output_transferer_name-acb')
+        transferer_name_acb.classList.remove('transferer_name_acb')
+        transferer_name_acb.classList.add('img-transferer_name_acb')
+
+        var transferer_number_acb = document.querySelector('#output_transferer_number-acb')
+        transferer_number_acb.classList.remove('transferer_number_acb')
+        transferer_number_acb.classList.add('img-transferer_number_acb')
+
+        var recipient_name_acb = document.querySelector('#output_recipient_name-acb')
+        recipient_name_acb.classList.remove('recipient_name_acb')
+        recipient_name_acb.classList.add('img-recipient_name_acb')
+
+        var recipient_bank_acb = document.querySelector('#output_recipient_bank-acb')
+        recipient_bank_acb.classList.remove('bank_name_acb')
+        recipient_bank_acb.classList.add('img-bank_name_acb')
+
+        var recipient_number_acb = document.querySelector('#output_recipient_number-acb')
+        recipient_number_acb.classList.remove('recipient_number_acb')
+        recipient_number_acb.classList.add('img-recipient_number_acb')
+
+        var bank_now_acb = document.querySelector('.bank_now_acb')
+        bank_now_acb.classList.remove('bank_now_acb')
+        bank_now_acb.classList.add('img-bank_now_acb')
+        
         html2canvas(document.querySelector("#new_bill1")).then(canvas => {
             var a = document.createElement('a');
             a.href = canvas.toDataURL('image/jpeg', 0.9);
             a.download = 'new_bill_acb.jpg';
             a.click();
-            out_wifi.style.top = '14px'
+            window.location.href = "https://help.onfa.asia/create-bank-bill.php?id=1";
         });
     })
 }
@@ -64,7 +176,7 @@ if(screenshotButton_acb) {
     screenshotButton_acb.addEventListener("click", function() {
         var value_clock_acb = document.querySelector('#input_clock').value
         var value_battery = document.querySelector('#input_battery_level').value
-        var value_total_number_acb = document.querySelector('#input_total_number').value
+        var value_total_number_acb = document.querySelector('#input_total_price').value
         var value_total_text_acb = document.querySelector('#input_total_text-acb').value
         var value_time_acb = document.querySelector('#input_time-acb').value
         var value_day_acb = document.querySelector('#input_day-acb').value
@@ -83,6 +195,7 @@ if(screenshotButton_acb) {
         }
         output_battery.style.width = 19.7*value_battery/100 +'px'
         var output_total_number_acb = document.querySelector('#output_total_number-acb')
+        value_total_number_acb = value_total_number_acb.replace(/,/g, ".")
         output_total_number_acb.innerHTML = value_total_number_acb
         var output_total_text_acb = document.querySelector('#output_total_text-acb')
         output_total_text_acb.innerHTML = value_total_text_acb
@@ -102,6 +215,7 @@ if(screenshotButton_acb) {
         output_recipient_number_acb.innerHTML = value_recipient_number_acb
 
         var div_add = document.querySelector('#new_bill1')
+
         // Tạo sóng điện thoại
         var value_sim_waves = document.querySelector('#input_sim_waves').value
         if(value_sim_waves) {
@@ -113,7 +227,6 @@ if(screenshotButton_acb) {
             var newsignalDiv = document.createElement('div');
             newsignalDiv.classList.add('signal');
             newsignalDiv.id=('output_signal');
-            newsignalDiv.style.left = '304px'
             div_add.appendChild(newsignalDiv)
 
             //Thêm thẻ bar vào signal
@@ -125,6 +238,21 @@ if(screenshotButton_acb) {
             }
         }
         
+        // Sim 2 điện thoại
+        var value_sim2 = document.querySelector('#total_sim').value
+        var signal2 = document.querySelector('#output_signal2')
+        var signal__1  = document.querySelector('#output_signal-1')
+        if (value_sim2 == 1) {
+            signal2.style.display = 'none'
+            signal__1.style.display = 'none'
+            newsignalDiv.style.display = 'block'
+        }
+        else {
+            signal2.style.display = 'block'
+            signal__1.style.display = 'block'
+            newsignalDiv.style.display = 'none'
+        }
+
         //Tạo sóng wifi
         var value_wifi = document.querySelector('#input_wifi').value
         var signalDiv = document.querySelector('#output_wifi')
@@ -133,7 +261,6 @@ if(screenshotButton_acb) {
         //Tạo mới wifi
         var new_wifiDiv = document.createElement('div')
         new_wifiDiv.classList.add('wifi')
-        new_wifiDiv.style.left = '331px'
         new_wifiDiv.id = "output_wifi"
         div_add.appendChild(new_wifiDiv)
         var new_spanWifi = document.createElement('span')
@@ -150,7 +277,6 @@ if(screenshotButton_acb) {
             img_wifi.classList.add('img_wifi')
             img_wifi.src="photo/icon_wifi_white.jpg"
             new_spanWifi.appendChild(img_wifi)
-            new_wifiDiv.style.top = '12px'
         }
     })
 }
@@ -161,20 +287,93 @@ var create_bill_agribank = document.querySelector('#create_to_img-2')
 if(create_bill_agribank) {
     create_bill_agribank.addEventListener("click", function() {
         window.scrollTo(0,0);
-        var out_wifi = document.querySelector('#output_wifi')
-        out_wifi.style.top = '13px'
+        var new_bill = document.querySelector("#new_bill2")
+        new_bill.style.width = "1000px"
+
+        var clock = document.querySelector("#output_clock-agribank")
+        clock.classList.remove('time-agribank')
+        clock.classList.add('img-time_acb')
+
+        var custom_icon = document.querySelector('#custom-icon')
+        custom_icon.classList.remove('custom-icon')
+        custom_icon.classList.add('img-custom-icon')
+
+        var battery = document.querySelector("#output_battery_level")
+        var value_battery = document.querySelector('#input_battery_level').value
+        battery.classList.remove('battery-level')
+        battery.classList.add('img-battery')
+        battery.style.width = 50*value_battery/100 + 'px'
+
+        var wifi = document.querySelector('#output_wifi')
+        wifi.classList.remove('wifi')
+        wifi.classList.add('img-wifi')
+
+        var signal = document.querySelector("#output_signal")
+        signal.classList.remove('signal')
+        signal.classList.add('img-signal')
+        var bar = document.querySelectorAll('.bar')
+        bar.forEach(function (item) {
+            item.classList.remove('bar')
+            item.classList.add('img-bar')
+        })
+
+        var signal__1 = document.querySelector('#output_signal-1')
+        signal__1.classList.remove('signal-1')
+        signal__1.classList.add('img-signal-1')
+        var bar__1 = document.querySelectorAll(".bar-1")
+        bar__1.forEach(function (item) {
+            item.classList.remove('bar-1')
+            item.classList.add('img-bar-1')
+        })
+
+        var signal2 = document.querySelector('#output_signal2')
+        signal2.classList.remove('signal2')
+        signal2.classList.add('img-signal2')
+        var bar2 = document.querySelectorAll(".bar2")
+        bar2.forEach(function (item) {
+            item.classList.remove('bar2')
+            item.classList.add('img-bar2')
+        })
+
+        var total_price = document.querySelector('.total_price_number-agribank')
+        total_price.classList.remove('total_price_number-agribank')
+        total_price.classList.add('img-total_price_number-agribank')
+
+        var recipient_number = document.querySelector("#output_recipient_number-agribank")
+        recipient_number.classList.remove('recipient_number-agribank')
+        recipient_number.classList.add('img-recipient_number-agribank')
+
+        var recipient_name = document.querySelector('#output_recipient_name-agribank')
+        recipient_name.classList.remove('recipient_name-agribank')
+        recipient_name.classList.add('img-recipient_name-agribank')
+
+        var trade_code = document.querySelector("#output_trade_code-agribank")
+        trade_code.classList.remove('trade_code-agribank')
+        trade_code.classList.add('img-trade_code-agribank')
+
+        var recipient_bank = document.querySelector("#output_recipient_bank-agribank")
+        recipient_bank.classList.remove('recipient_bank-agribank')
+        recipient_bank.classList.add('img-recipient_bank-agribank')
+
+        var trade_time = document.querySelector('#output_trade_time-agribank')
+        trade_time.classList.remove('trade_time')
+        trade_time.classList.add('img-trade_time')
+
         html2canvas(document.querySelector("#new_bill2")).then(canvas => {
-            
             var a = document.createElement('a');
             a.href = canvas.toDataURL('image/jpeg', 0.9);
             a.download = 'new_bill_agribank.jpg';
             a.click();
-            out_wifi.style.top = '14px'
+            window.location.href = "https://help.onfa.asia/create-bank-bill.php?id=2";
         });
     })
 }
 if(screenshotButton_agribank) {
     screenshotButton_agribank.addEventListener("click", function() {
+        document.querySelector('#loading').style.display = 'flex'
+        setTimeout(function() {
+            document.querySelector('#loading').style.display = 'none'
+        },500)
         var value_clock_agribank = document.querySelector('#input_clock').value
         var value_battery = document.querySelector('#input_battery_level').value
         var value_total_price_agribank = document.querySelector('#input_total_number').value
@@ -226,6 +425,21 @@ if(screenshotButton_agribank) {
                 newsignalDiv.appendChild(newbarDiv);
             }
         }
+
+        // Sim 2 điện thoại
+        var value_sim2 = document.querySelector('#total_sim').value
+        var signal2 = document.querySelector('#output_signal2')
+        var signal__1  = document.querySelector('#output_signal-1')
+        if (value_sim2 == 1) {
+            signal2.style.display = 'none'
+            signal__1.style.display = 'none'
+            newsignalDiv.style.display = 'block'
+        }
+        else {
+            signal2.style.display = 'block'
+            signal__1.style.display = 'block'
+            newsignalDiv.style.display = 'none'
+        }
         
         //Tạo sóng wifi
         var value_wifi = document.querySelector('#input_wifi').value
@@ -273,7 +487,7 @@ if (screenshotButton_bidv) {
         var output_clock_bidv = document.querySelector('#output_clock-bidv')
         output_clock_bidv.innerHTML = value_clock_bidv
         var output_battery = document.querySelector('#output_battery_level')
-        output_battery.classList.add = 'black'
+        output_battery.classList.add('background_black')
         if(value_battery <= 20) {
             output_battery.style.background = '#fd465e'
         }
@@ -315,6 +529,21 @@ if (screenshotButton_bidv) {
                 newsignalDiv.appendChild(newbarDiv);
             }
         }
+
+        // Sim 2 điện thoại
+        var value_sim2 = document.querySelector('#total_sim').value
+        var signal2 = document.querySelector('#output_signal2')
+        var signal__1  = document.querySelector('#output_signal-1')
+        if (value_sim2 == 1) {
+            signal2.style.display = 'none'
+            signal__1.style.display = 'none'
+            newsignalDiv.style.display = 'block'
+        }
+        else {
+            signal2.style.display = 'block'
+            signal__1.style.display = 'block'
+            newsignalDiv.style.display = 'none'
+        }
         
         //Tạo sóng wifi
         var value_wifi = document.querySelector('#input_wifi').value
@@ -346,15 +575,81 @@ if (screenshotButton_bidv) {
 if (create_bill_bidv) {
     create_bill_bidv.addEventListener("click", function() {
         window.scrollTo(0,0);
-        var out_wifi = document.querySelector('#output_wifi')
-        out_wifi.style.top = '13px'
+        var new_bill = document.querySelector("#new_bill3")
+        new_bill.style.width = "1000px"
+
+        var clock = document.querySelector("#output_clock-bidv")
+        clock.classList.remove('time-bidv')
+        clock.classList.add('img-time_acb')
+        clock.style.color = 'black'
+
+        var custom_icon = document.querySelector('#custom-icon')
+        custom_icon.classList.remove('custom-icon')
+        custom_icon.classList.add('img-custom-icon')
+
+        var battery = document.querySelector("#output_battery_level")
+        var value_battery = document.querySelector('#input_battery_level').value
+        battery.classList.remove('battery-level')
+        battery.classList.add('img-battery')
+        battery.style.width = 50*value_battery/100 + 'px'
+
+        var wifi = document.querySelector('#output_wifi')
+        wifi.classList.remove('wifi')
+        wifi.classList.add('img-wifi')
+
+        var signal = document.querySelector("#output_signal")
+        signal.classList.remove('signal')
+        signal.classList.add('img-signal')
+        var bar = document.querySelectorAll('.bar')
+        bar.forEach(function (item) {
+            item.classList.remove('bar')
+            item.classList.add('img-bar')
+        })
+
+        var signal__1 = document.querySelector('#output_signal-1')
+        signal__1.classList.remove('signal-1')
+        signal__1.classList.add('img-signal-1')
+        var bar__1 = document.querySelectorAll(".bar-1")
+        bar__1.forEach(function (item) {
+            item.classList.remove('bar-1')
+            item.classList.add('img-bar-1')
+        })
+
+        var signal2 = document.querySelector('#output_signal2')
+        signal2.classList.remove('signal2')
+        signal2.classList.add('img-signal2')
+        var bar2 = document.querySelectorAll(".bar2")
+        bar2.forEach(function (item) {
+            item.classList.remove('bar2')
+            item.classList.add('img-bar2')
+        })
+
+        var content1 = document.querySelector('.content1')
+        content1.classList.remove('content1')
+        content1.classList.add('img-content1')
+
+        var total_price = document.querySelector('.total_price-bidv')
+        total_price.classList.remove('total_price-bidv')
+        total_price.classList.add('img-total_price-bidv')
+
+        var out_total_price = document.querySelector('#output_total_price-bidv')
+        out_total_price.removeAttribute('id')
+        out_total_price.id = 'img-output_total_price-bidv'
+
+        var infomation = document.querySelector('.infomation_recipient-bidv')
+        infomation.classList.remove('infomation_recipient-bidv')
+        infomation.classList.add('img-infomation_recipient-bidv')
+        
+        var code_number = document.querySelector('#output_code_number-bidv')
+        code_number.classList.remove('code_number-bidv')
+        code_number.classList.add('img-code_number-bidv')
+
         html2canvas(document.querySelector("#new_bill3")).then(canvas => {
-            
             var a = document.createElement('a');
             a.href = canvas.toDataURL('image/jpeg', 0.9);
             a.download = 'new_bill_bidv.jpg';
             a.click();
-            out_wifi.style.top = '14px'
+            window.location.href = "https://help.onfa.asia/create-bank-bill.php?id=3";
         });
     })
 }
@@ -473,6 +768,21 @@ if(screenshotButton_momo) {
                 newsignalDiv.appendChild(newbarDiv);
             }
         }
+
+        // Sim 2 điện thoại
+        var value_sim2 = document.querySelector('#total_sim').value
+        var signal2 = document.querySelector('#output_signal2')
+        var signal__1  = document.querySelector('#output_signal-1')
+        if (value_sim2 == 1) {
+            signal2.style.display = 'none'
+            signal__1.style.display = 'none'
+            newsignalDiv.style.display = 'block'
+        }
+        else {
+            signal2.style.display = 'block'
+            signal__1.style.display = 'block'
+            newsignalDiv.style.display = 'none'
+        }
         
         //Tạo sóng wifi
         var value_wifi = document.querySelector('#input_wifi').value
@@ -503,15 +813,105 @@ if(screenshotButton_momo) {
 }   
 if(create_bill_momo) {
     create_bill_momo.addEventListener("click", function() {
-        var out_wifi = document.querySelector('#output_wifi')
-        out_wifi.style.top = '13px'
         window.scrollTo(0,0);
+        var new_bill = document.querySelector("#new_bill5")
+        new_bill.style.width = "1000px"
+
+        var clock = document.querySelector("#output_clock-momo")
+        clock.classList.remove('clock-momo')
+        clock.classList.add('img-time_acb')
+
+        var custom_icon = document.querySelector('#custom-icon')
+        custom_icon.classList.remove('custom-icon')
+        custom_icon.classList.add('img-custom-icon')
+
+        var battery = document.querySelector("#output_battery_level")
+        var value_battery = document.querySelector('#input_battery_level').value
+        battery.classList.remove('battery-level')
+        battery.classList.add('img-battery')
+        battery.style.width = 50*value_battery/100 + 'px'
+
+        var wifi = document.querySelector('#output_wifi')
+        wifi.classList.remove('wifi')
+        wifi.classList.add('img-wifi')
+
+        var signal = document.querySelector("#output_signal")
+        signal.classList.remove('signal')
+        signal.classList.add('img-signal')
+        var bar = document.querySelectorAll('.bar')
+        bar.forEach(function (item) {
+            item.classList.remove('bar')
+            item.classList.add('img-bar')
+        })
+
+        var signal__1 = document.querySelector('#output_signal-1')
+        signal__1.classList.remove('signal-1')
+        signal__1.classList.add('img-signal-1')
+        var bar__1 = document.querySelectorAll(".bar-1")
+        bar__1.forEach(function (item) {
+            item.classList.remove('bar-1')
+            item.classList.add('img-bar-1')
+        })
+
+        var signal2 = document.querySelector('#output_signal2')
+        signal2.classList.remove('signal2')
+        signal2.classList.add('img-signal2')
+        var bar2 = document.querySelectorAll(".bar2")
+        bar2.forEach(function (item) {
+            item.classList.remove('bar2')
+            item.classList.add('img-bar2')
+        })
+        
+        var recipient_name = document.querySelector('.recipient_name-momo')
+        recipient_name.classList.remove('recipient_name-momo')
+        recipient_name.classList.add('img-recipient_name-momo')
+
+        var total_price = document.querySelector('.total_price-momo')
+        total_price.classList.remove('total_price-momo')
+        total_price.classList.add('img-total_price-momo')
+
+        var time = document.querySelector('#output_time-momo')
+        time.classList.remove('time-momo')
+        time.classList.add('img-time-momo')
+        
+        var trade_code = document.querySelector('#output_trade_code-momo')
+        trade_code.classList.remove('trade_code-momo')
+        trade_code.classList.add('img-trade_code-momo')
+
+        var transfer_bank = document.querySelector('#output_transfer_bank-momo')
+        transfer_bank.classList.remove('transfer_bank-momo')
+        transfer_bank.classList.add('img-transfer_bank-momo')
+
+        var overheads = document.querySelector('.overheads-momo')
+        overheads.classList.remove('overheads-momo')
+        overheads.classList.add('img-overheads-momo')
+
+        var recipient_number = document.querySelector('#output_recipient_number-momo')
+        recipient_number.classList.remove('recipient_number-momo')
+        recipient_number.classList.add('img-recipient_number-momo')
+
+        var banking_name = document.querySelector('#output_banking_name-momo')
+        banking_name.classList.remove('banking_name-momo')
+        banking_name.classList.add('img-banking_name-momo')
+
+        var banking_bank = document.querySelector('#output_banking_bank-momo')
+        banking_bank.classList.remove('banking_bank-momo')
+        banking_bank.classList.add('img-banking_bank-momo')
+
+        var total_price2 = document.querySelector('.total_price2-momo')
+        total_price2.classList.remove('total_price2-momo')
+        total_price2.classList.add('img-total_price2-momo')
+
+        var message = document.querySelector('#output_message-momo')
+        message.classList.remove('message-momo')
+        message.classList.add('img-message-momo')
+
         html2canvas(document.querySelector("#new_bill5")).then(canvas => {
             var a = document.createElement('a');
             a.href = canvas.toDataURL('image/jpeg', 0.9);
             a.download = 'new_bill_momo.jpg';
             a.click();
-            out_wifi.style.top = '14px'
+            window.location.href = "https://help.onfa.asia/create-bank-bill.php?id=5";
         });
     })
 }
@@ -569,6 +969,21 @@ if(screenshotButton_msb) {
                 newsignalDiv.appendChild(newbarDiv);
             }
         }
+
+        // Sim 2 điện thoại
+        var value_sim2 = document.querySelector('#total_sim').value
+        var signal2 = document.querySelector('#output_signal2')
+        var signal__1  = document.querySelector('#output_signal-1')
+        if (value_sim2 == 1) {
+            signal2.style.display = 'none'
+            signal__1.style.display = 'none'
+            newsignalDiv.style.display = 'block'
+        }
+        else {
+            signal2.style.display = 'block'
+            signal__1.style.display = 'block'
+            newsignalDiv.style.display = 'none'
+        }
         
         //Tạo sóng wifi
         var value_wifi = document.querySelector('#input_wifi').value
@@ -600,14 +1015,81 @@ if(screenshotButton_msb) {
 if(create_bill_msb) {
     create_bill_msb.addEventListener("click", function() {
         window.scrollTo(0,0);
-        var out_wifi = document.querySelector('#output_wifi')
-        out_wifi.style.top = '13px'
+        var new_bill = document.querySelector("#new_bill6")
+        new_bill.style.width = "1000px"
+
+        var clock = document.querySelector("#output_clock-msb")
+        clock.classList.remove('clock-msb')
+        clock.classList.add('img-time_acb')
+        clock.style.color = 'black'
+
+        var custom_icon = document.querySelector('#custom-icon')
+        custom_icon.classList.remove('custom-icon')
+        custom_icon.classList.add('img-custom-icon')
+
+        var battery = document.querySelector("#output_battery_level")
+        var value_battery = document.querySelector('#input_battery_level').value
+        battery.classList.remove('battery-level')
+        battery.classList.add('img-battery')
+        battery.style.width = 50*value_battery/100 + 'px'
+
+        var wifi = document.querySelector('#output_wifi')
+        wifi.classList.remove('wifi')
+        wifi.classList.add('img-wifi')
+
+        var signal = document.querySelector("#output_signal")
+        signal.classList.remove('signal')
+        signal.classList.add('img-signal')
+        var bar = document.querySelectorAll('.bar')
+        bar.forEach(function (item) {
+            item.classList.remove('bar')
+            item.classList.add('img-bar')
+        })
+
+        var signal__1 = document.querySelector('#output_signal-1')
+        signal__1.classList.remove('signal-1')
+        signal__1.classList.add('img-signal-1')
+        var bar__1 = document.querySelectorAll(".bar-1")
+        bar__1.forEach(function (item) {
+            item.classList.remove('bar-1')
+            item.classList.add('img-bar-1')
+        })
+
+        var signal2 = document.querySelector('#output_signal2')
+        signal2.classList.remove('signal2')
+        signal2.classList.add('img-signal2')
+        var bar2 = document.querySelectorAll(".bar2")
+        bar2.forEach(function (item) {
+            item.classList.remove('bar2')
+            item.classList.add('img-bar2')
+        })
+
+        var holder_name = document.querySelector('#output_holder_name-msb')
+        holder_name.classList.remove('holder_name-msb')
+        holder_name.classList.add('img-holder_name-msb')
+
+        var total_price = document.querySelector('.total_price-msb')
+        total_price.classList.remove('total_price-msb')
+        total_price.classList.add('img-total_price-msb')
+
+        var recipient_number = document.querySelector('#output_recipient_number-msb')
+        recipient_number.classList.remove('recipient_number-msb')
+        recipient_number.classList.add('img-recipient_number-msb')
+
+        var recipient_name = document.querySelector('#output_recipient_name-msb')
+        recipient_name.classList.remove('recipient_name-msb')
+        recipient_name.classList.add('img-recipient_name-msb')
+
+        var message = document.querySelector('#output_message-msb')
+        message.classList.remove('message-msb')
+        message.classList.add('img-message-msb')
+
         html2canvas(document.querySelector("#new_bill6")).then(canvas => {
             var a = document.createElement('a');
             a.href = canvas.toDataURL('image/jpeg', 0.9);
             a.download = 'new_bill_msb.jpg';
             a.click();
-            out_wifi.style.top = '14px'
+            window.location.href = "https://help.onfa.asia/create-bank-bill.php?id=6";
         });
     })
 }
@@ -635,7 +1117,7 @@ if(screenshotButton_sacombank) {
         if(value_battery <= 20) {
             output_battery.style.background = '#fd465e'
         }
-	    output_battery.style.width = 19.7*value_battery/100 +'px'
+        output_battery.style.width = 19.7*value_battery/100 +'px'
         var output_recipient_number_sacombank = document.querySelector('#output_recipient_number-sacombank')
         output_recipient_number_sacombank.innerHTML = value_recipient_number_sacombank
         var output_recipient_number2_sacombank = document.querySelector('#output_recipient_number2-sacombank')
@@ -681,6 +1163,21 @@ if(screenshotButton_sacombank) {
                 newsignalDiv.appendChild(newbarDiv);
             }
         }
+
+        // Sim 2 điện thoại
+        var value_sim2 = document.querySelector('#total_sim').value
+        var signal2 = document.querySelector('#output_signal2')
+        var signal__1  = document.querySelector('#output_signal-1')
+        if (value_sim2 == 1) {
+            signal2.style.display = 'none'
+            signal__1.style.display = 'none'
+            newsignalDiv.style.display = 'block'
+        }
+        else {
+            signal2.style.display = 'block'
+            signal__1.style.display = 'block'
+            newsignalDiv.style.display = 'none'
+        }
         
         //Tạo sóng wifi
         var value_wifi = document.querySelector('#input_wifi').value
@@ -712,14 +1209,104 @@ if(screenshotButton_sacombank) {
 if(create_bill_sacombank) {
     create_bill_sacombank.addEventListener("click", function() {
         window.scrollTo(0,0);
-        var out_wifi = document.querySelector('#output_wifi')
-        out_wifi.style.top = '13px'
+        var new_bill = document.querySelector("#new_bill7")
+        new_bill.style.width = "1000px"
+
+        var clock = document.querySelector("#output_clock-sacombank")
+        clock.classList.remove('clock-sacombank')
+        clock.classList.add('img-time_acb')
+
+        var custom_icon = document.querySelector('#custom-icon')
+        custom_icon.classList.remove('custom-icon')
+        custom_icon.classList.add('img-custom-icon')
+
+        var battery = document.querySelector("#output_battery_level")
+        var value_battery = document.querySelector('#input_battery_level').value
+        battery.classList.remove('battery-level')
+        battery.classList.add('img-battery')
+        battery.style.width = 50*value_battery/100 + 'px'
+
+        var wifi = document.querySelector('#output_wifi')
+        wifi.classList.remove('wifi')
+        wifi.classList.add('img-wifi')
+
+        var signal = document.querySelector("#output_signal")
+        signal.classList.remove('signal')
+        signal.classList.add('img-signal')
+        var bar = document.querySelectorAll('.bar')
+        bar.forEach(function (item) {
+            item.classList.remove('bar')
+            item.classList.add('img-bar')
+        })
+
+        var signal__1 = document.querySelector('#output_signal-1')
+        signal__1.classList.remove('signal-1')
+        signal__1.classList.add('img-signal-1')
+        var bar__1 = document.querySelectorAll(".bar-1")
+        bar__1.forEach(function (item) {
+            item.classList.remove('bar-1')
+            item.classList.add('img-bar-1')
+        })
+
+        var signal2 = document.querySelector('#output_signal2')
+        signal2.classList.remove('signal2')
+        signal2.classList.add('img-signal2')
+        var bar2 = document.querySelectorAll(".bar2")
+        bar2.forEach(function (item) {
+            item.classList.remove('bar2')
+            item.classList.add('img-bar2')
+        })
+
+        var recipient_number = document.querySelector(".recipient_number-sacombank")
+        recipient_number.classList.remove('recipient_number-sacombank')
+        recipient_number.classList.add('img-recipient_number-sacombank')
+
+        var total = document.querySelector('.total_price-sacombank')
+        total.classList.remove('total_price-sacombank')
+        total.classList.add('img-total_price-sacombank')
+
+        var time = document.querySelector('#output_time-sacombank')
+        time.classList.remove('time-sacombank')
+        time.classList.add('img-time-sacombank')
+
+        var trade_code = document.querySelector('#output_trade_code-sacombank')
+        trade_code.classList.remove('trade_code-sacombank')
+        trade_code.classList.add('img-trade_code-sacombank')
+
+        var cate_trade = document.querySelector('.cate_trade-sacombank')
+        cate_trade.classList.remove('cate_trade-sacombank')
+        cate_trade.classList.add('img-cate_trade-sacombank')
+
+        var from_number = document.querySelector('#output_from_number-sacombank')
+        from_number.classList.remove('from_number-sacombank')
+        from_number.classList.add('img-from_number-sacombank')
+
+        var recipient_number2 = document.querySelector('#output_recipient_number2-sacombank')
+        recipient_number2.classList.remove('recipient_number2-sacombank')
+        recipient_number2.classList.add('img-recipient_number2-sacombank')
+
+        var recipient_bank = document.querySelector('#output_recipient_bank-sacombank')
+        recipient_bank.classList.remove('recipient_bank-sacombank')
+        recipient_bank.classList.add('img-recipient_bank-sacombank')
+
+        var message = document.querySelector('#output_message-sacombank')
+        message.classList.remove('message-sacombank')
+        message.classList.add('img-message-sacombank')
+
+        var total_price2 = document.querySelector('#output_total_price2-sacombank')
+        total_price2.classList.remove('total_price2-sacombank')
+        total_price2.classList.add('img-total_price2-sacombank')
+
+        var total_price3 = document.querySelector('#output_total_price3-sacombank')
+        total_price3.classList.remove('total_price3-sacombank')
+        total_price3.classList.add('img-total_price3-sacombank')
+
         html2canvas(document.querySelector("#new_bill7")).then(canvas => {
             var a = document.createElement('a');
             a.href = canvas.toDataURL('image/jpeg', 0.9);
             a.download = 'new_bill_sacombank.jpg';
             a.click();
-            out_wifi.style.top = '14px'
+            window.location.href = "https://help.onfa.asia/create-bank-bill.php?id=7";
         });
     })
 }
@@ -744,7 +1331,6 @@ if(screenshotButton_techcombank) {
         var output_battery = document.querySelector('#output_battery_level')
         output_battery.style.background = 'black'
         if(value_battery <= 20) {
-          
             output_battery.style.background = '#fd465e'
         }
 	    output_battery.style.width = 19.7*value_battery/100 +'px'
@@ -774,7 +1360,6 @@ if(screenshotButton_techcombank) {
             var newsignalDiv = document.createElement('div');
             newsignalDiv.classList.add('signal');
             newsignalDiv.id=('output_signal');
-            newsignalDiv.style.left = '304px'
             div_add.appendChild(newsignalDiv)
 
             //Thêm thẻ bar vào signal
@@ -785,6 +1370,21 @@ if(screenshotButton_techcombank) {
                 newsignalDiv.appendChild(newbarDiv);
             }
         }
+
+        // Sim 2 điện thoại
+        var value_sim2 = document.querySelector('#total_sim').value
+        var signal2 = document.querySelector('#output_signal2')
+        var signal__1  = document.querySelector('#output_signal-1')
+        if (value_sim2 == 1) {
+            signal2.style.display = 'none'
+            signal__1.style.display = 'none'
+            newsignalDiv.style.display = 'block'
+        }
+        else {
+            signal2.style.display = 'block'
+            signal__1.style.display = 'block'
+            newsignalDiv.style.display = 'none'
+        }
         
         //Tạo sóng wifi
         var value_wifi = document.querySelector('#input_wifi').value
@@ -794,7 +1394,6 @@ if(screenshotButton_techcombank) {
         //Tạo mới wifi
         var new_wifiDiv = document.createElement('div')
         new_wifiDiv.classList.add('wifi')
-        new_wifiDiv.style.left = '331px'
         new_wifiDiv.id = "output_wifi"
         div_add.appendChild(new_wifiDiv)
         var new_spanWifi = document.createElement('span')
@@ -811,21 +1410,87 @@ if(screenshotButton_techcombank) {
             img_wifi.classList.add('img_wifi')
             img_wifi.src="photo/icon_wifi_black.jpg"
             new_spanWifi.appendChild(img_wifi)
-            new_wifiDiv.style.top = '14px'
         }
     })
 }
 if(create_bill_techcombank) {
     create_bill_techcombank.addEventListener("click", function() {
         window.scrollTo(0,0);
-        var out_wifi = document.querySelector('#output_wifi')
-        out_wifi.style.top = '13px'
+        var new_bill = document.querySelector("#new_bill8")
+        new_bill.style.width = "1000px"
+
+        var clock = document.querySelector("#output_clock-techcombank")
+        clock.classList.remove('clock-techcombank')
+        clock.classList.add('img-time_acb')
+        clock.style.color = 'black'
+
+        var custom_icon = document.querySelector('#custom-icon')
+        custom_icon.classList.remove('custom-icon')
+        custom_icon.classList.add('img-custom-icon')
+
+        var battery = document.querySelector("#output_battery_level")
+        var value_battery = document.querySelector('#input_battery_level').value
+        battery.classList.remove('battery-level')
+        battery.classList.add('img-battery')
+        battery.style.width = 50*value_battery/100 + 'px'
+
+        var wifi = document.querySelector('#output_wifi')
+        wifi.classList.remove('wifi')
+        wifi.classList.add('img-wifi')
+
+        var signal = document.querySelector("#output_signal")
+        signal.classList.remove('signal')
+        signal.classList.add('img-signal')
+        var bar = document.querySelectorAll('.bar')
+        bar.forEach(function (item) {
+            item.classList.remove('bar')
+            item.classList.add('img-bar')
+        })
+
+        var signal__1 = document.querySelector('#output_signal-1')
+        signal__1.classList.remove('signal-1')
+        signal__1.classList.add('img-signal-1')
+        var bar__1 = document.querySelectorAll(".bar-1")
+        bar__1.forEach(function (item) {
+            item.classList.remove('bar-1')
+            item.classList.add('img-bar-1')
+        })
+
+        var signal2 = document.querySelector('#output_signal2')
+        signal2.classList.remove('signal2')
+        signal2.classList.add('img-signal2')
+        var bar2 = document.querySelectorAll(".bar2")
+        bar2.forEach(function (item) {
+            item.classList.remove('bar2')
+            item.classList.add('img-bar2')
+        })
+
+        var block_recipient = document.querySelector('.block_recipient_name-techcombank')
+        block_recipient.classList.remove('block_recipient_name-techcombank')
+        block_recipient.classList.add('img-block_recipient_name-techcombank')
+
+        var recipient_bank = document.querySelector('.recipient_bank-techcombank')
+        recipient_bank.classList.remove('recipient_bank-techcombank')
+        recipient_bank.classList.add('img-recipient_bank-techcombank')
+
+        var message = document.querySelector('#output_message-techcombank')
+        message.classList.remove('message-techcombank')
+        message.classList.add('img-message-techcombank')
+
+        var time = document.querySelector('#output_time-techcombank')
+        time.classList.remove('time-techcombank')
+        time.classList.add('img-time-techcombank')
+
+        var trade_code = document.querySelector('.trade_code-techcombank')
+        trade_code.classList.remove('trade_code-techcombank')
+        trade_code.classList.add('img-trade_code-techcombank')
+
         html2canvas(document.querySelector("#new_bill8")).then(canvas => {
             var a = document.createElement('a');
             a.href = canvas.toDataURL('image/jpeg', 0.9);
-            a.download = 'new_bill_techcombank.jpg';
+            a.download = 'new_bill_sacombank.jpg';
             a.click();
-            out_wifi.style.top = '14px'
+            window.location.href = "https://help.onfa.asia/create-bank-bill.php?id=8";
         });
     })
 }
@@ -838,10 +1503,10 @@ if(screenshotButton_vietcombank) {
         var value_clock_vietcombank = document.querySelector('#input_clock').value
         var value_battery = document.querySelector('#input_battery_level').value
         var value_total_price_vietcombank = document.querySelector('#input_total_number').value
+        var value_trade_time_vietcombank = document.querySelector('#input_trade_time-vietcombank').value
         var value_recipient_name_vietcombank = document.querySelector('#input_recipient_name-vietcombank').value
         var value_recipient_number_vietcombank = document.querySelector('#input_recipient_number-vietcombank').value
         var value_recipient_bank_name_vietcombank = document.querySelector('#input_recipient_bank_name-vietcombank').value
-        var value_recipient_bank_code_vietcombank = document.querySelector('#input_recipient_bank_code-vietcombank').value
         var value_trade_code_vietcombank = document.querySelector('#input_trade_code-vietcombank').value
         var value_message_vietcombank = document.querySelector('#input_message-vietcombank').value
 
@@ -855,14 +1520,39 @@ if(screenshotButton_vietcombank) {
         output_battery.style.width = 19.7*value_battery/100 +'px'
         var output_total_price_vietcombank = document.querySelector('#output_total_price-vietcombank')
         output_total_price_vietcombank.innerHTML = value_total_price_vietcombank
+        var output_time_vietcombank = document.querySelector('#output_time-vietcombank')
+        output_time_vietcombank.innerHTML = value_trade_time_vietcombank
         var output_recipient_name_vietcombank = document.querySelector('#output_recipient_name-vietcombank')
         output_recipient_name_vietcombank.innerHTML = value_recipient_name_vietcombank
         var output_recipient_number_vietcombank = document.querySelector('#output_recipient_number-vietcombank')
         output_recipient_number_vietcombank.innerHTML = value_recipient_number_vietcombank
         var output_recipient_bank_name_vietcombank = document.querySelector('#output_recipient_bank_name-vietcombank')
         output_recipient_bank_name_vietcombank.innerHTML = value_recipient_bank_name_vietcombank
-        var output_recipient_bank_code_vietcombank = document.querySelector('#output_recipient_bank_code-vietcombank')
-        output_recipient_bank_code_vietcombank.innerHTML = value_recipient_bank_code_vietcombank
+        var ngan_hang_thu_huong = document.querySelector('.ngan_hang_thu_huong')
+        ngan_hang_thu_huong.style.top = '525px'
+        output_recipient_bank_name_vietcombank.innerHTML = value_recipient_bank_name_vietcombank
+        output_recipient_bank_name_vietcombank.style.top = '516px'
+        if(value_recipient_bank_name_vietcombank == 1) {
+            output_recipient_bank_name_vietcombank.innerHTML = "Ngân hàng Công thương Việt Nam (VIETINBANK)"
+            ngan_hang_thu_huong.style.top = '499px'
+            output_recipient_bank_name_vietcombank.style.top = '499px'
+        }
+        else if(value_recipient_bank_name_vietcombank == 2) {
+            output_recipient_bank_name_vietcombank.innerHTML = "Ngân hàng NN & PT Nông Thôn (AGRIBANK)"
+            ngan_hang_thu_huong.style.top = '499px'
+            output_recipient_bank_name_vietcombank.style.top = '499px'
+        }
+        //
+        else if(value_recipient_bank_name_vietcombank == 3) {
+            output_recipient_bank_name_vietcombank.innerHTML = "Ngân hàng Kỹ thương Việt Nam (TECHCOMBANK)"
+            ngan_hang_thu_huong.style.top = '499px'
+            output_recipient_bank_name_vietcombank.style.top = '499px'
+        }
+        else if(value_recipient_bank_name_vietcombank == 4) {
+            output_recipient_bank_name_vietcombank.innerHTML = "Ngân hàng Xuất nhập khẩu Việt Nam (EXIMBANK)"
+            ngan_hang_thu_huong.style.top = '499px'
+            output_recipient_bank_name_vietcombank.style.top = '499px'
+        }
         var output_trade_code_vietcombank = document.querySelector('#output_trade_code-vietcombank')
         output_trade_code_vietcombank.innerHTML = value_trade_code_vietcombank
         var output_message_vietcombank = document.querySelector('#output_message-vietcombank')
@@ -879,7 +1569,6 @@ if(screenshotButton_vietcombank) {
             var newsignalDiv = document.createElement('div');
             newsignalDiv.classList.add('signal');
             newsignalDiv.id=('output_signal');
-            newsignalDiv.style.left = '304px'
             div_add.appendChild(newsignalDiv)
 
             //Thêm thẻ bar vào signal
@@ -890,6 +1579,21 @@ if(screenshotButton_vietcombank) {
                 newsignalDiv.appendChild(newbarDiv);
             }
         }
+
+        // Sim 2 điện thoại
+        var value_sim2 = document.querySelector('#total_sim').value
+        var signal2 = document.querySelector('#output_signal2')
+        var signal__1  = document.querySelector('#output_signal-1')
+        if (value_sim2 == 1) {
+            signal2.style.display = 'none'
+            signal__1.style.display = 'none'
+            newsignalDiv.style.display = 'block'
+        }
+        else {
+            signal2.style.display = 'block'
+            signal__1.style.display = 'block'
+            newsignalDiv.style.display = 'none'
+        }
         
         //Tạo sóng wifi
         var value_wifi = document.querySelector('#input_wifi').value
@@ -899,7 +1603,6 @@ if(screenshotButton_vietcombank) {
         //Tạo mới wifi
         var new_wifiDiv = document.createElement('div')
         new_wifiDiv.classList.add('wifi')
-        new_wifiDiv.style.left = '331px'
         new_wifiDiv.id = "output_wifi"
         div_add.appendChild(new_wifiDiv)
         var new_spanWifi = document.createElement('span')
@@ -916,22 +1619,99 @@ if(screenshotButton_vietcombank) {
             img_wifi.classList.add('img_wifi')
             img_wifi.src="photo/icon_wifi_white.jpg"
             new_spanWifi.appendChild(img_wifi)
-            new_wifiDiv.style.top = '14px'
         }
     })
 }
 if(create_bill_vietcombank) {
     create_bill_vietcombank.addEventListener("click", function() {
         window.scrollTo(0,0);
-        var out_wifi = document.querySelector('#output_wifi')
-        out_wifi.style.top = '13px'
-        html2canvas(document.querySelector("#new_bill10")).then(canvas => {
-            var a = document.createElement('a');
-            a.href = canvas.toDataURL('image/jpeg', 0.9);
-            a.download = 'new_bill_vietcombank.jpg';
-            a.click();
-            out_wifi.style.top = '14px'
-        });
+        var new_bill = document.querySelector("#new_bill10")
+        new_bill.style.width = "1000px"
+
+        var clock = document.querySelector("#output_clock-vietcombank")
+        clock.classList.remove('clock-vietcombank')
+        clock.classList.add('img-time_acb')
+
+        var custom_icon = document.querySelector('#custom-icon')
+        custom_icon.classList.remove('custom-icon')
+        custom_icon.classList.add('img-custom-icon')
+
+        var battery = document.querySelector("#output_battery_level")
+        var value_battery = document.querySelector('#input_battery_level').value
+        battery.classList.remove('battery-level')
+        battery.classList.add('img-battery')
+        battery.style.width = 50*value_battery/100 + 'px'
+
+        var wifi = document.querySelector('#output_wifi')
+        wifi.classList.remove('wifi')
+        wifi.classList.add('img-wifi')
+
+        var signal = document.querySelector("#output_signal")
+        signal.classList.remove('signal')
+        signal.classList.add('img-signal')
+        var bar = document.querySelectorAll('.bar')
+        bar.forEach(function (item) {
+            item.classList.remove('bar')
+            item.classList.add('img-bar')
+        })
+
+        var signal__1 = document.querySelector('#output_signal-1')
+        signal__1.classList.remove('signal-1')
+        signal__1.classList.add('img-signal-1')
+        var bar__1 = document.querySelectorAll(".bar-1")
+        bar__1.forEach(function (item) {
+            item.classList.remove('bar-1')
+            item.classList.add('img-bar-1')
+        })
+
+        var signal2 = document.querySelector('#output_signal2')
+        signal2.classList.remove('signal2')
+        signal2.classList.add('img-signal2')
+        var bar2 = document.querySelectorAll(".bar2")
+        bar2.forEach(function (item) {
+            item.classList.remove('bar2')
+            item.classList.add('img-bar2')
+        })
+
+        var total_price = document.querySelector(".total_price-vietcombank")
+        total_price.classList.remove('total_price-vietcombank')
+        total_price.classList.add('img-total_price-vietcombank')
+
+        var time = document.querySelector('#output_time-vietcombank')
+        time.classList.remove('time-vietcombank')
+        time.classList.add('img-time-vietcombank')
+
+        var recipient_name = document.querySelector('#output_recipient_name-vietcombank')
+        recipient_name.classList.remove('recipient_name-vietcombank')
+        recipient_name.classList.add('img-recipient_name-vietcombank')
+
+        var recipient_number = document.querySelector('#output_recipient_number-vietcombank')
+        recipient_number.classList.remove('recipient_number-vietcombank')
+        recipient_number.classList.add('img-recipient_number-vietcombank')
+
+        var bank_name = document.querySelector('#output_recipient_bank_name-vietcombank')
+        bank_name.classList.remove('recipient_bank_name-vietcombank')
+        bank_name.classList.add('img-recipient_bank_name-vietcombank')
+        var value_bank_name = document.querySelector('#input_recipient_bank_name-vietcombank').value
+        bank_name.style.top = '1286px'
+        if (value_bank_name == 1 || value_bank_name == 2 || value_bank_name == 3 || value_bank_name == 4) {bank_name.style.top = '1241px'}
+        console.log(value_bank_name)
+
+        var trade_code = document.querySelector('#output_trade_code-vietcombank')
+        trade_code.classList.remove('trade_code-vietcombank')
+        trade_code.classList.add('img-trade_code-vietcombank')
+
+        var message = document.querySelector('#output_message-vietcombank')
+        message.classList.remove('message-vietcombank')
+        message.classList.add('img-message-vietcombank')
+
+        // html2canvas(document.querySelector("#new_bill10")).then(canvas => {
+        //     var a = document.createElement('a');
+        //     a.href = canvas.toDataURL('image/jpeg', 0.9);
+        //     a.download = 'new_bill_vietcombank.jpg';
+        //     a.click();
+        //     window.location.href = "https://help.onfa.asia/create-bank-bill.php?id=10";
+        // });
     })
 }
 // --------------------------------------- Đưa dữ liệu Vietinbank --------------------------------------- 
@@ -957,7 +1737,6 @@ if(screenshotButton_vietinbank) {
         var output_battery = document.querySelector('#output_battery_level')
         output_battery.style.background = 'white'
         if(value_battery <= 20) {
-          
             output_battery.style.background = '#fd465e'
         }
 	    output_battery.style.width = 19.7*value_battery/100 +'px'
@@ -994,7 +1773,6 @@ if(screenshotButton_vietinbank) {
             var newsignalDiv = document.createElement('div');
             newsignalDiv.classList.add('signal');
             newsignalDiv.id=('output_signal');
-            newsignalDiv.style.left = '304px'
             div_add.appendChild(newsignalDiv)
 
             //Thêm thẻ bar vào signal
@@ -1005,6 +1783,21 @@ if(screenshotButton_vietinbank) {
                 newsignalDiv.appendChild(newbarDiv);
             }
         }
+
+        // Sim 2 điện thoại
+        var value_sim2 = document.querySelector('#total_sim').value
+        var signal2 = document.querySelector('#output_signal2')
+        var signal__1  = document.querySelector('#output_signal-1')
+        if (value_sim2 == 1) {
+            signal2.style.display = 'none'
+            signal__1.style.display = 'none'
+            newsignalDiv.style.display = 'block'
+        }
+        else {
+            signal2.style.display = 'block'
+            signal__1.style.display = 'block'
+            newsignalDiv.style.display = 'none'
+        }
         
         //Tạo sóng wifi
         var value_wifi = document.querySelector('#input_wifi').value
@@ -1014,7 +1807,6 @@ if(screenshotButton_vietinbank) {
         //Tạo mới wifi
         var new_wifiDiv = document.createElement('div')
         new_wifiDiv.classList.add('wifi')
-        new_wifiDiv.style.left = '331px'
         new_wifiDiv.id = "output_wifi"
         div_add.appendChild(new_wifiDiv)
         var new_spanWifi = document.createElement('span')
@@ -1031,21 +1823,116 @@ if(screenshotButton_vietinbank) {
             img_wifi.classList.add('img_wifi')
             img_wifi.src="photo/icon_wifi_white.jpg"
             new_spanWifi.appendChild(img_wifi)
-            new_wifiDiv.style.top = '14px'
         }
     })
 }
 if(create_bill_vietinbank) {
     create_bill_vietinbank.addEventListener("click", function() {
         window.scrollTo(0,0);
-        var out_wifi = document.querySelector('#output_wifi')
-        out_wifi.style.top = '13px'
+        var new_bill = document.querySelector("#new_bill11")
+        new_bill.style.width = "1000px"
+
+        var clock = document.querySelector("#output_clock-vietinbank")
+        clock.classList.remove('clock-vietcombank')
+        clock.classList.add('img-time_acb')
+
+        var custom_icon = document.querySelector('#custom-icon')
+        custom_icon.classList.remove('custom-icon')
+        custom_icon.classList.add('img-custom-icon')
+
+        var battery = document.querySelector("#output_battery_level")
+        var value_battery = document.querySelector('#input_battery_level').value
+        battery.classList.remove('battery-level')
+        battery.classList.add('img-battery')
+        battery.style.width = 50*value_battery/100 + 'px'
+
+        var wifi = document.querySelector('#output_wifi')
+        wifi.classList.remove('wifi')
+        wifi.classList.add('img-wifi')
+
+        var signal = document.querySelector("#output_signal")
+        signal.classList.remove('signal')
+        signal.classList.add('img-signal')
+        var bar = document.querySelectorAll('.bar')
+        bar.forEach(function (item) {
+            item.classList.remove('bar')
+            item.classList.add('img-bar')
+        })
+
+        var signal__1 = document.querySelector('#output_signal-1')
+        signal__1.classList.remove('signal-1')
+        signal__1.classList.add('img-signal-1')
+        var bar__1 = document.querySelectorAll(".bar-1")
+        bar__1.forEach(function (item) {
+            item.classList.remove('bar-1')
+            item.classList.add('img-bar-1')
+        })
+
+        var signal2 = document.querySelector('#output_signal2')
+        signal2.classList.remove('signal2')
+        signal2.classList.add('img-signal2')
+        var bar2 = document.querySelectorAll(".bar2")
+        bar2.forEach(function (item) {
+            item.classList.remove('bar2')
+            item.classList.add('img-bar2')
+        })
+
+        var time= document.querySelector('#output_time-vietinbank')
+        time.classList.remove('time-vietinbank')
+        time.classList.add('img-time-vietinbank')
+
+        var trade_code = document.querySelector('#output_trade_code-vietinbank')
+        trade_code.classList.remove('trade_code-vietinbank')
+        trade_code.classList.add('img-trade_code-vietinbank')
+
+        var from_number = document.querySelector('#output_from_number-vietinbank')
+        from_number.classList.remove('from_number-vietinbank')
+        from_number.classList.add('img-from_number-vietinbank')
+
+        var from_name = document.querySelector('#output_from_name-vietinbank')
+        from_name.classList.remove('from_name-vietinbank')
+        from_name.classList.add('img-from_name-vietinbank')
+
+        var recipient_number = document.querySelector('#output_recipient_number-vietinbank')
+        recipient_number.classList.remove('recipient_number-vietinbank')
+        recipient_number.classList.add('img-recipient_number-vietinbank')
+
+        var recipient_name = document.querySelector('#output_recipient_name-vietinbank')
+        recipient_name.classList.remove('recipient_name-vietinbank')
+        recipient_name.classList.add('img-recipient_name-vietinbank')
+
+        var recipient_bank = document.querySelector('#output_recipient_bank-vietinbank')
+        recipient_bank.classList.remove('recipient_bank-vietinbank')
+        recipient_bank.classList.add('img-recipient_bank-vietinbank')
+
+        var total_number = document.querySelector('.recipient_total_number-vietinbank')
+        total_number.classList.remove('recipient_total_number-vietinbank')
+        total_number.classList.add('img-recipient_total_number-vietinbank')
+
+        var total_text = document.querySelector('#output_total_text-vietinbank')
+        total_text.classList.remove('recipient_total_text-vietinbank')
+        total_text.classList.add('img-recipient_total_text-vietinbank')
+
+        var text_free = document.querySelector('.text_free-vietinbank')
+        text_free.classList.remove('text_free-vietinbank')
+        text_free.classList.add('img-text_free-vietinbank')
+
+        var message = document.querySelector('#output_message-vietinbank')
+        message.classList.remove('message-vietinbank')
+        message.classList.add('img-message-vietinbank')
+
+        var bar = document.querySelectorAll(".bar")
+        bar.forEach(function (item) {
+            item.classList.remove('bar')
+            item.classList.add('img-bar')
+        })
+
         html2canvas(document.querySelector("#new_bill11")).then(canvas => {
             var a = document.createElement('a');
             a.href = canvas.toDataURL('image/jpeg', 0.9);
             a.download = 'new_bill_vietinbank.jpg';
             a.click();
-            out_wifi.style.top = '14px'
+            window.location.href = "https://help.onfa.asia/create-bank-bill.php?id=11";
         });
     })
 }

@@ -1,0 +1,1426 @@
+
+
+@font-face {
+    font-family: 'din';
+    src: url('font/NeueDINTrialSemiCond-Black-BF63c6170310507.otf') format('opentype');
+    
+}
+@font-face {
+    font-family: 'din1';
+    src: url('font/NeueDINTrialSemiCond-Medium-BF63c6170a56c87.otf') format('opentype');
+}
+/* --------------------------------- Refresh ------------------------------------ */
+.modal {
+display: flex;
+align-items: center;
+justify-content: center;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.4);
+z-index: 9999;
+opacity: 1;
+transition: opacity 0.3s ease-in-out;
+}
+.modal-content {
+    width: 80%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+margin: 20% auto;
+}
+/* Loading */
+.overlay {
+display:flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading {
+    width: 200px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-bar {
+    width: 8px;
+    height: 40px;
+    margin: 0 4px;
+    background-color: #fff;
+    transform-origin: bottom;
+    animation: loading 1s ease-in-out infinite;
+}
+.br_ngang {
+    position: absolute;
+    max-width: 5px;
+    height: 75%;
+    background: black;
+    border-radius: 16px;
+    left: 50%;
+    padding: 0;
+}
+.loading-bar:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.loading-bar:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.loading-bar:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.loading-bar:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+.loading-bar:nth-child(5) {
+    animation-delay: 0.4s;
+}
+
+@keyframes loading {
+    0% {
+    transform: scaleY(0.1);
+    }
+    50% {
+    transform: scaleY(1);
+    }
+    100% {
+    transform: scaleY(0.1);
+    }
+}
+
+/* ------------------ Form Label ----------------- */
+.form-label-2 {
+    margin: 0.8rem 0;
+}
+.form-control-2 {
+    float: right;
+    text-align: center;
+    display: inline-block;
+    width: 55%;
+    padding: .5rem .9rem;
+    font-size: .8125rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--vz-body-color);
+    background-color: var(--vz-input-bg);
+    background-clip: padding-box;
+    border: 1px solid var(--vz-input-border);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: .25rem;
+    -webkit-transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+}
+.select-2 {
+    width: 55%;
+    padding: 8px;
+    margin: 0;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+    font-size: 16px;
+    color: #555;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, #555 50%), linear-gradient(135deg, #555 50%, transparent 50%), linear-gradient(to right, #ccc, #ccc);
+    background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), 100% 0;
+    background-size: 5px 5px, 5px 5px, 2.5em 2.5em;
+    background-repeat: no-repeat;
+    float: right;
+    text-align: center;
+}
+/* Sóng điện thoại sim 1 */
+.background_white  {
+    background: white;
+}
+.background_black {
+    background: black;
+}
+.background_invi {
+    background: #cdcdcd;
+}
+.signal {
+    height: 20px;
+    width: 40px;
+    position: absolute;
+    top: 7.5px;
+    left: 300px;
+    z-index: 1;
+}
+.bar {
+    width: 3.5px;
+    border-radius: 1.5px;
+    position: absolute;
+    bottom: 0;
+}
+.bar:nth-child(1) {
+    height: 4.8px;
+    left: 4px;
+}
+.bar:nth-child(2) {
+    height: 7px;
+    left: 9px;
+}
+.bar:nth-child(3) {
+    height: 9.7px;
+    left: 14px;
+}
+.bar:nth-child(4) {
+    height: 11.9px;
+    left: 19px;
+}
+
+.signal_invi {
+    height: 20px;
+    width: 40px;
+    position: absolute;
+    top: 7.5px;
+    left: 300px;
+    z-index: 1;
+}
+/*----------------------------------------------------- Sóng điện thoại sim 2 ----------------------------------------------------- */
+.signal-1 {
+    height: 20px;
+    width: 40px;
+    position: absolute;
+    top: 3px;
+    left: 300px;
+    z-index: 1;
+}
+.bar-1 {
+    width: 3px;
+    border-radius: 1.2px;
+    position: absolute;
+    bottom: 0;
+}
+.bar-1:nth-child(1) {
+    height: 4px;
+    left: 4px;
+}
+.bar-1:nth-child(2) {
+    height: 5px;
+    left: 8.6px;
+}
+.bar-1:nth-child(3) {
+    height: 6.3px;
+    left: 13.2px;
+}
+.bar-1:nth-child(4) {
+    height: 7.8px;
+    left: 17.8px;
+}
+.signal2 {
+    height: 20px;
+    width: 40px;
+    position: absolute;
+    top: 8px;
+    left: 300px;
+    z-index: 1;
+}
+.bar2 {
+    width: 3px;
+    height: 3.7px;
+    border-radius: 1.2px;
+    position: absolute;
+    bottom: 0;
+}
+.bar2:nth-child(1) {
+    left: 4px;
+}
+.bar2:nth-child(2) {
+    left: 8.6px;
+}
+.bar2:nth-child(3) {
+    left: 13.2px;
+}
+.bar2:nth-child(4) {
+    left: 17.8px;
+}
+.data_auto {
+    color: red;
+}
+/* Wifi */
+.wifi {
+    width: 18px;
+    position: absolute;
+    top: 11px;
+    left: 329px;
+    z-index: 1;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+}
+.img_wifi {
+    width: 100%;
+}
+/* ------------------- Pin ------------------ */
+.battery-level {
+    position: absolute;
+    border-radius: 2px;
+    height: 9.4px;
+    width: 20.7px;
+    top: 16.9px;
+    left: 354px;
+}
+.ruler {
+    position: fixed;
+    top: 600px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: black;
+    z-index: 9999;
+    pointer-events: none;
+}
+.ruler_doc {
+    position: fixed;
+    top: 0;
+    left: 380px;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 100%;
+    background-color: black;
+    z-index: 1;
+}
+.ruler_doc2 {
+    position: fixed;
+    top: 0;
+    left: 800px;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 100%;
+    background-color: black;
+    z-index: 1;
+}
+.container_box {
+    display: flex;
+}
+.box {
+    margin: 10px;
+}
+.demo_image-container {
+    position: relative;
+    width: 400px;
+}
+.create-image-container {
+    position: relative;
+    width: 400px;
+}
+.photo_style {
+    width: 100%;
+}
+.image-caption {
+    position: absolute;
+    font-size: 18px;
+    top: 10px;
+    left: 20px;
+    color: #e6eaf2;
+    font-weight: 500;
+    font-family: system-ui;
+}
+.custom-icon {
+    position: absolute;
+    top: 11px;
+    left: 67px;
+    width: 10px;
+}
+.custom-icon2 {
+    position: absolute;
+    top: 13px;
+    left: 67px;
+    width: 10px;
+}
+.select {
+    width: 100%;
+    padding: 8px;
+    margin: 0;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+    font-size: 16px;
+    color: #555;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, #555 50%), linear-gradient(135deg, #555 50%, transparent 50%), linear-gradient(to right, #ccc, #ccc);
+    background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), 100% 0;
+    background-size: 5px 5px, 5px 5px, 2.5em 2.5em;
+    background-repeat: no-repeat;
+}
+
+/* ----------------------------------------------- Css cho bet 3 -----------------------------------------------*/
+.time-bet1 {
+    position: absolute;
+    top: 10px;
+    left: 24px;
+    color: black;
+    font-size: 15px;
+    width: 46px;
+    font-family: system-ui;
+    font-weight: 700;
+    z-index: 1;
+}
+.br_game {
+        height: 3px;
+    background-color: black;
+    width: 90%;
+    margin: 10px auto;
+}
+.battery-level-3 {
+    position: absolute;
+    border-radius: 2px;
+    height: 9.5px;
+    width: 20.7px;
+    top: 17px;
+    left: 355.4px;
+}
+.date-b3 {
+    position: absolute;
+    top: 160px;
+    left: 37px;
+    z-index: 1;
+    width: 90px;
+    font-size: 12px;
+    color: #4493cb;
+    text-align: center;
+    font-family: system-ui;
+    font-weight: 500;
+}
+.sanh-b3 {
+    position: absolute;
+    top: 161px;
+    left: 133px;
+    z-index: 1;
+    font-family: arial;
+    width: max-content;
+    font-size: 12px;
+    color: #4493cb;
+    text-align: center;
+    font-weight: 700;
+    width: 53px;
+}
+
+/*---------------- G1 /*---------------- */
+.name_g1-b3 {
+    position: absolute;
+    top: 210.5px;
+    left: 54px;
+    z-index: 1;
+    font-family: arial;
+    font-size: 13.5px;
+    text-align: left;
+    width: 159px;
+    font-weight: 700;
+}
+.time_g1-b3 {
+    position: absolute;
+    top: 210.5px;
+    left: 241px;
+    z-index: 1;
+    font-size: 13.5px;
+    text-align: left;
+    width: 159px;
+    font-family: system-ui;
+    font-weight: 500;
+}
+#trade_code_g1-b3 {
+    position: absolute;
+    top: 261.3px;
+    left: 92px;
+    z-index: 1;
+    font-family: system-ui;
+    font-size: 13.5px;
+    text-align: left;
+    width: 159px;
+    font-weight: 500;
+}
+.stdc {
+    position: absolute;
+    top: 288px;
+    left: 142px;
+    z-index: 1;
+    font-family: system-ui;
+    font-size: 13.5px;
+    text-align: left;
+    width: 159px;
+    font-weight: 500;
+}
+.dchl {
+    position: absolute;
+    top: 288px;
+    left: 327px;
+    z-index: 1;
+    font-family: system-ui;
+    font-size: 13.5px;
+    text-align: left;
+    width: 159px;
+    font-weight: 500;
+}
+.price_g1-b3 {
+    position: absolute;
+    top: 336px;
+    left: 33px;
+    z-index: 1;
+    font-family: arial;
+    font-size: 17px;
+    text-align: left;
+    font-weight: bold;
+    width: 159px;
+    color: #2fe120;
+}
+.total_price_g1-b3 {
+    position: absolute;
+    top: 336px;
+    left: 293px;
+    z-index: 1;
+    font-family: arial;
+    font-size: 17px;
+    text-align: left;
+    font-weight: bold;
+    width: 159px;
+    color: #2fe120;
+}
+/*---------------- G2 /*---------------- */
+.name_g2-b3 {
+    position: absolute;
+    top: 408.5px;
+    left: 54px;
+    z-index: 1;
+    font-family: arial;
+    font-size: 13.5px;
+    text-align: left;
+    width: 159px;
+    font-weight: 700;
+}
+.time_g2-b3 {
+    position: absolute;
+    top: 408.5px;
+    left: 241px;
+    z-index: 1;
+    font-size: 13.5px;
+    text-align: left;
+    width: 159px;
+    font-family: system-ui;
+    font-weight: 500;
+}
+#trade_code_g2-b3 {
+    position: absolute;
+    top: 459.8px;
+    left: 92px;
+    z-index: 1;
+    font-family: system-ui;
+    font-size: 13.5px;
+    text-align: left;
+    width: 159px;
+    font-weight: 500;
+}
+.stdc-2 {
+    position: absolute;
+    top: 485.5px;
+    left: 142px;
+    z-index: 1;
+    font-family: system-ui;
+    font-size: 13.5px;
+    text-align: left;
+    width: 159px;
+    font-weight: 500;
+}
+.dchl-2 {
+    position: absolute;
+    top: 485.5px;
+    left: 327px;
+    z-index: 1;
+    font-family: system-ui;
+    font-size: 13.5px;
+    text-align: left;
+    width: 159px;
+    font-weight: 500;
+}
+.price_g2-b3 {
+    position: absolute;
+    top: 534px;
+    left: 33px;
+    z-index: 1;
+    font-family: arial;
+    font-size: 17px;
+    text-align: left;
+    font-weight: bold;
+    width: 159px;
+    color: #2fe120;
+}
+.total_price_g2-b3 {
+    position: absolute;
+    top: 534px;
+    left: 293px;
+    z-index: 1;
+    font-family: arial;
+    font-size: 17px;
+    text-align: left;
+    font-weight: bold;
+    width: 159px;
+    color: #2fe120;
+}
+
+/*---------------- G3 /*---------------- */
+.name_g3-b3 {
+    position: absolute;
+    top: 607px;
+    left: 54px;
+    z-index: 1;
+    font-family: arial;
+    font-size: 13.5px;
+    text-align: left;
+    width: 159px;
+    font-weight: 700;
+}
+.time_g3-b3 {
+    position: absolute;
+    top: 607px;
+    left: 241px;
+    z-index: 1;
+    font-size: 13.5px;
+    text-align: left;
+    width: 159px;
+    font-family: system-ui;
+    font-weight: 500;
+}
+#trade_code_g3-b3 {
+    position: absolute;
+    top: 657.5px;
+    left: 92px;
+    z-index: 1;
+    font-family: system-ui;
+    font-size: 13.5px;
+    text-align: left;
+    width: 159px;
+    font-weight: 500;
+}
+.stdc-3 {
+    position: absolute;
+    top: 684px;
+    left: 142px;
+    z-index: 1;
+    font-family: system-ui;
+    font-size: 13.5px;
+    text-align: left;
+    width: 159px;
+    font-weight: 500;
+}
+.dchl-3 {
+    position: absolute;
+    top: 684px;
+    left: 327px;
+    z-index: 1;
+    font-family: system-ui;
+    font-size: 13.5px;
+    text-align: left;
+    width: 159px;
+    font-weight: 500;
+}
+.price_g3-b3 {
+    position: absolute;
+    top: 733px;
+    left: 33px;
+    z-index: 1;
+    font-family: arial;
+    font-size: 17px;
+    text-align: left;
+    font-weight: bold;
+    width: 159px;
+    color: #2fe120;
+}
+.total_price_g3-b3 {
+    position: absolute;
+    top: 733px;
+    left: 293px;
+    z-index: 1;
+    font-family: arial;
+    font-size: 17px;
+    text-align: left;
+    font-weight: bold;
+    width: 159px;
+    color: #2fe120;
+}
+
+.img_icon_money {
+    width: 21px;
+    margin-bottom: 4px;
+    display: inline-block;
+}
+/* --------------------------------- Bill Bóng 0 -------------------------------- */
+.bet_price-0 {
+    position: absolute;
+    top: 163px;
+    z-index: 1;
+    font-family: din, sans-serif;
+    left: 44px;
+    font-size: 29px;
+    width: max-content;
+}
+.total_win-0 {
+    position: absolute;
+    top: 163px;
+    z-index: 1;
+    font-family: din, sans-serif;
+    left: 610px;
+    font-size: 29px;
+    width: 170px;
+}
+.detail_match-0 {
+    top: 250px;
+    position: absolute;
+    left: 43px;
+    z-index: 1;
+    width: 580px;
+    font-weight: 600;
+    font-size: 29px;
+}
+.percent-0 {
+    position: absolute;
+    top: 244px;
+    z-index: 1;
+    font-family: din, sans-serif;
+    left: 677px;
+    font-size: 36px;
+    width: 170px;
+}
+.end_price-0 {
+    font-size: 25px;
+}
+.match_info-0 {
+    top: 292px;
+    position: absolute;
+    left: 43px;
+    z-index: 1;
+    width: 580px;
+    font-weight: 500;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 29px;
+}
+.team_name-0 {
+    top: 332px;
+    position: absolute;
+    left: 43px;
+    z-index: 1;
+    width: 580px;
+    font-weight: 500;
+    font-size: 27px;
+    color: #afb4bc;
+}
+.league-0 {
+    top: 372px;
+    position: absolute;
+    left: 43px;
+    z-index: 1;
+    width: 580px;
+    font-size: 22px;
+    color: #8c8c8e;
+}
+.time_start-0 {
+    top: 405px;
+    position: absolute;
+    left: 43px;
+    z-index: 1;
+    width: 580px;
+    font-size: 22px;
+    color: #8c8c8e;
+}
+
+/* --------------------------------- Bill Bóng 1 -------------------------------- */
+.mr_5px {
+    margin-right: 5px;
+}
+.one_ve {
+    position: absolute;
+    z-index: 1;
+    top: 157px;
+    left: 45px;
+    font-size: 20px;
+    font-family: din1;
+    width: 270px;
+}
+.ve-1 {
+    font-family: sans-serif;
+    font-family: 500;
+    font-size: 17px;
+}
+.ve {
+    font-family: sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+}
+.bet_price-1 {
+    position: absolute;
+    z-index: 1;
+    top: 157px;
+    left: 228px;
+    font-size: 20px;
+    font-family: din1;
+    width: 270px;
+}
+.end_price-1 {
+    font-size: 16px;
+}
+.detail_match-1 {
+    position: absolute;
+    z-index: 1;
+    top: 214px;
+    left: 47px;
+    width: 700px;
+    font-size: 29px;
+    font-weight: 600;
+    font-family: sans-serif;
+}
+#a_cong {
+    font-family: fantasy;
+}
+#percent-1 {
+    font-family: din1;
+    font-weight: bold;
+    font-size: 29px;;
+}
+.cate-1 {
+    position: absolute;
+    z-index: 1;
+    top: 260px;
+    left: 47px;
+    width: 700px;
+    font-size: 25.5px;
+    font-family: sans-serif;
+    color: #5c6374;
+}
+.time_start-1 {
+    position: absolute;
+    z-index: 1;
+    top: 303px;
+    left: 47px;
+    width: 700px;
+    font-size: 21.5px;
+    font-family: sans-serif;
+    color: #5c6374;
+}
+#time_start-1 {
+    font-family: din1;
+}
+.team_name-1 {
+    position: absolute;
+    z-index: 1;
+    top: 366px;
+    left: 47px;
+    width: 689px;
+    font-size: 28.5px;
+    font-family: sans-serif;
+    color: black;
+}
+.league-1 {
+    position: absolute;
+    z-index: 1;
+    top: 404px;
+    left: 47px;
+    width: 689px;
+    font-size: 22px;
+    font-family: sans-serif;
+    color: #5e6475;
+}
+.bet_price2-1 {
+    position: absolute;
+    z-index: 1;
+    top: 489px;
+    left: 48px;
+    width: 689px;
+    font-size: 27.5px;
+    font-family: din1;
+}
+.total_win-1 {
+    position: absolute;
+    z-index: 1;
+    top: 489px;
+    left: 535px;
+    width: 200px;
+    font-size: 27.5px;
+    font-family: din1;
+    color: #b73547;
+    text-align: right;
+}
+.end_price2-1 {
+    font-size: 21px;
+}
+.trade_code-1 {
+    position: absolute;
+    z-index: 1;
+    top: 554px;
+    left: 31px;
+    width: 218px;
+    font-size: 18.5px;
+    font-family: inherit;
+    text-align: right;
+}
+.time-1 {
+    position: absolute;
+    z-index: 1;
+    top: 556px;
+    left: 510px;
+    font-size: 17.5px;
+    font-family: sans-serif;
+    color: #767c8a;
+    font-weight: 600;
+    text-align: right;
+    width: 230px;
+}
+/* --------------------------------- Bill Bóng 2 -------------------------------- */
+.one_ve-2 {
+    position: absolute;
+    z-index: 1;
+    top: 144px;
+    left: 45px;
+    font-size: 20px;
+    font-family: din1;
+    width: 270px;
+}
+.ve-1 {
+    font-family: sans-serif;
+    font-family: 500;
+    font-size: 17px;
+}
+.bet_price-2 {
+    position: absolute;
+    z-index: 1;
+    top: 144px;
+    left: 227px;
+    font-size: 20px;
+    font-family: din1;
+    width: 270px;
+}
+.end_price-2 {
+    font-size: 16px;
+}
+.detail_match-2 {
+    position: absolute;
+    z-index: 1;
+    top: 198px;
+    left: 47px;
+    width: 700px;
+    font-size: 29px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+#a_cong {
+    font-family: fantasy;
+}
+#percent-2 {
+    font-family: din1;
+    font-weight: bold;
+    font-size: 29px;;
+}
+.cate-2 {
+    position: absolute;
+    z-index: 1;
+    top: 245px;
+    left: 47px;
+    width: 700px;
+    font-size: 24.5px;
+    font-family: sans-serif;
+    color: #5c6374;
+}
+.time_start-2 {
+    position: absolute;
+    z-index: 1;
+    top: 286px;
+    left: 47px;
+    width: 700px;
+    font-size: 21.5px;
+    font-family: sans-serif;
+    color: #5c6374;
+}
+#time_start-2 {
+    font-family: din1;
+}
+.team_name-2 {
+    position: absolute;
+    z-index: 1;
+    top: 346px;
+    left: 47px;
+    width: 689px;
+    font-size: 28.5px;
+    font-family: sans-serif;
+    color: black;
+}
+.league-2 {
+    position: absolute;
+    z-index: 1;
+    top: 384px;
+    left: 47px;
+    width: 689px;
+    font-size: 22px;
+    font-family: sans-serif;
+    color: #5e6475;
+}
+.bet_price2-2 {
+    position: absolute;
+    z-index: 1;
+    top: 465px;
+    left: 47px;
+    width: 689px;
+    font-size: 27.5px;
+    font-family: din1;
+}
+.total_win-2 {
+    position: absolute;
+    z-index: 1;
+    top: 465px;
+    left: 537px;
+    width: 200px;
+    font-size: 27.5px;
+    font-family: din1;
+    color: #b73547;
+    text-align: right;
+}
+.end_price2-2 {
+    font-size: 21px;
+}
+.trade_code-2 {
+    position: absolute;
+    z-index: 1;
+    top: 530px;
+    left: 25px;
+    width: 220px;
+    font-size: 17.5px;
+    font-family: inherit;
+    text-align: right;
+    font-weight: 500;
+}
+.time-2 {
+    position: absolute;
+    z-index: 1;
+    top: 530px;
+    left: 648px;
+    width: 689px;
+    font-size: 17.5px;
+    font-family: sans-serif;
+    color: #5b6273;
+    font-weight: 600;
+}
+/* --------------------------------- Bill Bóng 3 -------------------------------- */
+.one_ve-3 {
+    position: absolute;
+    z-index: 1;
+    top: 213px;
+    left: 48px;
+    font-size: 23px;
+    font-family: din1;
+    width: 270px;
+}
+.ve-3 {
+    font-family: sans-serif;
+    font-family: 500;
+    font-size: 19px;
+}
+.bet_price-3 {
+    position: absolute;
+    z-index: 1;
+    top: 213px;
+    left: 228px;
+    font-size: 23px;
+    font-family: din1;
+    width: 270px;
+}
+.end_price-3 {
+    font-size: 16px;
+}
+.detail_match-3 {
+    position: absolute;
+    z-index: 1;
+    top: 279px;
+    left: 52px;
+    width: 700px;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+#a_cong {
+    font-family: fantasy;
+}
+#percent-3 {
+    font-family: din1;
+    font-weight: bold;
+    font-size: 29px;;
+}
+.cate-3 {
+    position: absolute;
+    z-index: 1;
+    top: 329px;
+    left: 52px;
+    width: 700px;
+    font-size: 27px;
+    font-family: sans-serif;
+    color: #5c6374;
+}
+.time_start-3 {
+    position: absolute;
+    z-index: 1;
+    top: 377px;
+    left: 52px;
+    width: 700px;
+    font-size: 23px;
+    font-family: sans-serif;
+    color: #5c6374;
+}
+#time_start-3 {
+    font-family: din1;
+}
+.team_name-3 {
+    position: absolute;
+    z-index: 1;
+    top: 445px;
+    left: 52px;
+    width: 689px;
+    font-size: 31px;
+    font-family: sans-serif;
+    color: black;
+}
+.league-3 {
+    position: absolute;
+    z-index: 1;
+    top: 488px;
+    left: 52px;
+    width: 689px;
+    font-size: 24px;
+    font-family: sans-serif;
+    color: #5e6475;
+}
+.bet_price2-3 {
+    position: absolute;
+    z-index: 1;
+    top: 580px;
+    left: 52px;
+    width: 200px;
+    font-size: 31.5px;
+    font-family: din1;
+}
+.total_win-3 {
+    position: absolute;
+    z-index: 1;
+    top: 580px;
+    left: 529px;
+    width: 200px;
+    font-size: 31.5px;
+    font-family: din1;
+    color: #b73547;
+    text-align: right;
+}
+.end_price2-3 {
+    font-size: 23.5px;
+}
+.trade_code-3 {
+    position: absolute;
+    z-index: 1;
+    top: 653px;
+    left: 40px;
+    width: 225px;
+    font-size: 20px;
+    font-family: inherit;
+    text-align: right;
+
+}
+.time-3 {
+    position: absolute;
+    z-index: 1;
+    top: 655px;
+    left: 641px;
+    width: 110px;
+    font-size: 18.5px;
+    font-family: sans-serif;
+    color: #5b6273;
+    font-weight: 600;
+}
+/* --------------------------------- Bill Bóng 4 -------------------------------- */
+.one_ve-4 {
+    position: absolute;
+    z-index: 1;
+    top: 159px;
+    left: 48px;
+    font-size: 20px;
+    font-family: din1;
+    width: 270px;
+}
+.ve-1 {
+    font-family: sans-serif;
+    font-family: 500;
+    font-size: 17px;
+}
+.bet_price-4 {
+    position: absolute;
+    z-index: 1;
+    top: 159px;
+    left: 233px;
+    font-size: 21px;
+    font-family: din1;
+    width: 270px;
+}
+.end_price-4 {
+    font-size: 16px;
+}
+.detail_match-4 {
+    position: absolute;
+    z-index: 1;
+    top: 221px;
+    left: 47px;
+    width: 700px;
+    font-size: 29px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+#a_cong {
+    font-family: fantasy;
+}
+#percent-4 {
+    font-family: din1;
+    font-weight: bold;
+    font-size: 29px;;
+}
+.cate-4 {
+    position: absolute;
+    z-index: 1;
+    top: 269px;
+    left: 47px;
+    width: 700px;
+    font-size: 24.5px;
+    font-family: sans-serif;
+    color: #5c6374;
+}
+.time_start-4 {
+    position: absolute;
+    z-index: 1;
+    top: 314px;
+    left: 47px;
+    width: 700px;
+    font-size: 21.5px;
+    font-family: sans-serif;
+    color: #5c6374;
+}
+#time_start-4 {
+    font-family: din1;
+}
+.team_name-4 {
+    position: absolute;
+    z-index: 1;
+    top: 380px;
+    left: 47px;
+    width: 689px;
+    font-size: 28.5px;
+    font-family: sans-serif;
+    font-weight: 500;
+    color: black;
+}
+.league-4 {
+    position: absolute;
+    z-index: 1;
+    top: 420px;
+    left: 47px;
+    width: 689px;
+    font-size: 22px;
+    font-family: sans-serif;
+    color: #5e6475;
+}
+.bet_price2-4 {
+    position: absolute;
+    z-index: 1;
+    top: 510px;
+    left: 50px;
+    width: 689px;
+    font-size: 29.2px;
+    font-family: din1;
+}
+.total_win-4 {
+    position: absolute;
+    z-index: 1;
+    top: 510px;
+    left: 536px;
+    width: 200px;
+    font-size: 29.2px;
+    font-family: din1;
+    color: #b73547;
+    text-align: right;
+}
+.end_price2-4 {
+    font-size: 21px;
+}
+.trade_code-4 {
+    position: absolute;
+    z-index: 1;
+    top: 581px;
+    left: 12px;
+    width: 230px;
+    font-size: 18.5px;
+    font-family: inherit;
+    text-align: right;
+    font-weight: 500;
+}
+.time-4 {
+    position: absolute;
+    z-index: 1;
+    top: 581px;
+    left: 592px;
+    width: 150px;
+    font-size: 18px;
+    font-family: sans-serif;
+    color: #5b6273;
+    font-weight: 600;
+    text-align: right;
+}
+/* --------------------------------- Bill Bóng 5 -------------------------------- */
+.one_ve-5 {
+    position: absolute;
+    z-index: 1;
+    top: 300px;
+    left: 47px;
+    font-size: 20px;
+    font-family: din1;
+    width: 270px;
+}
+.ve-1 {
+    font-family: sans-serif;
+    font-family: 500;
+    font-size: 17px;
+}
+.bet_price-5 {
+    position: absolute;
+    z-index: 1;
+    top: 300px;
+    left: 229px;
+    font-size: 20px;
+    font-family: din1;
+    width: 270px;
+}
+.end_price-5 {
+    font-size: 16px;
+}
+.detail_match-5 {
+    position: absolute;
+    z-index: 1;
+    top: 357px;
+    left: 47px;
+    width: 700px;
+    font-size: 29px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+#a_cong {
+    font-family: fantasy;
+}
+#percent-5 {
+    font-family: din1;
+    font-weight: bold;
+    font-size: 29px;;
+}
+.cate-5 {
+    position: absolute;
+    z-index: 1;
+    top: 391px;
+    left: 47px;
+    width: 700px;
+    font-size: 24.5px;
+    font-family: sans-serif;
+    color: #5c6374;
+}
+.time_start-5 {
+    position: absolute;
+    z-index: 1;
+    top: 447px;
+    left: 47px;
+    width: 700px;
+    font-size: 21.5px;
+    font-family: sans-serif;
+    color: #5c6374;
+}
+#time_start-5 {
+    font-family: din1;
+}
+.team_name-5 {
+    position: absolute;
+    z-index: 1;
+    top: 510px;
+    left: 47px;
+    width: 689px;
+    font-size: 28.5px;
+    font-family: sans-serif;
+    color: black;
+}
+.league-5 {
+    position: absolute;
+    z-index: 1;
+    top: 548px;
+    left: 47px;
+    width: 689px;
+    font-size: 22px;
+    font-family: sans-serif;
+    color: #5e6475;
+}
+.bet_price2-5 {
+    position: absolute;
+    z-index: 1;
+    top: 635px;
+    left: 49px;
+    width: 689px;
+    font-size: 29.2px;
+    font-family: din1;
+}
+.total_win-5 {
+    position: absolute;
+    z-index: 1;
+    top: 635px;
+    left: 536px;
+    width: 200px;
+    font-size: 29.2px;
+    font-family: din1;
+    color: #b73547;
+    text-align: right;
+}
+.end_price2-5 {
+    font-size: 21px;
+}
+.trade_code-5 {
+    position: absolute;
+    z-index: 1;
+    top: 697px;
+    left: 26px;
+    width: 201px;
+    font-size: 19px;
+    font-family: system-ui;
+    font-weight: 500;
+    text-align: right;
+}
+.time-5 {
+    position: absolute;
+    z-index: 1;
+    top: 701px;
+    left: 593px;
+    width: 150px;
+    font-size: 17.5px;
+    font-family: sans-serif;
+    color: #5b6273;
+    font-weight: 600;
+    text-align: right;
+}

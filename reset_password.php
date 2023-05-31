@@ -121,7 +121,7 @@
         </div>
     </div>
     <div class="auth-page-wrapper pt-5">
-        <div class="auth-one-bg-position auth-one-bg" id="auth-particles">
+        <div class="auth-one-bg-position auth-one-bg" id="auth-particles" style="background: #000033">
             <div class="bg-overlay"></div>
 
             <div class="shape">
