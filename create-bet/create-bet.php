@@ -199,6 +199,7 @@
                         </div>
                     </div>
                     <?php
+                        $photos = json_decode($value['photo']);
                         switch ($id) {
                             //------------------------- Dữ liệu đơn cược Bóng -------------------------
                             case 1: { ?>
@@ -270,30 +271,79 @@
                                                             <input type="text" class="form-control-2" id="input_price" style="background-color: rgb(196, 205, 209);" value="<?php echo rand(1,9)*100 ?>">
                                                         </div>
                                                         <div>
-                                                            <label class="form-label-2">Mã giao dịch<span class="data_auto">(*)</span></label>
-                                                            <input type="text" class="form-control-2" id="input_trade_code" value="<?php echo rand(100000000000000000,999999999999999999) ?>">
+                                                            <label class="form-label-2">Mẫu đơn cược<span class="data_auto">(*)</span></label>
+                                                            <select class="select-2" id="cate_bill">
+                                                                <option value="1">1</option>
+                                                                <option value="2">2</option>
+                                                                <option value="3">3</option>
+                                                                <option value="4">4</option>
+                                                                <option value="5">5</option>
+                                                                <!-- <option value="6">6</option> -->
+                                                            </select>
                                                         </div>
                                                     </div>
                                                 </div>
-
+                                                
                                                 <div class="mt-4; w-50" style="margin: 0px auto">
-                                                    <button class="btn btn-success w-100" id="buttun-create-bet-ball">Tạo hóa đơn mới</button>
+                                                    <button class="btn btn-success w-100" id="buttun-create-bet-ball">Tạo đơn cược bóng mới</button>
                                                 </div>
                                                 <div style="color:red; text-align:center;">
                                                     <i>Những mục đánh dấu (*) là dữ liệu tạo tự động, có thể chỉnh sửa nếu cần thiết</i>
                                                 </div>
                                             </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="row">
+                                <div class="container">
+                                    <div class="center-block">
+                                        <div id="carouselExampleIndicators" class="carousel slide">
+                                            <div class="carousel-indicators">
+                                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true"><span>1</button>
+                                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" ><span>2</span></button>
+                                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" ><span>3</span></button>
+                                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" ><span>4</span></button>
+                                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" ><span>5</span></button>
+                                            </div>
+                                            <!-- <div class="carousel-indicators">
+                                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                                <?php
+                                                    for ($i = 1; $i <= 5; $i++) { ?>
+                                                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<?php echo $i ?>" aria-label="Slide <?php echo $i+1 ?>"></button>
+                                                <?php } ?>
+                                            </div> -->
+                                            <div class="carousel-inner">
+                                                <div class="carousel-item active" >
+                                                    <img src="photo-bet/photo_demo1.png" class="d-block w-100" alt="...">
+                                                </div>
+                                                <?php
+                                                    for ($i = 2; $i <= 5; $i++) { ?>
+                                                        <div class="carousel-item">
+                                                            <img src="photo-bet/photo_demo<?php echo $i ?>.png" class="d-block w-100" alt="...">
+                                                        </div>
+                                                <?php } ?>
+                                            </div>
+                                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Previous</span>
+                                            </button>
+                                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Next</span>
+                                            </button>
+                                            
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="opacity:1">
                                     <?php 
-                                    $photos = json_decode($value['photo']);
                                     foreach ($photos as $key_photo => $photo) { ?>
                                     <div class="col-md-6 align-self-end">
-                                        <div class="card"id="new-bet-ball-<?php echo $key_photo ?>">
-                                            <div class="card-body w-100" style="margin:0;">
+                                        <div class="card">
+                                            <div class="card-body w-100" style="padding:0;" id="new-bet-ball-<?php echo $key_photo ?>">
                                                 <img src="photo-bet/<?php echo $photo ?>.png" style="width: 100%; position: relative"/>
                                                 <?php
                                                     switch($key_photo) {
@@ -311,7 +361,8 @@
                                                             <div class="one_ve">1<span class="ve"> Vé</span></div>
                                                             <div class="bet_price-1"><span class="mr_5px"><img src="photo-bet/icon_money.png" class="img_icon_money"/> </span><span id="bet_price-1">1 ,000</span><span class="end_price-1">.00</span></div>
                                                             <div class="detail_match-1"><span id="detail_match-1">Manchester United FC -0.5</span><span id="a_cong"> @ </span><span class="percent-1">1.02</span></div>
-                                                            <div class="cate-1"><span id="match-1">Cược Chấp</span><span> </span><span id="cate-1">Kèo Hồng Kông</span></div>
+                                                            <div class="cate-1"><span id="match-1">Cược Chấp</span><span id="half-1"> </span><span id="cate-1">Kèo Hồng Kông</span>
+                                                            </div>
                                                             <div class="time_start-1">Begin Match <span id="time_start-1">05/08 01:00</span></div>
                                                             <div class="team_name-1"><span id="name_team1-1">West Ham United</span> vs. <span id="name_team2-1">Manchester United FC</span></div>
                                                             <div class="league-1">Giải Ngoại Hạng Anh</div>
@@ -324,7 +375,8 @@
                                                             <div class="one_ve-2">1<span class="ve"> Vé</span></div>
                                                             <div class="bet_price-2"><span class="mr_5px"><img src="photo-bet/icon_money.png" class="img_icon_money"/> </span><span id="bet_price-2">1 ,000</span><span class="end_price-2">.00</span></div>
                                                             <div class="detail_match-2"><span id="detail_match-2">Manchester United FC -0.5</span><span id="a_cong"> @ </span><span class="percent-2">1.02</span></div>
-                                                            <div class="cate-2"><span id="match-2">Cược Chấp</span><span> </span><span id="cate-2">Kèo Hồng Kông</span></div>
+                                                            <div class="cate-2"><span id="match-2">Cược Chấp</span><span id="half-2"> </span><span id="cate-2">Kèo Hồng Kông</span>
+                                                            </div>
                                                             <div class="time_start-2">Begin Match <span id="time_start-2">05/08 01:00</span></div>
                                                             <div class="team_name-2"><span id="name_team1-2">West Ham United</span> vs. <span id="name_team2-2">Manchester United FC</span></div>
                                                             <div class="league-2">Giải Ngoại Hạng Anh</div>
@@ -337,7 +389,7 @@
                                                             <div class="one_ve-3">1<span class="ve-3"> Vé</span></div>
                                                             <div class="bet_price-3"><span class="mr_5px"><img src="photo-bet/icon_money.png" class="img_icon_money"/> </span><span id="bet_price-3">1 ,000</span><span class="end_price-3">.00</span></div>
                                                             <div class="detail_match-3"><span id="detail_match-3">Manchester United FC -0.5</span><span id="a_cong"> @ </span><span class="percent-3">1.02</span></div>
-                                                            <div class="cate-3"><span id="match-3">Cược Chấp</span><span> </span><span id="cate-3">Kèo Hồng Kông</span></div>
+                                                            <div class="cate-3"><span id="match-3">Cược Chấp</span><span id="half-3"> </span><span id="cate-3">Kèo Hồng Kông</span></div>
                                                             <div class="time_start-3">Begin Match <span id="time_start-3">05/08 01:00</span></div>
                                                             <div class="team_name-3"><span id="name_team1-3">West Ham United</span> vs. <span id="name_team2-3">Manchester United FC</span></div>
                                                             <div class="league-3">Giải Ngoại Hạng Anh</div>
@@ -350,7 +402,7 @@
                                                             <div class="one_ve-4">1<span class="ve"> Vé</span></div>
                                                             <div class="bet_price-4"><span class="mr_5px"><img src="photo-bet/icon_money.png" class="img_icon_money"/> </span><span id="bet_price-4">1 ,000</span><span class="end_price-4">.00</span></div>
                                                             <div class="detail_match-4"><span id="detail_match-4">Manchester United FC -0.5</span><span id="a_cong"> @ </span><span class="percent-4">1.02</span></div>
-                                                            <div class="cate-4"><span id="match-4">Cược Chấp</span><span> </span><span id="cate-4">Kèo Hồng Kông</span></div>
+                                                            <div class="cate-4"><span id="match-4">Cược Chấp</span><span id="half-4"> </span><span id="cate-4">Kèo Hồng Kông</span></div>
                                                             <div class="time_start-4">Begin Match <span id="time_start-4">05/08 01:00</span></div>
                                                             <div class="team_name-4"><span id="name_team1-4">West Ham United</span> vs. <span id="name_team2-4">Manchester United FC</span></div>
                                                             <div class="league-4">Giải Ngoại Hạng Anh</div>
@@ -363,7 +415,7 @@
                                                             <div class="one_ve-5">1<span class="ve"> Vé</span></div>
                                                             <div class="bet_price-5"><span class="mr_5px"><img src="photo-bet/icon_money.png" class="img_icon_money"/> </span><span id="bet_price-5">1 ,000</span><span class="end_price-5">.00</span></div>
                                                             <div class="detail_match-5"><span id="detail_match-5">Manchester United FC -0.5</span><span id="a_cong"> @ </span><span class="percent-5">1.02</span></div>
-                                                            <div class="cate-5"><span id="match-5">Cược Chấp</span><span> </span><span id="cate-5">Kèo Hồng Kông</span></div>
+                                                            <div class="cate-5"><span id="match-5">Cược Chấp</span><span id="half-5"> </span><span id="cate-5">Kèo Hồng Kông</span></div>
                                                             <div class="time_start-5">Begin Match <span id="time_start-5">05/08 01:00</span></div>
                                                             <div class="team_name-5"><span id="name_team1-5">West Ham United</span> vs. <span id="name_team2-5">Manchester United FC</span></div>
                                                             <div class="league-5">Giải Ngoại Hạng Anh</div>
@@ -375,13 +427,11 @@
                                                     } ?>
                                             </div>
                                         </div>
-                                        <button class="btn btn-warning w-100" id="create_to_img-<?php echo $key_photo ?>">Xuất ảnh hóa
-                                            đơn</button>
                                     </div>
 
-                                    <div class="col-md-6 align-self-end" style="display:none">
+                                    <div class="col-md-6 align-self-end" >
                                         <div class="card">
-                                            <div class="card-body w-100"  >
+                                            <div class="card-body w-100" style="padding:0" >
                                                 <img src="photo-bet/photo_demo<?php echo $key_photo + 1 ?>.png" style="width: 100%"/>
                                                 <?php
                                                     switch($key_photo) {
@@ -391,14 +441,12 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    
                                     <?php 
                                     } ?>
                                 </div>
+                                
                                 <?php break;
                             } ?>
-                        
                                 <!-- ------------------------- Dữ liệu đơn casino ------------------------- -->
                             <?php
                             case 2: { $rand_icon = rand(1,3); ?>

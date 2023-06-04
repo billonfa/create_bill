@@ -1,5 +1,23 @@
-
-
+/* Slide */
+.carousel-control-prev {
+    margin-left: -100px;
+}
+.carousel-control-next {
+    margin-right: -100px;
+}
+.carousel {
+    width: 400px;
+    margin: 0px auto;
+}
+.carousel-indicators {
+    background-color: black;
+}
+.carousel-indicators [data-bs-target] {
+    color: red;
+    height: 30px;
+    border-radius: 68%;
+    text-indent: 0;
+}
 @font-face {
     font-family: 'din';
     src: url('font/NeueDINTrialSemiCond-Black-BF63c6170310507.otf') format('opentype');
@@ -672,26 +690,27 @@ display:flex;
 /* --------------------------------- Bill Bóng 0 -------------------------------- */
 .bet_price-0 {
     position: absolute;
-    top: 163px;
+    top: 157px;
     z-index: 1;
     font-family: din, sans-serif;
-    left: 44px;
+    left: 30px;
     font-size: 29px;
-    width: max-content;
+    width: 200px;
 }
 .total_win-0 {
     position: absolute;
-    top: 163px;
+    top: 157px;
     z-index: 1;
     font-family: din, sans-serif;
-    left: 610px;
+    left: 578px;
     font-size: 29px;
     width: 170px;
+    text-align: right;
 }
 .detail_match-0 {
-    top: 250px;
+    top: 245px;
     position: absolute;
-    left: 43px;
+    left: 35px;
     z-index: 1;
     width: 580px;
     font-weight: 600;
@@ -699,10 +718,10 @@ display:flex;
 }
 .percent-0 {
     position: absolute;
-    top: 244px;
+    top: 242px;
     z-index: 1;
     font-family: din, sans-serif;
-    left: 677px;
+    left: 695px;
     font-size: 36px;
     width: 170px;
 }
@@ -710,9 +729,9 @@ display:flex;
     font-size: 25px;
 }
 .match_info-0 {
-    top: 292px;
+    top: 286px;
     position: absolute;
-    left: 43px;
+    left: 35px;
     z-index: 1;
     width: 580px;
     font-weight: 500;
@@ -722,26 +741,26 @@ display:flex;
 .team_name-0 {
     top: 332px;
     position: absolute;
-    left: 43px;
+    left: 35px;
     z-index: 1;
-    width: 580px;
+    width: 720px;
     font-weight: 500;
     font-size: 27px;
     color: #afb4bc;
 }
 .league-0 {
-    top: 372px;
+    top: 373px;
     position: absolute;
-    left: 43px;
+    left: 35px;
     z-index: 1;
     width: 580px;
     font-size: 22px;
     color: #8c8c8e;
 }
 .time_start-0 {
-    top: 405px;
+    top: 407px;
     position: absolute;
-    left: 43px;
+    left: 35px;
     z-index: 1;
     width: 580px;
     font-size: 22px;
@@ -755,9 +774,9 @@ display:flex;
 .one_ve {
     position: absolute;
     z-index: 1;
-    top: 157px;
-    left: 45px;
-    font-size: 20px;
+    top: 145px;
+    left: 32px;
+    font-size: 23px;
     font-family: din1;
     width: 270px;
 }
@@ -774,22 +793,22 @@ display:flex;
 .bet_price-1 {
     position: absolute;
     z-index: 1;
-    top: 157px;
+    top: 145px;
     left: 228px;
-    font-size: 20px;
+    font-size: 25px;
     font-family: din1;
     width: 270px;
 }
 .end_price-1 {
-    font-size: 16px;
+    font-size: 20px;
 }
 .detail_match-1 {
     position: absolute;
     z-index: 1;
-    top: 214px;
-    left: 47px;
+    top: 210px;
+    left: 32px;
     width: 700px;
-    font-size: 29px;
+    font-size: 30px;
     font-weight: 600;
     font-family: sans-serif;
 }
@@ -799,13 +818,13 @@ display:flex;
 #percent-1 {
     font-family: din1;
     font-weight: bold;
-    font-size: 29px;;
+    font-size: 31px;;
 }
 .cate-1 {
     position: absolute;
     z-index: 1;
     top: 260px;
-    left: 47px;
+    left: 32px;
     width: 700px;
     font-size: 25.5px;
     font-family: sans-serif;
@@ -814,8 +833,8 @@ display:flex;
 .time_start-1 {
     position: absolute;
     z-index: 1;
-    top: 303px;
-    left: 47px;
+    top: 305px;
+    left: 32px;
     width: 700px;
     font-size: 21.5px;
     font-family: sans-serif;
@@ -827,62 +846,63 @@ display:flex;
 .team_name-1 {
     position: absolute;
     z-index: 1;
-    top: 366px;
-    left: 47px;
-    width: 689px;
-    font-size: 28.5px;
+    top: 360px;
+    left: 32px;
+    width: 720px;
+    font-size: 30px;
     font-family: sans-serif;
     color: black;
 }
 .league-1 {
     position: absolute;
     z-index: 1;
-    top: 404px;
-    left: 47px;
+    top: 407px;
+    left: 32px;
     width: 689px;
-    font-size: 22px;
+    font-size: 24px;
     font-family: sans-serif;
     color: #5e6475;
 }
 .bet_price2-1 {
     position: absolute;
     z-index: 1;
-    top: 489px;
-    left: 48px;
-    width: 689px;
-    font-size: 27.5px;
+    top: 503px;
+    left: 34px;
+    width: 200px;
+    font-size: 30px;
     font-family: din1;
 }
 .total_win-1 {
     position: absolute;
     z-index: 1;
-    top: 489px;
-    left: 535px;
+    top: 503px;
+    left: 555px;
     width: 200px;
-    font-size: 27.5px;
+    font-size: 30px;
     font-family: din1;
     color: #b73547;
     text-align: right;
 }
 .end_price2-1 {
-    font-size: 21px;
+    font-size: 23px;
 }
 .trade_code-1 {
     position: absolute;
     z-index: 1;
-    top: 554px;
-    left: 31px;
-    width: 218px;
-    font-size: 18.5px;
+    top: 565px;
+    left: 25px;
+    width: 230px;
+    font-size: 20.5px;
     font-family: inherit;
     text-align: right;
+    font-weight: 500;
 }
 .time-1 {
     position: absolute;
     z-index: 1;
-    top: 556px;
-    left: 510px;
-    font-size: 17.5px;
+    top: 566px;
+    left: 530px;
+    font-size: 19px;
     font-family: sans-serif;
     color: #767c8a;
     font-weight: 600;
@@ -893,34 +913,34 @@ display:flex;
 .one_ve-2 {
     position: absolute;
     z-index: 1;
-    top: 144px;
-    left: 45px;
-    font-size: 20px;
+    top: 134px;
+    left: 32px;
+    font-size: 25px;
     font-family: din1;
     width: 270px;
 }
 .ve-1 {
     font-family: sans-serif;
     font-family: 500;
-    font-size: 17px;
+    font-size: 20px;
 }
 .bet_price-2 {
     position: absolute;
     z-index: 1;
-    top: 144px;
+    top: 134px;
     left: 227px;
-    font-size: 20px;
+    font-size: 25px;
     font-family: din1;
     width: 270px;
 }
 .end_price-2 {
-    font-size: 16px;
+    font-size: 20px;
 }
 .detail_match-2 {
     position: absolute;
     z-index: 1;
-    top: 198px;
-    left: 47px;
+    top: 195px;
+    left: 32px;
     width: 700px;
     font-size: 29px;
     font-weight: bold;
@@ -937,8 +957,8 @@ display:flex;
 .cate-2 {
     position: absolute;
     z-index: 1;
-    top: 245px;
-    left: 47px;
+    top: 243px;
+    left: 32px;
     width: 700px;
     font-size: 24.5px;
     font-family: sans-serif;
@@ -947,8 +967,8 @@ display:flex;
 .time_start-2 {
     position: absolute;
     z-index: 1;
-    top: 286px;
-    left: 47px;
+    top: 283px;
+    left: 32px;
     width: 700px;
     font-size: 21.5px;
     font-family: sans-serif;
@@ -960,9 +980,9 @@ display:flex;
 .team_name-2 {
     position: absolute;
     z-index: 1;
-    top: 346px;
-    left: 47px;
-    width: 689px;
+    top: 340px;
+    left: 32px;
+    width: 720px;
     font-size: 28.5px;
     font-family: sans-serif;
     color: black;
@@ -970,29 +990,29 @@ display:flex;
 .league-2 {
     position: absolute;
     z-index: 1;
-    top: 384px;
-    left: 47px;
+    top: 385px;
+    left: 32px;
     width: 689px;
-    font-size: 22px;
+    font-size: 23px;
     font-family: sans-serif;
     color: #5e6475;
 }
 .bet_price2-2 {
     position: absolute;
     z-index: 1;
-    top: 465px;
-    left: 47px;
+    top: 480px;
+    left: 32px;
     width: 689px;
-    font-size: 27.5px;
+    font-size: 28px;
     font-family: din1;
 }
 .total_win-2 {
     position: absolute;
     z-index: 1;
-    top: 465px;
-    left: 537px;
+    top: 480px;
+    left: 557px;
     width: 200px;
-    font-size: 27.5px;
+    font-size: 28px;
     font-family: din1;
     color: #b73547;
     text-align: right;
@@ -1003,10 +1023,10 @@ display:flex;
 .trade_code-2 {
     position: absolute;
     z-index: 1;
-    top: 530px;
-    left: 25px;
-    width: 220px;
-    font-size: 17.5px;
+    top: 538px;
+    left: 15px;
+    width: 230px;
+    font-size: 19.5px;
     font-family: inherit;
     text-align: right;
     font-weight: 500;
@@ -1014,10 +1034,10 @@ display:flex;
 .time-2 {
     position: absolute;
     z-index: 1;
-    top: 530px;
-    left: 648px;
+    top: 540px;
+    left: 663px;
     width: 689px;
-    font-size: 17.5px;
+    font-size: 18.5px;
     font-family: sans-serif;
     color: #5b6273;
     font-weight: 600;
@@ -1026,9 +1046,9 @@ display:flex;
 .one_ve-3 {
     position: absolute;
     z-index: 1;
-    top: 213px;
-    left: 48px;
-    font-size: 23px;
+    top: 205px;
+    left: 35px;
+    font-size: 25px;
     font-family: din1;
     width: 270px;
 }
@@ -1040,9 +1060,9 @@ display:flex;
 .bet_price-3 {
     position: absolute;
     z-index: 1;
-    top: 213px;
+    top: 205px;
     left: 228px;
-    font-size: 23px;
+    font-size: 25px;
     font-family: din1;
     width: 270px;
 }
@@ -1052,10 +1072,10 @@ display:flex;
 .detail_match-3 {
     position: absolute;
     z-index: 1;
-    top: 279px;
-    left: 52px;
+    top: 277px;
+    left: 35px;
     width: 700px;
-    font-size: 30px;
+    font-size: 32px;
     font-weight: bold;
     font-family: sans-serif;
 }
@@ -1070,18 +1090,18 @@ display:flex;
 .cate-3 {
     position: absolute;
     z-index: 1;
-    top: 329px;
-    left: 52px;
+    top: 330px;
+    left: 35px;
     width: 700px;
-    font-size: 27px;
+    font-size: 28px;
     font-family: sans-serif;
     color: #5c6374;
 }
 .time_start-3 {
     position: absolute;
     z-index: 1;
-    top: 377px;
-    left: 52px;
+    top: 382px;
+    left: 35px;
     width: 700px;
     font-size: 23px;
     font-family: sans-serif;
@@ -1094,17 +1114,17 @@ display:flex;
     position: absolute;
     z-index: 1;
     top: 445px;
-    left: 52px;
-    width: 689px;
-    font-size: 31px;
+    left: 35px;
+    width: 720px;
+    font-size: 32px;
     font-family: sans-serif;
     color: black;
 }
 .league-3 {
     position: absolute;
     z-index: 1;
-    top: 488px;
-    left: 52px;
+    top: 495px;
+    left: 35px;
     width: 689px;
     font-size: 24px;
     font-family: sans-serif;
@@ -1113,19 +1133,19 @@ display:flex;
 .bet_price2-3 {
     position: absolute;
     z-index: 1;
-    top: 580px;
-    left: 52px;
+    top: 595px;
+    left: 35px;
     width: 200px;
-    font-size: 31.5px;
+    font-size: 33px;
     font-family: din1;
 }
 .total_win-3 {
     position: absolute;
     z-index: 1;
-    top: 580px;
-    left: 529px;
+    top: 595px;
+    left: 555px;
     width: 200px;
-    font-size: 31.5px;
+    font-size: 33px;
     font-family: din1;
     color: #b73547;
     text-align: right;
@@ -1136,21 +1156,22 @@ display:flex;
 .trade_code-3 {
     position: absolute;
     z-index: 1;
-    top: 653px;
-    left: 40px;
-    width: 225px;
-    font-size: 20px;
+    top: 668px;
+    left: 24px;
+    width: 245px;
+    font-size: 21.5px;
     font-family: inherit;
     text-align: right;
+    font-weight: 500;
 
 }
 .time-3 {
     position: absolute;
     z-index: 1;
-    top: 655px;
-    left: 641px;
+    top: 670px;
+    left: 648px;
     width: 110px;
-    font-size: 18.5px;
+    font-size: 20px;
     font-family: sans-serif;
     color: #5b6273;
     font-weight: 600;
@@ -1159,36 +1180,36 @@ display:flex;
 .one_ve-4 {
     position: absolute;
     z-index: 1;
-    top: 159px;
-    left: 48px;
-    font-size: 20px;
+    top: 149px;
+    left: 35px;
+    font-size: 26px;
     font-family: din1;
     width: 270px;
 }
 .ve-1 {
     font-family: sans-serif;
     font-family: 500;
-    font-size: 17px;
+    font-size: 23px;
 }
 .bet_price-4 {
     position: absolute;
     z-index: 1;
-    top: 159px;
+    top: 149px;
     left: 233px;
-    font-size: 21px;
+    font-size: 26px;
     font-family: din1;
     width: 270px;
 }
 .end_price-4 {
-    font-size: 16px;
+    font-size: 23px;
 }
 .detail_match-4 {
     position: absolute;
     z-index: 1;
-    top: 221px;
-    left: 47px;
+    top: 215px;
+    left: 35px;
     width: 700px;
-    font-size: 29px;
+    font-size: 30px;
     font-weight: bold;
     font-family: sans-serif;
 }
@@ -1198,15 +1219,15 @@ display:flex;
 #percent-4 {
     font-family: din1;
     font-weight: bold;
-    font-size: 29px;;
+    font-size: 32px;
 }
 .cate-4 {
     position: absolute;
     z-index: 1;
-    top: 269px;
-    left: 47px;
+    top: 267px;
+    left: 35px;
     width: 700px;
-    font-size: 24.5px;
+    font-size: 25px;
     font-family: sans-serif;
     color: #5c6374;
 }
@@ -1214,9 +1235,9 @@ display:flex;
     position: absolute;
     z-index: 1;
     top: 314px;
-    left: 47px;
+    left: 35px;
     width: 700px;
-    font-size: 21.5px;
+    font-size: 22px;
     font-family: sans-serif;
     color: #5c6374;
 }
@@ -1226,10 +1247,10 @@ display:flex;
 .team_name-4 {
     position: absolute;
     z-index: 1;
-    top: 380px;
-    left: 47px;
-    width: 689px;
-    font-size: 28.5px;
+    top: 375px;
+    left: 35px;
+    width: 720px;
+    font-size: 29px;
     font-family: sans-serif;
     font-weight: 500;
     color: black;
@@ -1237,43 +1258,43 @@ display:flex;
 .league-4 {
     position: absolute;
     z-index: 1;
-    top: 420px;
-    left: 47px;
+    top: 425px;
+    left: 35px;
     width: 689px;
-    font-size: 22px;
+    font-size: 25px;
     font-family: sans-serif;
     color: #5e6475;
 }
 .bet_price2-4 {
     position: absolute;
     z-index: 1;
-    top: 510px;
-    left: 50px;
+    top: 525px;
+    left: 35px;
     width: 689px;
-    font-size: 29.2px;
+    font-size: 32px;
     font-family: din1;
 }
 .total_win-4 {
     position: absolute;
     z-index: 1;
-    top: 510px;
-    left: 536px;
+    top: 525px;
+    left: 558px;
     width: 200px;
-    font-size: 29.2px;
+    font-size: 32px;
     font-family: din1;
     color: #b73547;
     text-align: right;
 }
 .end_price2-4 {
-    font-size: 21px;
+    font-size: 25px;
 }
 .trade_code-4 {
     position: absolute;
     z-index: 1;
-    top: 581px;
-    left: 12px;
+    top: 592px;
+    left: 16px;
     width: 230px;
-    font-size: 18.5px;
+    font-size: 20px;
     font-family: inherit;
     text-align: right;
     font-weight: 500;
@@ -1281,10 +1302,10 @@ display:flex;
 .time-4 {
     position: absolute;
     z-index: 1;
-    top: 581px;
-    left: 592px;
+    top: 590px;
+    left: 610px;
     width: 150px;
-    font-size: 18px;
+    font-size: 20px;
     font-family: sans-serif;
     color: #5b6273;
     font-weight: 600;
@@ -1338,7 +1359,7 @@ display:flex;
 .cate-5 {
     position: absolute;
     z-index: 1;
-    top: 391px;
+    top: 404px;
     left: 47px;
     width: 700px;
     font-size: 24.5px;
@@ -1363,7 +1384,7 @@ display:flex;
     z-index: 1;
     top: 510px;
     left: 47px;
-    width: 689px;
+    width: 720px;
     font-size: 28.5px;
     font-family: sans-serif;
     color: black;
@@ -1404,13 +1425,13 @@ display:flex;
 .trade_code-5 {
     position: absolute;
     z-index: 1;
-    top: 697px;
-    left: 26px;
-    width: 201px;
+    top: 700px;
+    left: 14px;
+    width: 230px;
     font-size: 19px;
-    font-family: system-ui;
-    font-weight: 500;
+    font-family: inherit;
     text-align: right;
+    font-weight: 500;
 }
 .time-5 {
     position: absolute;

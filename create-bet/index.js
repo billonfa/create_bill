@@ -3,7 +3,7 @@ window.addEventListener('load', function () {
     setTimeout(function() {
         document.querySelector('#loading').style.display = 'none'
     }, 1000);
-    var numberInput = document.getElementById("input_total_number");
+    var numberInput = document.getElementById("input_price");
     if(numberInput) {
         numberInput.addEventListener("input", function() {
             var userInput = numberInput.value;
@@ -50,6 +50,7 @@ window.addEventListener('load', function () {
             continue
         }
         buttons[i].addEventListener('click', function(event) {
+            event.preventDefault(); // Chặn sự kiện mặc định
             document.querySelector('#loading').style.display = 'flex'
             setTimeout(function() {
                 document.querySelector('#loading').style.display = 'none'
@@ -115,12 +116,14 @@ window.addEventListener('load', function () {
         const value_time_start = document.querySelector('#input_time_start').value
         const value_time = document.querySelector('#input_time').value
         const value_cate = document.querySelector('#input_cate').value
-        let value_percent = document.querySelector('#input_percent').value
+        let value_percent = document.querySelector('#input_percent').value 
         
         const value_half = document.querySelector('#input_half').value
         const value_price = document.querySelector('#input_price').value
+        const value_cate_bill = document.querySelector('#cate_bill').value - 1
         // const trade_code = document.querySelector('#input_trade_code').value
-        let value_total_win = parseInt(value_price * value_percent)
+        let value_total_win = parseInt(value_price.replace(/,/g, '') * value_percent)
+        value_total_win = value_total_win.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })
         if (value_cate == 2) {
             value_percent = parseFloat(value_percent) + (1)
             value_percent = value_percent.toFixed(2)
@@ -160,7 +163,12 @@ window.addEventListener('load', function () {
             let percent = document.querySelector(`.percent-${i}`)
             percent.textContent = value_percent
             let match = document.querySelector(`#match-${i}`)
-            match.textContent = value_match
+            match.textContent =value_match
+            let half = document.querySelector(`#half-${i}`)
+            half.textContent = "-" + value_half + " "
+            if (value_half === "Cả Trận") {
+                half.textContent = " "
+            }
             let cate = document.querySelector(`#cate-${i}`)
             cate.textContent = text_cate
             let name_t1 = document.querySelector(`#name_team1-${i}`)
@@ -178,28 +186,21 @@ window.addEventListener('load', function () {
             let time = document.querySelector(`.time-${i}`)
             time.textContent = value_time.slice(5, -3)
         }
+
+        var options = {
+            
+        }
+        console.log(document.querySelector(`#new-bet-ball-${value_cate_bill}`))
+        // document.querySelector(`#new-bet-ball-${value_cate_bill}`).style.width = '725px'
+        html2canvas(document.querySelector(`#new-bet-ball-${value_cate_bill}`), options).then(canvas => {
+            let a = document.createElement('a');
+            a.href = canvas.toDataURL('image/jpeg', 1.0);
+            a.download = 'new_bet_ball.jpg';
+            a.click();
+        });
     });
     
      // //------------------------------------------Xuất ảnh------------------------------------------
-    for(let i = 0; i <= 5; i++) {
-        let create_bill_bet = document.querySelector(`#create_to_img-${i}`)
-        if(create_bill_bet) {
-            create_bill_bet.addEventListener("click", function() {
-                var options = {
-                    width: 758.5
-                }
-                html2canvas(document.querySelector(`#new-bet-ball-${i}`), options).then(canvas => {
-                    let a = document.createElement('a');
-                    a.href = canvas.toDataURL('image/jpeg', 1.0);
-                    console.log(a.href)
-                    a.download = 'new_bet_ball.jpg';
-                    a.click();
-                });
-            })
-        }
-    }
-
-    
 
 });
 //--------------------------------------- Đưa dữ liệu BET 3 ---------------------------------------
